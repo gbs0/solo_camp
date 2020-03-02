@@ -18,7 +18,7 @@ end
 
 puts 'Creating movies...'
 sample["movies"].each do |movie|
-  Movie.create! movie.slice("title", "year", "syllabus").merge(director: ownerships[movie["director_slug"]])
+  Movie.create! movie.slice("title", "year", "syllabus").merge(ownership: ownerships[movie["ownership_slug"]])
 end
 
 puts 'Creating tv shows...'
