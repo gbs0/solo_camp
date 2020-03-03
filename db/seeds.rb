@@ -8,20 +8,21 @@ require "yaml"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/9e742eb09cead62b2b1c4704dabbe0a7c83891fa/seed_solocamp.yml"
 sample = YAML.load(open(file).read)
 
-puts 'Creating owners...'
-directors = {}  # slug => Director
-sample["ownerships"].each do |director|
-  ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
-end
+# puts 'Creating owners...'
+# directors = {}  # slug => Director
+# sample["ownerships"].each do |director|
+#   ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
+# end
 
-puts 'Creating movies...'
-sample["movies"].each do |movie|
-  Movie.create! movie.slice("title", "year", "syllabus").merge(ownership: ownerships[movie["ownership_slug"]])
-end
+# puts 'Creating movies...'
+# sample["movies"].each do |movie|
+#   Movie.create! movie.slice("title", "year", "syllabus").merge(ownership: ownerships[movie["ownership_slug"]])
+# end
 
-puts 'Creating tv shows...'
-sample["series"].each do |tv_show|
-  TvShow.create! tv_show
+puts 'Creating Insumos...'
+sample["insumos"].each do |insumo|
+  Insumo.create! insumo
 end
