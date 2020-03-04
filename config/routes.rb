@@ -8,13 +8,16 @@ Rails.application.routes.draw do
 	resources :insumos, only: [:index]
 	# root to: "devise/sessions#new"
 	
+
 	devise_scope :user do
 	  authenticated :user do
-	    root 'pages#index', as: :authenticated_root
+	    root 'insumos#index', as: :authenticated_root
 	  end
 
 	  unauthenticated do
 	    root 'devise/sessions#new', as: :unauthenticated_root
 	  end
-	end	
+	end
+	root to: "insumos#index"
+
 end
