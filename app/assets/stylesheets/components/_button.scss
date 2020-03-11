@@ -1,0 +1,26 @@
+.btn-treehouse {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+.btn-treehouse:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+#home-btn {
+  padding: 20px 0px 20px 0px;
+  margin: 70px;
+  display: list-item;
+}
+
+#signup-btn {
+  margin-top: 15px;
+  opacity: 0.8;
+  padding: 10px 20px 10px 20px;
+}
