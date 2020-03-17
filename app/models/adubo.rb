@@ -1,0 +1,2 @@
+class Adubo < ApplicationRecord
+end

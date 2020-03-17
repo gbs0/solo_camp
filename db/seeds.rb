@@ -1,28 +1,39 @@
 require "open-uri"
 require "yaml"
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/9e742eb09cead62b2b1c4704dabbe0a7c83891fa/seed_solocamp.yml"
-sample = YAML.load(open(file).read)
+# Insumo.destroy_all if Rails.env.development?
+# Adubo.destroy_all if Rails.env.development?
 
-# puts 'Creating owners...'
-# directors = {}  # slug => Director
-# sample["ownerships"].each do |director|
-#   ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
-# end
+case Rails.env
+    when 'development'
+      Insumo.destroy_all
+      puts "Destroyed all insumos"
+      Adubo.destroy_all
+      puts "Destroyed all adubos"
 
-# puts 'Creating movies...'
-# sample["movies"].each do |movie|
-#   Movie.create! movie.slice("title", "year", "syllabus").merge(ownership: ownerships[movie["ownership_slug"]])
-# end
+      file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/ae618c87a8736bc96cb76b6e2b1b591f517e825a/seed_solocamp.yml"
+      sample = YAML.load(open(file).read)
 
-puts 'Creating Insumos...'
-sample["insumos"].each do |insumo|
-  Insumo.create! insumo
+      puts 'Creating Insumos...'
+      sample["insumos"].each do |insumo|
+        Insumo.create! insumo
+      end
+      puts 'Created Insumos...'
+
+      puts 'Creating Adubos...'
+      sample["adubos"].each do |adubo|
+        # ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
+        Adubo.create! adubo.slice("comercial_name", "n", "p", "k", "preco_saca")
+      end
+      puts 'Created Adubos...'
+
+    
+    when 'test'
+    # test-specific seeds ...
+    # (Consider having your tests set up the data they need
+    # themselves instead of seeding it here!)
+    
+    when 'production'
+    # production seeds (if any) ...
+
 end

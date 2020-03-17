@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comercial_name: MyString
+  'n': 1
+  p: 1
+  k: 1
+  preco_saca: 9.99
+  description: MyString
+  category: MyString
+
+two:
+  comercial_name: MyString
+  'n': 1
+  p: 1
+  k: 1
+  preco_saca: 9.99
+  description: MyString
+  category: MyString

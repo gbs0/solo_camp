@@ -5,7 +5,6 @@ Rails.application.routes.draw do
  #  	root to: "devise/sessions#new"
 	# end
 
-	resources :insumos, only: [:index]
 	# root to: "devise/sessions#new"
 	
 
@@ -18,6 +17,9 @@ Rails.application.routes.draw do
 	    root 'devise/sessions#new', as: :unauthenticated_root
 	  end
 	end
-	root to: "insumos#index"
+	
+	resources :insumos, only: [:index]
+	resources :adubos
+		
 
 end

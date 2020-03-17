@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200303005203) do
+ActiveRecord::Schema.define(version: 20200315145614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adubos", force: :cascade do |t|
+    t.string "comercial_name"
+    t.integer "n"
+    t.integer "p"
+    t.integer "k"
+    t.decimal "preco_saca"
+    t.string "description"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "insumos", force: :cascade do |t|
     t.datetime "created_at", null: false
