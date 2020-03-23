@@ -2,7 +2,7 @@
 // @import "config/fonts";
 // @import "config/colors";
 // @import "config/bootstrap_variables";
-@import "application.min.css";
+// @import "application.min.css";
 
 // External libraries
 // @import "bootstrap-sprockets";
@@ -15,7 +15,7 @@
 // @import "components/index";
 @import "pages/index";
 @import "pages/login";
-// @import "dashboard/dashboards";
+@import "dashboard/dashboards";
 
 // @import "components/new";
 @import "utilities/index";

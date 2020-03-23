@@ -39,6 +39,15 @@ $sidebar-base-width: auto;
 }
 
 .sidebar {
+  #stylesheet {
+    display: auto;
+    list-style-type: disc;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+  }
     margin-left: 0;
     width: 14rem;
     min-height: 100vh;
@@ -50,7 +59,7 @@ $sidebar-base-width: auto;
       .nav-link {
         text-align: center;
         padding: 0.75rem 1rem;
-        width: 14rem;
+        width: 15rem;
         span {
           font-size: 0.65rem;
           display: block;
@@ -172,7 +181,7 @@ $sidebar-base-width: auto;
       font-weight: 800;
       font-size: 0.65rem;
       // @extend .text-uppercase;
-    }
+    }  
   }
   
   // @include media-breakpoint-up(md) {
