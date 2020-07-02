@@ -1,13 +1,19 @@
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-	<%= render "shared/topbar" %>
-	<%= render "shared/sidebar" %>	
+<body>
+  <div>
+	  <%= render "shared/topbar" %>
+  </div>
+	<div class="d-flex">
+    <div>
+      <%= render "shared/sidebar" %>  
+    </div>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 	    <%= render "tables" %>	
     </div>
   </div>
-
+</body>
+  
+  <!-- PASSAR URGENTE P TURBO LINKS-->
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
