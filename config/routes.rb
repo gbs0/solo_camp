@@ -18,8 +18,7 @@ Rails.application.routes.draw do
 	  end
 	end
 	
-	resources :insumos, only: [:index]
+	resources :insumos, only: [:index, :new]
 	resources :adubos
-		
 
 end
