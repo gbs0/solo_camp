@@ -1,0 +1,16 @@
+<div class="container">
+  <%= simple_form_for @adubo do |f| %>
+    <%= f.input :comercial_name, label: 'Nome do Formulado:', error: 'Nome do Formulado obrigatório.' %>
+    <%= f.input :n, placeholder: 'Nitrogenio'  %>
+    <%= f.input :p, placeholder: 'Fosforo' %>
+    <%= f.input :k, placeholder: 'Potassio' %>
+    <%= f.input :preco_saca, label: 'Preço p/ KG'%>
+    <%= f.input :description, label: 'Breve descrição do formulado' %>
+    <%= f.input :category, collection: ["Insumo1", "Insumo2", "Insumo3"] %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+
+  
+
+</div>
+

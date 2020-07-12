@@ -23,41 +23,37 @@ class AdubosController < ApplicationController
       render :new
     end
 
+    # def show
+    #   @product = Product.find(params[:id])
+    # end
 
-  
+    # def buy
+    #   redirect_to product_path(params[:product_id]), notice: "Parabéns, sua compra foi confirmada!"
+    # end
 
+    # Rotas destroy, edit & update ñ serão utilizadas na apresentação
+    # def edit
+    # end
 
-  # def show
-  #   @product = Product.find(params[:id])
-  # end
+    # def destroy
+    # end
 
-  # def buy
-  #   redirect_to product_path(params[:product_id]), notice: "Parabéns, sua compra foi confirmada!"
-  # end
+    # def update
+    # end
 
-  # Rotas destroy, edit & update ñ serão utilizadas na apresentação
-  # def edit
-  # end
+    private
+    def set_user
+      @user = current_user
+    end
 
-  # def destroy
-  # end
+    # def set_product
+    #   @product = Product.find(params[:id])
+    # end
 
-  # def update
-  # end
-
-  private
-  # def set_user
-  #   @user = current_user
-  # end
-
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
-
-  def adubo_params
-    params.require(:adubo).permit( :comercial_name, :n, :p, :k, :preco_saca )
-    # params.require(:adubo).permit( :comercial_name, :n, :p, :k, :preco_saca, :category, :description )
-  end
+    def adubo_params
+      # params.require(:adubo).permit( :comercial_name, :n, :p, :k, :preco_saca )
+      params.require(:adubo).permit( :comercial_name, :n, :p, :k, :preco_saca, :category, :description )
+    end
 
 #   def asset_exist?(path)
 #     if Rails.configuration.assets.compile
