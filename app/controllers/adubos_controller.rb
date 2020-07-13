@@ -5,10 +5,16 @@ class AdubosController < ApplicationController
 
     def new
       @adubo = Adubo.new
+      
+      # Render as partial
+      # respond_to do |format|
+      #   format.js {}
+      # end
+
     end
   
     def create
-      @user = current_user
+      # @user = current_user # Pegar a referencia do usuario p/ adubo pertencer somente ao mesmo user.
       @adubo = Adubo.new(adubo_params)
       # @product.user_id = current_user.id
 
@@ -17,7 +23,8 @@ class AdubosController < ApplicationController
       # end
 
       if @adubo.save
-        redirect_to insumos_path, notice: "Seu adubo foi adicionado"
+        flash[:notice] = "'#{@adubo.name}' salvo."
+        redirect_to adubos_path, notice: "Seu adubo foi adicionado"
       else
       flash[:alert] = "Error"
       render :new
