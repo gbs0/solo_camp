@@ -45,7 +45,7 @@
                         </tr>
                     <% end %> 
                   </tbody>
-                  <i class="fa fa-plus-circle"></i> <%= link_to '  Criar novo formulado', new_adubo_path %>
+                  <i class="fa fa-plus-circle"></i> <%= link_to '  Criar novo formulado', new_adubo_path(:format => :js),  remote: true %>
                 </table>
               </div>
             </div>

@@ -4,12 +4,12 @@ class AdubosController < ApplicationController
     end
 
     def new
-      @adubo = Adubo.new
+      # @adubo = Adubo.new
       
       # Render as partial
-      # respond_to do |format|
-      #   format.js {}
-      # end
+      respond_to do |format|
+        format.js
+      end
 
     end
   
@@ -45,8 +45,16 @@ class AdubosController < ApplicationController
     # def destroy
     # end
 
-    # def update
-    # end
+    def update
+      @adubo = Adubo.find(adubo_params[:id])
+      if @adubo.update_attributes(adubo_params)
+        flash[:notice] = "'#{@adubo.name}' editado e salvo"
+        redirect_to adubos_path
+      else
+        flash[:notice] = "Ops, revise as informações"
+        # render "edit"
+      end
+    end
 
     private
     def set_user
