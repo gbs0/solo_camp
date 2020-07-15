@@ -4,10 +4,11 @@ class AdubosController < ApplicationController
     end
 
     def new
-      # @adubo = Adubo.new
+      @adubo = Adubo.new
       
       # Render as partial
       respond_to do |format|
+        format.html
         format.js
       end
 

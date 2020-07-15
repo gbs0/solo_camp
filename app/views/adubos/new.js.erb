@@ -1,7 +1,7 @@
 let firstIdForRender = document.getElementById('#newModal');
 let contentClass = document.querySelector('.modal-content');
   
-$("#newModal .modal-content").html('<%= j render "adubos/new" %>');
+$("#newModal .modal-content").html('<%= j render 'new' %>');
 $("#newModal").modal();
 
 console.log("Rendered partial");
