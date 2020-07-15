@@ -6,9 +6,7 @@ class AdubosController < ApplicationController
     def new
       @adubo = Adubo.new
       
-      # Render as partial
-      respond_to do |format|
-        format.html
+      respond_to do |format| # Render as partial
         format.js
       end
 
