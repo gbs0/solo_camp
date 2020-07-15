@@ -1,8 +1,11 @@
 let firstIdForRender = document.getElementById('#newModal');
 let contentClass = document.querySelector('.modal-content');
   
-$("#newModal .modal-content").html('<%= j render "new" %>');
-$("#newModal").modal('show');
+$("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
+$("#modal-window").modal();
+
+// $("#newModal .modal-content").html('<%= j render "new" %>');
+// $("#newModal").modal('show');
 
 console.log("Rendered partial");
 console.log(firstIdForRender);
