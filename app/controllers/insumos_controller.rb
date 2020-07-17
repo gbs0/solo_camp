@@ -22,7 +22,6 @@ class InsumosController < ApplicationController
 	  end
 	end
 	
-
 	private
 
 	def insumo_params
