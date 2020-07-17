@@ -1,4 +1,3 @@
-
 <!-- Main Content -->
       <div id="content">
 
@@ -30,7 +29,7 @@
                   <tfoot>
                     <tr>
                       <th>Nome</th>
-                      <th>Position</th>
+                      <th>Melhor formulado p/ plantio:</th>
                       <th>N</th>
                       <th>P</th>
                       <th>K</th>
@@ -41,7 +40,7 @@
                     <% @insumos.each do |insumo| %>
                         <tr>    	
                         <td><%= insumo.name %></td>
-                        <td>System Architect</td>
+                        <td></td>
                         <td><%#= Alto %></td>
                         <td><%#= Médio %></td>
                         <td><%#= Baixo %></td>
@@ -49,6 +48,7 @@
                         </tr>
                     <% end %>
                   </tbody>
+                  <i class="fa fa-plus-circle"></i><%= link_to '  Criar novo insumo', new_insumo_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
                 </table>
               </div>
             </div>
@@ -75,6 +75,13 @@
 
   </div>
   <!-- End of Page Wrapper -->
+  
+  <!-- Modal for render :new  partial -->
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
