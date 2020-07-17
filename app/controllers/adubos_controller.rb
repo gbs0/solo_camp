@@ -23,9 +23,9 @@ class AdubosController < ApplicationController
         flash[:notice] = "'#{@adubo.name}' salvo."
         redirect_to adubos_path, notice: "Seu adubo foi adicionado"
       else
-      flash[:alert] = "Error"
-      render :new
-    end
+        flash[:alert] = "Error"
+        render :new
+      end
 
     # def show
     #   @product = Product.find(params[:id])
