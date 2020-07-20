@@ -1,3 +1,3 @@
 class Ownership < ApplicationRecord
-    belongs_to :property
+  belongs_to :property
 end
