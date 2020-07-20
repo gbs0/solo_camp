@@ -1,3 +1,3 @@
 class Property < ApplicationRecord
-  belongs_to :ownership
+  belongs_to: :laudo
 end
