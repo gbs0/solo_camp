@@ -9,7 +9,7 @@ class LaudosController < ApplicationController
 
 	def create
 	  # @c_user =  User.find params[:id]
-	  
+
 	  @laudo = Laudo.new(laudo_params)
       @laudo.solicitante = current_user.name
       @laudo.sku_user = current_user.ids.first
@@ -26,6 +26,6 @@ class LaudosController < ApplicationController
 	private
 
 	def laudo_params
-	  params.require(:laudo).permit( :name )
+		params.require(:laudo).permit( :name )
 	end
 end
