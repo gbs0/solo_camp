@@ -8,7 +8,7 @@ class CreateLaudos < ActiveRecord::Migration[5.1]
         
         # Referencia / Tabela Propriedades
         t.references :property, foreign_key: true
-        t.references :proprietario: foreign_key: true
+        t.references :proprietario, foreign_key: true
         
         # t.string :proprietario # Nome do Proprietario @propriedade.proprietario
         # t.references :propriedade # Referencia da tabela propriedades
