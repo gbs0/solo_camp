@@ -1,8 +1,10 @@
 class CreateLaudos < ActiveRecord::Migration[5.1]
     def change
         create_table :laudos do |t|
-        t.string :solicitante # Nome do Tecnico @current_user.name
-        
+        # Referencias do usuario atual
+        t.string :solicitante # Nome do Tecnico @current_user.first_name && last_name
+        t.integer :sku_user # Referencia do usuario @current_user.ids.first
+
         # Referencia / Tabela Propriedades
         # t.string :proprietario # Nome do Proprietario @propriedade.proprietario
         # t.references :propriedade # Referencia da tabela propriedades

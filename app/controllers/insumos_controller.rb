@@ -11,7 +11,7 @@ class InsumosController < ApplicationController
 	end
 
 	def create
-	  @ainsumo = Insumo.new(insumo_params)
+	  @insumo = Insumo.new(insumo_params)
 	  
 	  if @insumo.save
 		flash[ :notice ] = "'#{@insumo.name}' salvo."
