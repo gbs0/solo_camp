@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315145614) do
+ActiveRecord::Schema.define(version: 20200721181205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20200315145614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+  end
+
+  create_table "laudos", force: :cascade do |t|
+    t.string "solicitante"
+    t.bigint "user_id"
+    t.bigint "property_id"
+    t.string "proprietario"
+    t.bigint "insumo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["insumo_id"], name: "index_laudos_on_insumo_id"
+    t.index ["property_id"], name: "index_laudos_on_property_id"
+    t.index ["user_id"], name: "index_laudos_on_user_id"
   end
 
   create_table "ownerships", force: :cascade do |t|
@@ -62,9 +75,15 @@ ActiveRecord::Schema.define(version: 20200315145614) do
     t.string "name"
     t.string "last_name"
     t.integer "crea_number"
+    t.bigint "laudo_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["laudo_id"], name: "index_users_on_laudo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "laudos", "insumos"
+  add_foreign_key "laudos", "properties"
+  add_foreign_key "laudos", "users"
   add_foreign_key "properties", "ownerships"
+  add_foreign_key "users", "laudos"
 end
