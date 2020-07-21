@@ -18,6 +18,14 @@ Rails.application.routes.draw do
 	  end
 	end
 	
+	resources :users do 
+	  resources :laudos, only: [:index, :new, :update]
+	end
+	
+	resources :property do
+	  resources :ownerships, only: [:new, :update]
+	end
+	
 	resources :insumos, only: [:index, :new]
 	resources :adubos
 
