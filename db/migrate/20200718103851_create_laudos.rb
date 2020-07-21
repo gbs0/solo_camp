@@ -5,13 +5,17 @@ class CreateLaudos < ActiveRecord::Migration[5.1]
         t.string :solicitante # Nome do Tecnico @current_user.first_name && last_name
         t.integer :sku_user # Referencia do usuario @current_user.ids.first
         
-        t.references 
+        
         # Referencia / Tabela Propriedades
+        t.references :property, foreign_key: true
+        t.references :proprietario: foreign_key: true
+        
         # t.string :proprietario # Nome do Proprietario @propriedade.proprietario
         # t.references :propriedade # Referencia da tabela propriedades
         
         # Referencia / Tabela de insumos
         t.references :insumo, foreign_key: true
+        
         # Referencia / Tabela  Resultados Quimicos
         t.references :resultados_quimicos, foreign_key: true
 
