@@ -33,13 +33,11 @@ class LaudosController < ApplicationController
 		params.require(:laudo).permit( :name )
 	end
 
-	def category
-	  @_category ||= params[:id] ? Category.find(params[:id]) : Category.new(params[:category])
+	def property
+	  @_property ||= params[:id] ? Property.find(params[:id]) : Property.new(params[:property])
 	end
 	  
-	def post
-	  @_post ||= Post.new(params[:post])
+	def ownership
+	  @_ownership ||= Ownership.new(params[:ownership])
 	end
-
-	
 end
