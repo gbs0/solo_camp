@@ -1,4 +1,8 @@
 class LaudosController < ApplicationController
+	helper_method :property
+	helper_method :ownership
+	helper_method :insumo
+	
 	def index
 	  # @laudos = Laudos.where(:id)
 	end
@@ -28,4 +32,14 @@ class LaudosController < ApplicationController
 	def laudo_params
 		params.require(:laudo).permit( :name )
 	end
+
+	def category
+	  @_category ||= params[:id] ? Category.find(params[:id]) : Category.new(params[:category])
+	end
+	  
+	def post
+	  @_post ||= Post.new(params[:post])
+	end
+
+	
 end
