@@ -1,6 +1,7 @@
 <body>
-    <%= simple_form_for (@laudo, @property, @insumo ) do |f|%>
+    <%= simple_form_for (@laudo, @property, @ownership, @insumo ) do |f|%>
       <%= f.input :name, label: 'Nome do Insumo:', error: 'Nome do Formulado obrigatório.' %>
+      <%= f.input :collection, label: 'Nome do Insumo:', error: 'Nome do Formulado obrigatório.' %>
       <%= f.button :submit, class: 'btn btn-primary' %>
     <% end %>
 </body>
