@@ -1,5 +1,7 @@
 {
   "name": "solo_camp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    
+  }
 }
