@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200721181205) do
+ActiveRecord::Schema.define(version: 20200730180733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20200721181205) do
     t.string "last_name"
     t.integer "crea_number"
     t.bigint "laudo_id"
+    t.bigint "users_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["laudo_id"], name: "index_users_on_laudo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["users_id"], name: "index_users_on_users_id"
   end
 
   add_foreign_key "laudos", "insumos"
@@ -86,4 +88,5 @@ ActiveRecord::Schema.define(version: 20200721181205) do
   add_foreign_key "laudos", "users"
   add_foreign_key "properties", "ownerships"
   add_foreign_key "users", "laudos"
+  add_foreign_key "users", "users", column: "users_id"
 end

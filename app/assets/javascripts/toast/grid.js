@@ -1,5 +1,3 @@
-const grid = tui.Grid;
-
 const instance = new Grid({
     el: document.getElementById('grid'), // Container element
     columns: [
@@ -32,4 +30,4 @@ const instance = new Grid({
   
 //   instance.resetData(newData); // Call API of instance's public method
   
-grid.applyTheme('striped'); // Call API of static method
+instance.applyTheme('striped'); // Call API of static method
