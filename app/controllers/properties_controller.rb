@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
 	def index
 		# Listar propriedades do current_user
+		@properties = Properties.all
 	end
 	
 	def new
