@@ -7,7 +7,12 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column mt-4">
 	    <h2>Propriedades Cadastradas:</h2>
-        <%= geo_chart Medal.group(:country).count %>
+
+        <%= timeline [
+          ["Washington", "1789-04-29", "1797-03-03"],
+          ["Adams", "1797-03-03", "1801-03-03"],
+          ["Jefferson", "1801-03-03", "1809-03-03"],
+        ], width: "800px" %>
     </div>
   </div>
 </body>
