@@ -7,12 +7,18 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column mt-4">
 	    <h2>Propriedades Cadastradas:</h2>
-
+        <i class="fa fa-plus-circle"></i><%= link_to '  Cadastrar nova propriedade', new_property_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
         <%= timeline [
           ["Washington", "1789-04-29", "1797-03-03"],
           ["Adams", "1797-03-03", "1801-03-03"],
           ["Jefferson", "1801-03-03", "1809-03-03"],
         ], width: "800px" %>
+    </div>
+  </div>
+  <!-- ModaL div for render new partial-->
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
     </div>
   </div>
 </body>

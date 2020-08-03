@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 	  resources :laudos, only: [:index, :new, :update]
 	end
 	
-	resources :properties, only: [:index] do
+	resources :properties, only: [:index, :new, :create] do
 	  resources :ownerships, only: [:new, :create, :update]
 	end
 	
