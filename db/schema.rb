@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200730180733) do
+ActiveRecord::Schema.define(version: 20200901182433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20200730180733) do
     t.decimal "preco_saca"
     t.string "description"
     t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "amostras", force: :cascade do |t|
+    t.string "owner_name"
+    t.integer "cpf"
+    t.string "telefone"
+    t.string "property_name"
+    t.integer "profundidade"
+    t.integer "compactacao"
+    t.integer "peso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,7 +72,6 @@ ActiveRecord::Schema.define(version: 20200730180733) do
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "uf"
-    t.string "gleba"
     t.index ["ownership_id"], name: "index_properties_on_ownership_id"
   end
 

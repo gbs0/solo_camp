@@ -1,0 +1,2 @@
+class Amostra < ApplicationRecord
+end

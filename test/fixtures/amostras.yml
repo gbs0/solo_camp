@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_name: MyString
+  cpf: 
+  telefone: MyString
+  property_name: MyString
+  profundidade: 
+  compactacao: 
+  peso: 
+
+two:
+  owner_name: MyString
+  cpf: 
+  telefone: MyString
+  property_name: MyString
+  profundidade: 
+  compactacao: 
+  peso: 
