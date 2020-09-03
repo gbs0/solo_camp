@@ -1,14 +1,16 @@
 class PropertiesController < ApplicationController
+	# before_action :set_user
+	
 	def index
 		# Listar propriedades do current_user
 		@properties = Property.all
 	end
 	
 	def new
-		respond_to do |format|
-		  @property = Property.new
-		  format.js
-		end	
+	  respond_to do |format|
+		@property = Property.new
+		format.js
+	  end	
 	end
 
 	def create
@@ -17,7 +19,7 @@ class PropertiesController < ApplicationController
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @property.save
 		  flash[ :notice ] = "'#{@property.name}' salvo."
-		  redirect_to laudos_path, notice: "A nova propriedade foi adicionado"
+		#   redirect_to laudos_path, notice: "A nova propriedade foi adicionado"
 		else
 		  flash[:alert] = "Erro, verifque os campos digitados"
 		  render :new
@@ -25,7 +27,7 @@ class PropertiesController < ApplicationController
 	end
 	
 	def update
-	
+	  @property.update(property_params)
 	end
 
 	private

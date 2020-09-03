@@ -5,7 +5,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <%= simple_form_for property do |f| %>
+  <%= simple_form_for @property, remote: true do |f| %>
     <%= f.input :name, label: 'Nome da Propriedade:', error: 'Nome da Propriedade obrigatório.' %>
     <%= f.input :address, label: 'Endereço da Propriedade:' %>
     <%= f.input :city, placeholder: 'Digite a cidade', label: 'Cidade'  %>
