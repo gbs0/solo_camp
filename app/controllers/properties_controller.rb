@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
 
 	def index
 		# Listar propriedades do current_user
-		@properties = Property.all
+		@properties = Property.where(user_id: @user.id)
 	end
 	
 	def new
@@ -19,7 +19,7 @@ class PropertiesController < ApplicationController
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @property.save
 		  flash[ :notice ] = "'#{@property.name}' salvo."
-		#   redirect_to laudos_path, notice: "A nova propriedade foi adicionado"
+		  redirect_to properties_path, notice: "A nova propriedade foi adicionado"
 		else
 		  flash[:alert] = "Erro, verifque os campos digitados"
 		  render :new

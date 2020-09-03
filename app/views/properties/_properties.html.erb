@@ -4,22 +4,20 @@
       <% @properties.each do |property| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="<%= result["owner"]["avatar_url"] %>">
+            <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="https://images.unsplash.com/photo-1592422154529-1d0a03cad207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
             <div class="card-body">
               <p class="card-text"><strong><%= property.name %></strong></p>
-              <p> <%= property.owner %></p>
+              <label><%= property.address%></label>
+              <label>CEP <%= property.cep %></label>
+              <strong><p><i class="fa fa-map-marker-alt"></i> <%= property.city %> - <%= property.uf %></p></strong>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class= "fa fa-star"></i> <%=result["stargazers_count"] %>
+                    <i class= "fa fa-ruler-combined"></i> <%= property.area %> hectares
                   </button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class="fa fa-code-fork"></i> <%= result["forks"] %>
-                  </button>
+                  <%= link_to "Ver", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% if current_user %>
-                    <%= link_to "Edit", property_path(property), method: :patch, class: "btn btn-md btn-outline-secondary favorite-btn" %>
-                  <% else %>
-                    <%= link_to "Ver", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                    <%= link_to "Editar", property_path(property), method: :patch, class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% end %>
                 </div>
               </div>
