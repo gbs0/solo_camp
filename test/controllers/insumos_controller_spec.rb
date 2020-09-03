@@ -18,5 +18,14 @@ if defined?(InsumosController)
       { name: "" }
     }
 
+    describe "GET index" do
+      it "Assimila todos os insumos como @insumo" do
+        insumo = Insumo.create! valid_attributes
+        get :index, params: {}
+        expect(assigns(:insumos)).to eq([insumo])
+      end
+    end
+
+    
   end
 end
