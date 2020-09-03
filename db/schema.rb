@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200902125827) do
+ActiveRecord::Schema.define(version: 20200902124129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20200902125827) do
     t.integer "profundidade"
     t.integer "compactacao"
     t.integer "peso"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_amostras_on_user_id"
   end
 
   create_table "insumos", force: :cascade do |t|
@@ -63,17 +65,25 @@ ActiveRecord::Schema.define(version: 20200902125827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
-    t.integer "cpf"
+    t.string "cpf"
+    t.string "cnpj"
+    t.string "email"
   end
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.bigint "ownership_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
     t.string "city"
     t.string "uf"
+    t.integer "cep"
+    t.integer "cep_prefix"
+    t.integer "area"
     t.index ["ownership_id"], name: "index_properties_on_ownership_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,19 +97,17 @@ ActiveRecord::Schema.define(version: 20200902125827) do
     t.string "name"
     t.string "last_name"
     t.integer "crea_number"
-    t.bigint "laudo_id"
-    t.bigint "users_id"
+    t.string "cpf"
+    t.string "cnpj"
     t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["laudo_id"], name: "index_users_on_laudo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["users_id"], name: "index_users_on_users_id"
   end
 
+  add_foreign_key "amostras", "users"
   add_foreign_key "laudos", "insumos"
   add_foreign_key "laudos", "properties"
   add_foreign_key "laudos", "users"
   add_foreign_key "properties", "ownerships"
-  add_foreign_key "users", "laudos"
-  add_foreign_key "users", "users", column: "users_id"
+  add_foreign_key "properties", "users"
 end

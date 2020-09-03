@@ -3,6 +3,7 @@ class CreateProperties < ActiveRecord::Migration[5.1]
     create_table :properties do |t|
       t.string :name
       t.references :ownership, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
