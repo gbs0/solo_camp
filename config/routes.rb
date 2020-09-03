@@ -19,11 +19,12 @@ Rails.application.routes.draw do
 	end
 	
 	resources :users do 
-	  resources :laudos, only: [:index, :new, :update]
+    resources :laudos, only: [:index, :new, :update]
+    resources :ownerships, only: [:new, :create, :update]
 	end
 	
 	resources :properties, only: [:index, :new, :create] do
-	  resources :ownerships, only: [:new, :create, :update]
+	  resources :ownerships, only: [:index, :new, :update]
 	end
 	
 	resources :insumos, only: [:index, :new]

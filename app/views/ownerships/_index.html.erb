@@ -1,0 +1,31 @@
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column mt-4">
+    <section class="jumbotron text-center ml-5">
+    <div class="container">
+
+    <h1 class="jumbotron-heading">Proprietários Cadastrados</h1>
+    <%= link_to ' Criar novo proprietário', new_user_ownership_path(current_user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+    </div>
+    </section>
+
+    <% if @ownerships.present? %>
+
+    <%= render  "ownerships" %>
+
+  <% end %>
+</div>
+  <!-- ModaL div for render new partial-->
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+</body>
+
+
+
+​
+
+​
+  
+​

@@ -1,0 +1,32 @@
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @ownerships.each do |ownership| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="<%= result["owner"]["avatar_url"] %>">
+            <div class="card-body">
+              <p class="card-text"><strong><%= ownership.name %></strong></p>
+              <p> <%= ownership.owner %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class= "fa fa-star"></i> <%=result["stargazers_count"] %>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa fa-code-fork"></i> <%= result["forks"] %>
+                  </button>
+                  <% if current_user %>
+                    <%= link_to "Edit", ownership_path(ownership), method: :patch, class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                  <% else %>
+                    <%= link_to "Ver", ownership_path(ownership), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

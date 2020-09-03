@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :laudos
   has_many :properties
+  has_many :ownerships
 end
