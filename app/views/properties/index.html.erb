@@ -5,7 +5,7 @@
 	<div class="d-flex">
     <%= render "shared/sidebar" %>  
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column mt-4 col-lg-8">
+    <div id="content-wrapper" class="d-flex flex-column mt-4 col-lg-7">
 	    <section class="jumbotron text-center ml-2">
         <div class="container">
           <div>
@@ -15,17 +15,17 @@
             </p>
             <%= link_to ' Criar nova propriedade', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
           </div>
-          <div>
-            <% if @properties.present? %>
-              <%= render  "properties" %>
-            <% else %>
-              <h6>Nenhuma propriedade cadastrada.</h6>
-            <% end %>
-          </div>
-        </div>
       </section>
+      <div class="ml-2">
+        <% if @properties.present? %>
+          <%= render  "properties" %>
+        <% else %>
+          <h5>Nenhuma propriedade cadastrada.</h5>
+        <% end %>
+      </div>
     </div>
     <%= render  "ownerships/index" %>
+    </div>
   </div>
   <!-- ModaL div for render new partial-->
   <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

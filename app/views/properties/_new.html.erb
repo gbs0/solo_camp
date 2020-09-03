@@ -1,18 +1,20 @@
 <div class="modal-header">
-  <h5 class="modal-title">Cadastrar nova propriedade:</h5>
+  <strong><h5 class="modal-title">Cadastrar nova propriedade:</h5></strong>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <%= simple_form_for @property do |f| %>
+  <%= simple_form_for property do |f| %>
     <%= f.input :name, label: 'Nome da Propriedade:', error: 'Nome da Propriedade obrigatório.' %>
-    <%= f.input :city, placeholder: 'Cidade em que a propriedade está localizada:'  %>
-    <%= f.input :uf, placeholder: 'Estado em que a propriedade está localizada:', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
-    <%= f.input :cep, placeholder: 'Nº do CPF da propriedade:' %>
+    <%= f.input :address, label: 'Endereço da Propriedade:' %>
+    <%= f.input :city, placeholder: 'Digite a cidade', label: 'Cidade'  %>
+    <%= f.input :uf, label: 'Estado', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
+    <%= f.input :cep, label: "CEP", placeholder: 'Digite o CPF da propriedade' %>
+    <%= f.input :area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
 </div>
 <div class="modal-footer">
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.submit "Cadastrar Propriedade",  class: 'btn btn-primary' %>
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   <% end %>
 </div>
