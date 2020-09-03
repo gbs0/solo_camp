@@ -8,8 +8,14 @@ if defined?(InsumosController)
   RSpec.describe InsumosController, :type => :controller do
   
     let(:valid_attributes) do
+      {
+        name: "Banana"
+      }
+    end
+
+    let(:invalid_attributes) do
     {
-        name: "Insumo1"
+      { name: "" }
     }
 
   end

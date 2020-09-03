@@ -7,9 +7,9 @@ require "yaml"
 case Rails.env
     when 'development'
       Insumo.destroy_all
-      puts "Destroyed all insumos"
+      puts "♻️ Destroyed all insumos"
       Adubo.destroy_all
-      puts "Destroyed all adubos"
+      puts "♻️ Destroyed all adubos"
 
       file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/ae618c87a8736bc96cb76b6e2b1b591f517e825a/seed_solocamp.yml"
       sample = YAML.load(open(file).read)
