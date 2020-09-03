@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 	  resources :ownerships, only: [:index, :new, :update]
 	end
 	
-	resources :insumos, only: [:index, :new]
+	resources :insumos, only: [:index, :new, :create]
 	resources :adubos
 
 	resources :laudos, only: [:index, :new] do

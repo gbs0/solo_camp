@@ -13,6 +13,7 @@ class PropertiesController < ApplicationController
 
 	def create
 		@property = Property.new(property_params)
+		@property.user_id = current_user.id
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @property.save
 		  flash[ :notice ] = "'#{@property.name}' salvo."
