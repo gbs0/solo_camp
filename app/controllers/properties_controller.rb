@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-	# before_action :set_user
-	
+	before_action :set_user
+
 	def index
 		# Listar propriedades do current_user
 		@properties = Property.all
@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
 
 	def create
 		@property = Property.new(property_params)
-		@property.user_id = current_user.id
+		@property.user_id = @user
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @property.save
 		  flash[ :notice ] = "'#{@property.name}' salvo."
@@ -36,6 +36,9 @@ class PropertiesController < ApplicationController
 	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :area )
 	end
 
+	def set_user
+	  @user = current_user
+	end 
 	def get_name_params
 	end
 
