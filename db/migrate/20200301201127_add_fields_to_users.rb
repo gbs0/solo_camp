@@ -3,5 +3,7 @@ class AddFieldsToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :name, :string
     add_column :users, :last_name, :string
     add_column :users, :crea_number, :integer
+    add_column :users, :cpf, :string
+    add_column :users, :cnpj, :string
   end
 end
