@@ -1,40 +1,59 @@
+ownerships:
+  - name: João Silva
+    cpf: 44400044400
+    rg: 3757999120
+    email: jpsilva@coperativa.com
+    telefone: 9955-4050
+  - name: Zé Alberto
+    cpf: 33300033300
+    rg: 3757999121
+    email: zealberto@coperativa.com
+    telefone: 3939-5544
+
 properties:
-  - name: "Adventures of Superman"
+  - name: Propriedade do João
     ownership_id: 1
+    user_id: 1
+    address: Estrada do Ribeirão
     city: Ourinhos
     uf: SP
-
-ownerships:
-  - slug: nolan
-    name: Christopher
-    last_name: Nolan
-  - slug: donner
-    name: Richard
-    last_name: Donner
-  - slug: snyder
-    name: Zack
-    last_name: Snyder
-  - slug: singer
-    name: Bryan
-    last_name: Singer
+    cep: 45455
+    cep_prefix: 450
+    area: 350
 
 insumos:
-  - name: Forragem Leguminosa
   - name: Acelga
   - name: Aipim
+  - name: Amendoim
   - name: Alface
+  - name: Algodão
   - name: Alho
   - name: Almeirão
+  - name: Arroz de Sequeiro
+  - name: Arroz de Irrigado
+  - name: Aveia
+  - name: Bananeira
+  - name: Batata
   - name: Batata Doce
   - name: Batata Salsa
   - name: Berinjela
   - name: Beterraba
   - name: Brócolis
+  - name: Café
+  - name: Cana-de-açúcar
   - name: Cebola
+  - name: Cevada
   - name: Cebolinha
+  - name: Citros
   - name: Couve-Flor
   - name: Couve Folha
+  - name: Ervilha
   - name: Espinafre
+  - name: Eucalipto
+  - name: Feijão
+  - name: Fumo
+  - name: Girassol
+  - name: Macieira
   - name: Milho
   - name: Soja
   - name: Morango

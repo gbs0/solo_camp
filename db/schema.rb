@@ -64,10 +64,11 @@ ActiveRecord::Schema.define(version: 20200902124129) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
     t.string "cpf"
+    t.integer "rg"
     t.string "cnpj"
     t.string "email"
+    t.string "telefone"
   end
 
   create_table "properties", force: :cascade do |t|
