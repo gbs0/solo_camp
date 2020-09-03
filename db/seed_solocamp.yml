@@ -1,0 +1,148 @@
+properties:
+  - name: "Adventures of Superman"
+    ownership_id: 1
+    city: Ourinhos
+    uf: SP
+
+ownerships:
+  - slug: nolan
+    name: Christopher
+    last_name: Nolan
+  - slug: donner
+    name: Richard
+    last_name: Donner
+  - slug: snyder
+    name: Zack
+    last_name: Snyder
+  - slug: singer
+    name: Bryan
+    last_name: Singer
+
+insumos:
+  - name: Forragem Leguminosa
+  - name: Acelga
+  - name: Aipim
+  - name: Alface
+  - name: Alho
+  - name: Almeirão
+  - name: Batata Doce
+  - name: Batata Salsa
+  - name: Berinjela
+  - name: Beterraba
+  - name: Brócolis
+  - name: Cebola
+  - name: Cebolinha
+  - name: Couve-Flor
+  - name: Couve Folha
+  - name: Espinafre
+  - name: Milho
+  - name: Soja
+  - name: Morango
+  - name: Pepino
+  - name: Pimentão
+  - name: Repolho
+  - name: Rúcula
+  - name: Tomate
+  - name: Vagem
+  - name: Cana de Açúcar
+  - name: Forragem Gramínea
+  - name: Forragem Leguminosa
+  
+adubos:
+  - comercial_name: 4-20-20
+    n: 4
+    p: 20
+    k: 20
+    preco_saca: 55
+  - comercial_name: 0-15-10
+    n: 0
+    p: 15
+    k: 10
+    preco_saca: 65
+  - comercial_name: 13-12-8
+    n: 13
+    p: 12
+    k: 8
+    preco_saca: 50
+  - comercial_name: 4-14-8
+    n: 4
+    p: 14
+    k: 8
+    preco_saca: 49    
+  - comercial_name: 36-0-12
+    k: 36
+    n: 0
+    p: 50
+    preco_saca: 50
+  - comercial_name: 20-0-20
+    n: 20
+    p: 0
+    k: 20
+    preco_saca: 45
+  - comercial_name: 5-25-25
+    n: 5
+    p: 25
+    k: 25
+    preco_saca: 58
+  - comercial_name: 8-20-20
+    n: 8
+    p: 20
+    k: 20
+    preco_saca: 53
+  - comercial_name: 8-28-16
+    n: 8
+    p: 28
+    k: 16
+    preco_saca: 200
+  - comercial_name: 9-33-12
+    n: 9
+    p: 33
+    k: 12
+    preco_saca: 160
+  - comercial_name: Super Simples
+    n: 0
+    p: 18
+    k: 0
+    preco_saca: 115
+  - comercial_name: Sulfato de Amônio
+    n: 20
+    p: 0
+    k: 0
+    preco_saca: 31.60
+  - comercial_name: Super Fostato Triplo
+    n: 0
+    p: 41
+    k: 0
+    preco_saca: 70
+  - comercial_name: Cloreto de Potássio
+    n: 0
+    p: 0
+    k: 58
+    preco_saca: 50
+  - comercial_name: Uréia
+    n: 45
+    p: 0
+    k: 0
+    preco_saca: 173
+  - comercial_name: Esterco de Árvores
+    n: 3
+    p: 3
+    k: 2
+    preco_saca: 41
+
+amostras:
+  - owner_name: Augusto Carrara
+    cpf: 44444433322
+    telefone: 3732323232
+    property_name: Sitio Numero Zero
+    profundidade: 20
+    compactacao: 100
+    peso: 420
+  - owner_name: Augusto Carrara
+    cpf: 44444433322
+    telefone: 3732323232
+    property_name: Sitio Numero Zero
+    profundidade: 20
+    compactacao: 300
+    peso: 320
+  
