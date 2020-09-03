@@ -15,13 +15,16 @@ class InsumosController < ApplicationController
 	  
 	  if @insumo.save
 		flash[ :notice ] = "'#{@insumo.name}' salvo."
-		redirect_to insumos_path, notice: "Seu insumo foi adicionado"
+		# redirect_to insumos_path, notice: "Seu insumo foi adicionado"
 	  else
 		flash[:alert] = "Erro, verifque os campos digitados"
 		render :new
 	  end
 	end
 	
+	def update
+		@insumo.update(insumo_params) # Update da partial
+	end
 	private
 
 	def insumo_params

@@ -1,3 +1,4 @@
+<%= simple_form_for insumo, remote: true do |f| %>
 <div class="modal-header">
   <h5 class="modal-title">Adicionar novo Insumo:</h5>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -5,11 +6,10 @@
   </button>
 </div>
 <div class="modal-body">
-  <%= simple_form_for insumo do |f| %>
     <%= f.input :name, label: 'Nome do Insumo:', error: 'Nome do Formulado obrigatório.' %>
 </div>
 <div class="modal-footer">
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.submit "Salvar Insumo", class: 'btn btn-primary' %>
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  <% end %>
 </div>
+<% end %>
