@@ -4,10 +4,25 @@
   </div>
 	<div class="d-flex">
     <%= render "shared/sidebar" %>  
+    
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column mt-4">
-	    <h2>Propriedades Cadastradas:</h2>
-        <i class="fa fa-plus-circle"></i><%= link_to '  Cadastrar nova propriedade', new_property_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+	    <section class="jumbotron text-center ml-5">
+        <div class="container">
+
+        <h1 class="jumbotron-heading">Propriedades Cadastradas</h1>
+        <p class="lead text-muted">
+          Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.
+        </p>
+        <%= link_to ' Criar nova propriedade', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+        </div>
+      </section>
+
+      <% if @properties.present? %>
+
+        <%= render  "properties" %>
+
+
         <%= timeline [
           ["Washington", "1789-04-29", "1797-03-03"],
           ["Adams", "1797-03-03", "1801-03-03"],
@@ -15,6 +30,7 @@
         ], width: "800px" %>
     </div>
   </div>
+  <% end %>
   <!-- ModaL div for render new partial-->
   <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -22,3 +38,11 @@
     </div>
   </div>
 </body>
+
+
+
+​
+
+​
+  
+​

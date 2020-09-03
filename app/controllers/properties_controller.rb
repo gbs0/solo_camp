@@ -5,7 +5,10 @@ class PropertiesController < ApplicationController
 	end
 	
 	def new
-		@property = Property.new()	
+		respond_to do |format|
+		  @property = Property.new
+		  format.js
+		end	
 	end
 
 	def create
