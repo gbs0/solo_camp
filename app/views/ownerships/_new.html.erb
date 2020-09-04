@@ -1,4 +1,4 @@
-<%= simple_form_for @ownership, remote: true do |f| %>
+<%= simple_form_for ownership, remote: true do |f| %>
   <div class="modal-header">
     <strong><h5 class="modal-title">Novo proprietário:</h5></strong>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -6,12 +6,12 @@
     </button>
   </div>
   <div class="modal-body">
-      <%= f.input :name, label: 'Nome do Proprietário:', error: 'Nome da Propriedade obrigatório.' %>
+      <%= f.input :name, placeholder: 'Nome completo do proprietário', label: 'Nome do Proprietário:', error: 'Nome da Propriedade obrigatório.' %>
       <%= f.input :cpf, placeholder: 'xxx.xxx.xxx-xx', label: 'CPF do Proprietário:' %>
-      <%= f.input :rg, placeholder: '7 Digitos', label: 'Registro Geral/RG'  %>
+      <%= f.input :rg, placeholder: 'xx.xxx.xx-xx', label: 'Registro Geral/RG'  %>
       <%= f.input :cnpj, label: 'CNPJ do Proprietário (se houver)', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
-      <%= f.input :telefone, label: "Telefone do Proprietário", placeholder: 'Digite o CPF da propriedade' %>
-      <%= f.input :email, label: 'Email do proprietário (se houver)', placeholder: '(XX)XXXX-XXXX'%>
+      <%= f.input :telefone, label: "Telefone do Proprietário", placeholder: '(xx) xxxxx.xxxx' %>
+      <%= f.input :email, label: 'Email do proprietário (se houver)', placeholder: 'example@email.com'%>
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Proprietário",  class: 'btn btn-primary' %>
