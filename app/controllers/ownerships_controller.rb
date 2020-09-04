@@ -1,6 +1,7 @@
 class OwnershipsController < ApplicationController
 	def index
 		# @onwnerships = Ownership.find(user_id: current_user.id) # Lista proprietários cadastrados do user
+		@ownerships = Ownership.all
 	end
 	
 	def new
