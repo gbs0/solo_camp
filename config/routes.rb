@@ -20,17 +20,17 @@ Rails.application.routes.draw do
 	
 	resources :users do 
     resources :laudos, only: [:index, :new, :update]
-    resources :ownerships, only: [:new, :create, :update]
 	end
 	
-	resources :properties do
-	  resources :ownerships, only: [:index, :new, :create, :update]
-	end
-	
+	# resources :properties do
+	#   # resources :ownerships, only: [:index, :new, :create, :update]
+  # end
+
+	resources :properties
 	resources :insumos, only: [:index, :new, :create]
 	resources :adubos
   resources :laudos
-  
+  resources :ownerships, only: [:index, :new, :create, :update]  
   
 end
 
