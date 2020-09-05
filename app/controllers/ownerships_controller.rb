@@ -14,7 +14,9 @@ class OwnershipsController < ApplicationController
 	def create
 		@ownership = Ownership.new(ownership_params)
         @ownership.user_id = current_user.id
-
+		p @ownership
+		raise
+		
 		if @ownership.save
 			flash[ :notice ] = "'#{@ownership.name}' salvo."
 			redirect_to laudos_path, notice: "A nova propriedade foi adicionado"
