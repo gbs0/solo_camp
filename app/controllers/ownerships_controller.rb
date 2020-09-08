@@ -1,7 +1,12 @@
 class OwnershipsController < ApplicationController
+	before_action :set_user
+
 	def index
+		raise
 		# @onwnerships = Ownership.find(user_id: current_user.id) # Lista proprietários cadastrados do user
+		#@ownerships = Ownership.where(user_id: set_user.id)
 		@ownerships = Ownership.all
+		p @ownerships
 	end
 	
 	def new
@@ -13,17 +18,15 @@ class OwnershipsController < ApplicationController
 
 	def create
 		@ownership = Ownership.new(ownership_params)
-        @ownership.user_id = current_user.id
-		p @ownership
-		raise
+		@ownership.user_id = @user.id
 		
 		if @ownership.save
 			flash[ :notice ] = "'#{@ownership.name}' salvo."
-			redirect_to laudos_path, notice: "A nova propriedade foi adicionado"
+			redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
 		else
 			flash[:alert] = "Erro, verifque os campos digitados"
 			render :new
-			end
+		end
 	end
 	
 	def update
@@ -34,6 +37,10 @@ class OwnershipsController < ApplicationController
 	
 	def ownership_params
 	  params.require(:ownership).permit( :name, :cpf, :rg, :cnpj, :email, :telefone )
+	end
+
+	def set_user
+	  @user = current_user
 	end
 
 	def get_name_params
