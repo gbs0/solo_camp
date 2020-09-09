@@ -43,7 +43,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def set_ownerships
-	  @ownerships = Ownership.all
+	  @ownerships = Ownership.where(user: @user)
 	end
 
 end
