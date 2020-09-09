@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-	before_action :set_user
+	before_action :set_user, :set_ownerships
 
 	def index
 		# Listar propriedades do current_user
@@ -40,6 +40,10 @@ class PropertiesController < ApplicationController
 	  @user = current_user
 	end 
 	def get_name_params
+	end
+
+	def set_ownerships
+	  @ownerships = Ownership.all
 	end
 
 end

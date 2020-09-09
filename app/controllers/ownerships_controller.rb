@@ -1,12 +1,11 @@
 class OwnershipsController < ApplicationController
-	before_action :set_user
+	before_action :set_user, :set_ownerships
 
 	def index
-		raise
 		# @onwnerships = Ownership.find(user_id: current_user.id) # Lista proprietários cadastrados do user
 		#@ownerships = Ownership.where(user_id: set_user.id)
-		@ownerships = Ownership.all
-		p @ownerships
+		# @ownerships = Ownership.all
+		# p @ownerships
 	end
 	
 	def new
@@ -43,7 +42,11 @@ class OwnershipsController < ApplicationController
 	  @user = current_user
 	end
 
-	def get_name_params
+	def set_ownerships
+	  @ownership = Ownership.all
 	end
 
+	def get_name_params
+	
+	end
 end

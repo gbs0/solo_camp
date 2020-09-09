@@ -4,5 +4,5 @@ module OwnershipsHelper
       ownerships = Ownership.where(user_id: user.id)
       render :json => ownerships
     end
-  
+    
   end

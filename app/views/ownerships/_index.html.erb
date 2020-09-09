@@ -6,14 +6,24 @@
       <%= link_to ' Criar novo proprietário', new_ownership_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>  
     </section>
     <div class="container">
-    <%= @ownerships.nil? %>
-      <% if @ownerships.nil? %>
-        <%= render  "ownerships/ownership" %>
+    <% if @ownerships.present? %>
+        <% @ownerships.each do |ownership| %>
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">CPF: <%= ownership.cpf %></div>
+          <div class="card-body">
+          <h5 class="card-title"><%= ownership.cnpj %></h5>
+          <h5 class="card-title"><%= ownership.name %></h5>
+          <h5 class="card-title"><%= ownership.telefone %></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <%= link_to "Editar", ownership_path(ownership), method: :get, class: "btn btn-md btn-outline-secondary favorite-btn" %>
+          <%= link_to "Excluir", ownership_path(ownership), method: :get, class: "btn btn-md btn-outline-secondary favorite-btn" %>
+          </div>
+          </div>
+        <% end %>
       <% else %>
         <strong><h5>Nenhum proprietário cadastrado.</h5></strong>
-      <% end %>
+      <% end %>    
     </div>
-
 </div>
   <!-- ModaL div for render new partial-->
   <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
