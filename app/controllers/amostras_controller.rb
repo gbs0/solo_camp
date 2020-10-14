@@ -1,6 +1,6 @@
 class AmostrasController < ApplicationController
     before_action :set_user
-    
+
     def index
 		# Listar propriedades do current_user
 		@amostras = Amostra.where(user_id: @user.id)
@@ -15,7 +15,7 @@ class AmostrasController < ApplicationController
 
 	def create
 		@amostra = Amostra.new(amostra_params)
-		p @amostra.user_id = @user.id
+		# p @amostra.user_id = @user.id
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @amostra.save
 		  flash[ :notice ] = "'#{@amostra}' salvo."
