@@ -33,7 +33,11 @@ class AmostrasController < ApplicationController
 	private
 	
 	def amostra_params
-	  params.require(:amostra).permit( :name, :address, :city, :uf, :cep, :area )
+	  params.require(:amostra).permit( 
+          :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
+          :enxofre40, :hidrogenio, :alcalinidade, :boro, :cobre, :manganes,
+          :zinco, :carbono, :materia, :valor, :ctc
+          )
 	end
 
 	def set_user
