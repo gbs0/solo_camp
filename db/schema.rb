@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200903141727) do
+ActiveRecord::Schema.define(version: 20201014000812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(version: 20200903141727) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "argila"
+    t.decimal "potassio"
+    t.decimal "calcario"
+    t.decimal "magnesio"
+    t.decimal "enxofre20"
+    t.decimal "enxofre40"
+    t.decimal "hidrogenio"
+    t.decimal "alcalinidade"
+    t.decimal "boro"
+    t.decimal "cobre"
+    t.decimal "manganes"
+    t.decimal "zinco"
+    t.decimal "carbono"
+    t.decimal "materia"
+    t.decimal "valor"
+    t.decimal "ctc"
     t.index ["user_id"], name: "index_amostras_on_user_id"
   end
 
