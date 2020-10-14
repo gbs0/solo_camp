@@ -1,0 +1,20 @@
+<%= simple_form_for amostra, remote: true do |f| %>
+  <div class="modal-header">
+    <strong><h5 class="modal-title">Cadastrar nova amostra de solo:</h5></strong>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <%= f.input :name, label: 'Nome da Propriedade:', error: 'Nome da Propriedade obrigatório.' %>
+      <%= f.input :address, label: 'Endereço da Propriedade:' %>
+      <%= f.input :city, placeholder: 'Digite a cidade', label: 'Cidade'  %>
+      <%= f.input :uf, label: 'Estado', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
+      <%= f.input :cep, label: "CEP", placeholder: 'Digite o CPF da propriedade' %>
+      <%= f.input :area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Cadastrar Propriedade",  class: 'btn btn-primary' %>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+<% end %>
