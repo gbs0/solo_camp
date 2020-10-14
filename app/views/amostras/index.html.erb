@@ -5,8 +5,40 @@
 	<div class="d-flex">
     <%= render "shared/sidebar" %>  
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column mt-4">
-	    <%= render "amostras" %>	
+    <div id="content-wrapper" class="d-flex flex-column mt-4 col-lg-7">
+	    <section class="jumbotron text-center ml-2">
+        <div class="container">
+          <div>
+            <h1 class="jumbotron-heading">Amostras Cadastradas</h1>
+            <p class="lead text-muted">
+              Nesta página, você tem acesso as suas amostras de solo cadastradas.
+            </p>
+            <%= link_to ' Criar nova amostra', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+          </div>
+      </section>
+      <div class="ml-2">
+        <% if @amostras.present? %>
+          <%= render  "amostras" %>
+        <% else %>
+          <h5>Nenhuma amostra cadastrada ainda.</h5>
+        <% end %>
+      </div>
+    </div>
+      <%#= render "ownerships/index" %>
+    </div>
+  </div>
+  <!-- ModaL div for render new partial-->
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
     </div>
   </div>
 </body>
+
+
+
+​
+
+​
+  
+​
