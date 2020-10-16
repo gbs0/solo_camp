@@ -6,12 +6,24 @@
     </button>
   </div>
   <div class="modal-body">
-      <%= f.input :name, label: 'Nome da Propriedade:', error: 'Nome da Propriedade obrigatório.' %>
-      <%= f.input :address, label: 'Endereço da Propriedade:' %>
-      <%= f.input :city, placeholder: 'Digite a cidade', label: 'Cidade'  %>
-      <%= f.input :uf, label: 'Estado', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
-      <%= f.input :cep, label: "CEP", placeholder: 'Digite o CPF da propriedade' %>
-      <%= f.input :area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
+      <%= f.association :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.' %>
+      <%= f.input :peso, label: 'Peso em gramas da amostra coletada:' %>
+      <%= f.input :argila, placeholder: 'Quantidade de Argila (%)', label: '00.0%'  %>
+      <%= f.input :potassio, placeholder: 'Quantidade de Potassio (%)', label: '00.0%'  %>
+      <%= f.input :potassio, placeholder: 'Quantidade de Calcário (%)', label: '00.0%'  %>
+      <%= f.input :magnesio, placeholder: 'Quantidade de Magnésio (%)', label: '00.0%'  %>
+      <%= f.input :enxofre20, placeholder: 'Nivel de Enxofre 0 - 20 (%)', label: '00.0%'  %>
+      <%= f.input :enxofre40, placeholder: 'Nivel de Enxofre 20 - 40 (%)', label: '00.0%'  %>
+      <%= f.input :hidrogenio, placeholder: 'Nivel de Hidrogênio (%)', label: '00.0%'  %>
+      <%= f.input :alcalinidade, placeholder: 'Nivel de Alcalinidade do Solo (%)', label: '00.0%'  %>
+      <%= f.input :boro, placeholder: 'Nivel de Boro (%)', label: '00.0%'  %>
+      <%= f.input :cobre, placeholder: 'Nivel de Cobre (%)', label: '00.0%'  %>
+      <%= f.input :manganes, placeholder: 'Nivel de Manganês (%)', label: '00.0%'  %>
+
+      
+      
+      
+      
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
