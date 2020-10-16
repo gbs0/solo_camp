@@ -3,7 +3,7 @@ class AmostrasController < ApplicationController
 
     def index
 		# Listar propriedades do current_user
-		@amostras = Amostra.where(user_id: @user.id)
+		# @amostras = Amostra.where(user_id: @user.id)
 	end
 	
 	def new
@@ -37,7 +37,7 @@ class AmostrasController < ApplicationController
           :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
           :enxofre40, :hidrogenio, :alcalinidade, :boro, :cobre, :manganes,
           :zinco, :carbono, :materia, :valor, :ctc
-          )
+        )
 	end
 
 	def set_user
@@ -46,8 +46,5 @@ class AmostrasController < ApplicationController
     
 	def get_name_params
     end
-    
-	def set_ownerships
-	  @ownerships = Ownership.where(user: @user)
-	end
+
 end

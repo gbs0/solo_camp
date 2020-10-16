@@ -38,7 +38,8 @@ class PropertiesController < ApplicationController
 
 	def set_user
 	  @user = current_user
-	end 
+	end
+	 
 	def get_name_params
 	end
 
