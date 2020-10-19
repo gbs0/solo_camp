@@ -19,8 +19,5 @@ class Amostra < ApplicationRecord
     :cobre,
     :manganes,
     :zinco,
-    :carbono,
-    :materia,
-    :valor,
-    :ctc
+    :carbono
 end
