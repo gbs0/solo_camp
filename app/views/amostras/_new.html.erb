@@ -6,7 +6,7 @@
     </button>
   </div>
   <div class="modal-body">
-      <%= f.association :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.' %>
+      <%= f.association :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships %>
       <%= f.input :peso, label: 'Peso em gramas da amostra coletada:' %>
       <%= f.input :argila, placeholder: 'Quantidade de Argila (%)', label: '00.0%'  %>
       <%= f.input :potassio, placeholder: 'Quantidade de Potassio (%)', label: '00.0%'  %>
