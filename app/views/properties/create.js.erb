@@ -1,1 +1,6 @@
-$("#modal-window").modal("hide");
+<% if @property.erros.any? %>
+  $("#modal-window").find(".modal-content").html("<%= j render 'new', property: @property %>");
+<% else %>
+    $("#modal-window").modal("hide");
+    $('.property').replaceWith("<%= j render 'properties', properties: @properties %>");
+<% end %>
