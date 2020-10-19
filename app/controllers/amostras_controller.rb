@@ -4,7 +4,7 @@ class AmostrasController < ApplicationController
 
     def index
 		# Listar propriedades do current_user
-		# @amostras = Amostra.where(user_id: @user.id)
+		@amostras = Amostra.where(user_id: @user.id)
 	end
 	
 	def new
