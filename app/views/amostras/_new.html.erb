@@ -21,9 +21,12 @@
     </div>
     
     <div class="form-row">
-      <h6>Argila & </h6>
-      <div class="col-md-6 mb-3">
-          <%= f.input :argila, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
+      <h6 class='pb-3'><strong>Argila / Peso da Amostra</strong></h6>
+      <div class="col-md-8 mb-3">
+        <%= f.input :argila, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :peso, label: 'Peso (gramas) da amostra:' %>
       </div>
     </div>
 
@@ -57,7 +60,7 @@
 
       
       
-      <%= f.input :peso, label: 'Peso em gramas da amostra coletada:' %>
+      
       
       
       
