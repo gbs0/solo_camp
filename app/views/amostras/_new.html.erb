@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-row">
-      <div class="d-block col-md-12 p-0"></div><h6><strong>Acidez</strong></h6></div>
+      <div class="d-block col-md-12 p-0"><h6><strong>Acidez</strong></h6></div>
       <div class="col-md-6 mb-3">
         <%= f.input :hidrogenio, placeholder: '00.0%', label: 'Nivel de Hidrogênio (%)' %>
       </div>
@@ -63,31 +63,43 @@
       </div>
     </div>
     
-    <div class="form-group"></div>
-  </div>
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Micronutrientes</strong></h6></div>
+      
+      <div class="col-md-3 mb-3">
+        <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
+      </div>
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
-      <%= f.input :cobre, placeholder: '00.0%', label: 'Nivel de Cobre (%)'  %>
-      <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>
-      <%= f.input :zinco, placeholder: '00.0%', label: 'Nivel de Zinco (%)'  %>
-      <%= f.input :carbono, placeholder: '00.0%', label: 'Nivel de Carbono (%)'  %>
-      <%#= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
-      <%#= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
-      <%#= f.input :ctc, placeholder: '00.0%', label: 'Valor do CTC'  %>
+      <div class="col-md-3 mb-3">
+        <%= f.input :cobre, placeholder: '00.0%', label: 'Nivel de Cobre (%)'  %>  
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>  
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <%= f.input :zinco, placeholder: '00.0%', label: 'Nivel de Zinco (%)'  %>  
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Máteria Orgânica</strong></h6></div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :carbono, placeholder: '00.0%', label: 'Nivel de Carbono (%)'  %>
+      </div>
+    </div>
+
+    <div class="form-group"></div>
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>
 <% end %>
+
+<%#= REMOVER DA VALIDAÇÃO %>
+<%#= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
+<%#= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
+ <%#= f.input :ctc, placeholder: '00.0%', label: 'Valor do CTC'  %>
+  
