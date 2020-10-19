@@ -1,5 +1,5 @@
 class AmostrasController < ApplicationController
-    before_action :set_user
+    before_action :set_user, :get_ownerships
 
     def index
 		# Listar propriedades do current_user
@@ -45,6 +45,10 @@ class AmostrasController < ApplicationController
     end 
     
 	def get_name_params
-    end
+	end
+	
+	def get_ownerships
+	  @ownerships = Ownership.all(user_id: user.id)
+	end
 
 end
