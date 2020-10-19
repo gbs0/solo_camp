@@ -1,20 +1,69 @@
 <%= simple_form_for amostra, remote: true do |f| %>
+  
   <div class="modal-header">
     <strong><h5 class="modal-title">Cadastrar nova amostra de solo:</h5></strong>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div class="modal-body">
-      <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
-      <%= f.input :property_name, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false%>
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <%= f.input :property_name, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <h6>Argila & </h6>
+      <div class="col-md-6 mb-3">
+          <%= f.input :argila, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <%= f.input :potassio, placeholder: '00.0%', label: 'Qntd. de Potassio (%)' %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :calcario, placeholder: '00.0%', label: 'Qntd. de Calcário (%)' %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <%= f.input :magnesio, placeholder: '00.0%', label: 'Quantidade de Magnésio (%)'  %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)'  %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40 (%)'  %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      
+    </div>
+    
+    <div class="form-group"></div>
+  </div>
+
+      
+      
       <%= f.input :peso, label: 'Peso em gramas da amostra coletada:' %>
-      <%= f.input :argila, placeholder: '00.0%', label: 'Quantidade de Argila (%)'  %>
-      <%= f.input :potassio, placeholder: '00.0%', label: 'Quantidade de Potassio (%)'  %>
-      <%= f.input :calcario, placeholder: '00.0%', label: 'Quantidade de Calcário (%)'  %>
-      <%= f.input :magnesio, placeholder: '00.0%', label: 'Quantidade de Magnésio (%)'  %>
-      <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)'  %>
-      <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40 (%)'  %>
+      
+      
+      
+      
+      
+      
       <%= f.input :hidrogenio, placeholder: '00.0%', label: 'Nivel de Hidrogênio (%)'  %>
       <%= f.input :alcalinidade, placeholder: '00.0%', label: 'Nivel de Alcalinidade do Solo (%)'  %>
       <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
@@ -22,9 +71,9 @@
       <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>
       <%= f.input :zinco, placeholder: '00.0%', label: 'Nivel de Zinco (%)'  %>
       <%= f.input :carbono, placeholder: '00.0%', label: 'Nivel de Carbono (%)'  %>
-      <%= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
-      <%= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
-      <%= f.input :ctc, placeholder: '00.0%', label: 'Valor do CTC'  %>
+      <%#= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
+      <%#= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
+      <%#= f.input :ctc, placeholder: '00.0%', label: 'Valor do CTC'  %>
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
