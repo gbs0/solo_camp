@@ -7,7 +7,6 @@ class Amostra < ApplicationRecord
     :profundidade,
     :compactacao,
     :peso,
-    :user_id,
     :argila,
     :potassio,
     :calcario,
