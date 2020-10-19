@@ -21,7 +21,7 @@
     </div>
     
     <div class="form-row">
-      <h6 class='pb-3'><strong>Argila / Peso da Amostra</strong></h6>
+      <div class="d-block col-md-12 p-0"><h6 class='pb-3 d-block'><strong>Argila / Peso da Amostra</strong></h6></div>
       <div class="col-md-8 mb-3">
         <%= f.input :argila, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
       </div>
@@ -31,18 +31,20 @@
     </div>
 
     <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Bases Presentes</strong></h6></div>
       <div class="col-md-4 mb-3">
         <%= f.input :potassio, placeholder: '00.0%', label: 'Qntd. de Potassio (%)' %>
       </div>
       <div class="col-md-4 mb-3">
         <%= f.input :calcario, placeholder: '00.0%', label: 'Qntd. de Calcário (%)' %>
       </div>
-    </div>
-
-    <div class="form-row">
       <div class="col-md-4 mb-3">
         <%= f.input :magnesio, placeholder: '00.0%', label: 'Quantidade de Magnésio (%)'  %>
       </div>
+    </div>
+
+    <div class="form-row">
+      
       <div class="col-md-4 mb-3">
         <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)'  %>
       </div>
