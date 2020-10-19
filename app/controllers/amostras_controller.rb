@@ -1,6 +1,6 @@
 class AmostrasController < ApplicationController
     before_action :set_user
-	before_action :get_ownerships, only: [:new, :create]
+	before_action :get_ownerships, :get_properties, only: [:new, :create]
 
     def index
 		# Listar propriedades do current_user
@@ -50,6 +50,10 @@ class AmostrasController < ApplicationController
 	
 	def get_ownerships
 	  @ownerships = Ownership.where(user_id: @user.id)
+	end
+
+	def get_properties
+	  @properties = Property.where(user_id: @user.id)
 	end
 
 end

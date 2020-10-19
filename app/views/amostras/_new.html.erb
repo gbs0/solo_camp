@@ -6,8 +6,8 @@
     </button>
   </div>
   <div class="modal-body">
-      <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', :collection => ownerships, :include_blank => false %>
-      <%#= f.collection :property_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships %>
+      <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+      <%= f.input :property_name, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false%>
       <%= f.input :peso, label: 'Peso em gramas da amostra coletada:' %>
       <%= f.input :argila, placeholder: '00.0%', label: 'Quantidade de Argila (%)'  %>
       <%= f.input :potassio, placeholder: '00.0%', label: 'Quantidade de Potassio (%)'  %>
@@ -20,11 +20,6 @@
       <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
       <%= f.input :cobre, placeholder: '00.0%', label: 'Nivel de Cobre (%)'  %>
       <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>
-
-      
-      
-      
-      
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
