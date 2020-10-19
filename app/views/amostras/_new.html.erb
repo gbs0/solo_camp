@@ -55,7 +55,12 @@
 
     <div class="form-row">
       <div class="d-block col-md-12 p-0"></div><h6><strong>Acidez</strong></h6></div>
-      
+      <div class="col-md-6 mb-3">
+        <%= f.input :hidrogenio, placeholder: '00.0%', label: 'Nivel de Hidrogênio (%)' %>
+      </div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :alcalinidade, placeholder: '00.0%', label: 'Nivel de Alcalinidade do Solo (%)' %>
+      </div>
     </div>
     
     <div class="form-group"></div>
@@ -70,8 +75,8 @@
       
       
       
-      <%= f.input :hidrogenio, placeholder: '00.0%', label: 'Nivel de Hidrogênio (%)'  %>
-      <%= f.input :alcalinidade, placeholder: '00.0%', label: 'Nivel de Alcalinidade do Solo (%)'  %>
+      
+      
       <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
       <%= f.input :cobre, placeholder: '00.0%', label: 'Nivel de Cobre (%)'  %>
       <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>
