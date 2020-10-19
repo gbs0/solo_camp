@@ -1,7 +1,7 @@
 class AmostrasController < ApplicationController
     before_action :set_user
 	before_action :get_ownerships, only: [:new, :create]
-	
+
     def index
 		# Listar propriedades do current_user
 		# @amostras = Amostra.where(user_id: @user.id)
@@ -49,7 +49,7 @@ class AmostrasController < ApplicationController
 	end
 	
 	def get_ownerships
-	  @ownerships = Ownership.all(user_id: user.id)
+	  @ownerships = Ownership.where(user_id: @user.id)
 	end
 
 end
