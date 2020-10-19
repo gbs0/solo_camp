@@ -22,6 +22,7 @@ class AmostrasController < ApplicationController
 		  flash[ :notice ] = "'#{@amostra}' salvo."
 		  redirect_to properties_path, notice: "A nova amostra foi adicionada"
 		else
+		  binding.pry
 		  flash[:alert] = "Erro, verifque os campos digitados"
 		  render :new
 		end
@@ -35,7 +36,7 @@ class AmostrasController < ApplicationController
 	
 	def amostra_params
 	  params.require(:amostra).permit( 
-          :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
+		  :owner_name, :profundidade, :compactacao, :property_name, :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
           :enxofre40, :hidrogenio, :alcalinidade, :boro, :cobre, :manganes,
           :zinco, :carbono, :materia, :valor, :ctc
         )
