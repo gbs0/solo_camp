@@ -20,7 +20,7 @@ class AmostrasController < ApplicationController
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		if @amostra.save
 		  flash[ :notice ] = "'#{@amostra}' salvo."
-		  redirect_to properties_path, notice: "A nova amostra foi adicionada"
+		  redirect_to amostras_path, notice: "A nova amostra foi adicionada"
 		else
 		  flash[:alert] = "Erro, verifque os campos digitados"
 		  render :new
