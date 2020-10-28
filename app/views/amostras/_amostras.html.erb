@@ -1,8 +1,28 @@
-<div class="card border-dark mb-3" style="max-width: 18rem; background-color: #f4f4f4;">
-  <div class="card-header bg-transparent border-dark">Header</div>
-  <div class="card-body text-dark">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<span> <strong>Total de Amostras Cadastradas: <%= @amostras.count %></strong></span>
+
+<% @amostras.each do |amostra| %>
+  <div class="row">
+    <div class="container text-center">
+      <hr>
+      <div class="d-flex flex-row pl-2">
+        <div class="d-flex flex-column">
+          <span class="element-name">Cobre</span>
+          <span><%= amostra.cobre %></span>
+        </div>
+        <div class="d-flex flex-column pl-2">
+          <span class="element-name">CTC</span>
+          <span><%= amostra.ctc %></span>
+        </div>
+      </div>
+      
+      <span class="badge badge-primary">Primary</span>
+      <span class="badge badge-secondary">Secondary</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-light">Light</span>
+      <span class="badge badge-dark">Dark</span>
+    </div>
   </div>
-  <div class="card-footer bg-transparent border-dark">Footer</div>
-</div>
+<% end %>
