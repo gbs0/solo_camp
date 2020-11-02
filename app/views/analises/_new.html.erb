@@ -1,0 +1,105 @@
+<%= simple_form_for analise, remote: true do |f| %>
+  
+  <div class="modal-header">
+    <strong><h5 class="modal-title">Cadastrar nova <strong>análse de solo:</strong></h5></strong>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <%= f.input :property_name, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Argila / Peso da Amostra</strong></h6></div>
+      <div class="col-md-8 mb-3">
+        <%= f.input :argila, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :peso, label: 'Peso (gramas) da amostra:' %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Bases Presentes</strong></h6></div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :potassio, placeholder: '00.0%', label: 'Qntd. de Potassio (%)' %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :calcario, placeholder: '00.0%', label: 'Qntd. de Calcário (%)' %>
+      </div>
+      <div class="col-md-4 mb-3">
+        <%= f.input :magnesio, placeholder: '00.0%', label: 'Qtnd. de Magnésio (%)'  %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Enxofre</strong></h6></div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)'  %>
+      </div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40 (%)'  %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Acidez</strong></h6></div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :hidrogenio, placeholder: '00.0%', label: 'Nivel de Hidrogênio (%)' %>
+      </div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :alcalinidade, placeholder: '00.0%', label: 'Nivel de Alcalinidade do Solo (%)' %>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Micronutrientes</strong></h6></div>
+      
+      <div class="col-md-3 mb-3">
+        <%= f.input :boro, placeholder: '00.0%', label: 'Nivel de Boro (%)'  %>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <%= f.input :cobre, placeholder: '00.0%', label: 'Nivel de Cobre (%)'  %>  
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <%= f.input :manganes, placeholder: '00.0%', label: 'Nivel de Manganês (%)'  %>  
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <%= f.input :zinco, placeholder: '00.0%', label: 'Nivel de Zinco (%)'  %>  
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="d-block col-md-12 p-0"><h6><strong>Máteria Orgânica</strong></h6></div>
+      <div class="col-md-6 mb-3">
+        <%= f.input :carbono, placeholder: '00.0%', label: 'Nivel de Carbono (%)'  %>
+      </div>
+    </div>
+
+    <div class="form-group"></div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+<% end %>
+
+<%#= REMOVER DA VALIDAÇÃO %>
+<%#= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
+<%#= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
+ <%#= f.input :ctc, placeholder: '00.0%', label: 'Valor do CTC'  %>
+  
