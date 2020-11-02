@@ -1,4 +1,4 @@
-class LaudosController < ApplicationController
+class AnalisesController < ApplicationController
 	helper_method :property
 	helper_method :ownership
 	helper_method :insumo
@@ -8,18 +8,18 @@ class LaudosController < ApplicationController
 	end
 
 	def new
-      @laudo = Laudo.new
+      @analise = Analise.new
 	end
 
 	def create
 	  # @c_user =  User.find params[:id]
 
-	  @laudo = Laudo.new(laudo_params)
-      @laudo.solicitante = current_user.name
-      @laudo.sku_user = current_user.ids.first
+	  @analise = Analise.new(analise_params)
+      @analise.solicitante = current_user.name
+      @analise.sku_user = current_user.ids.first
       
-	  if @laudo.save
-		flash[ :notice ] = "'#{@laudo.name}' salvo."
+	  if @analise.save
+		flash[ :notice ] = "'#{@analise}' salvo."
 		redirect_to laudos_path, notice: "Seu laudo foi adicionado"
 	  else
 		flash[:alert] = "Erro, verifque os campos digitados"
@@ -29,8 +29,8 @@ class LaudosController < ApplicationController
 	
 	private
 
-	def laudo_params
-		params.require(:laudo).permit( :name )
+	def analise_params
+		params.require(:analise).permit( :name )
 	end
 
 	def property
