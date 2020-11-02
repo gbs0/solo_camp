@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201028183948) do
+ActiveRecord::Schema.define(version: 20201028192818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,21 @@ ActiveRecord::Schema.define(version: 20201028183948) do
     t.decimal "valor"
     t.decimal "ctc"
     t.index ["user_id"], name: "index_amostras_on_user_id"
+  end
+
+  create_table "analises", force: :cascade do |t|
+    t.string "solicitante"
+    t.bigint "user_id"
+    t.bigint "property_id"
+    t.bigint "amostra_id"
+    t.bigint "ownership_id"
+    t.string "proprietario"
+    t.bigint "insumo_id"
+    t.index ["amostra_id"], name: "index_analises_on_amostra_id"
+    t.index ["insumo_id"], name: "index_analises_on_insumo_id"
+    t.index ["ownership_id"], name: "index_analises_on_ownership_id"
+    t.index ["property_id"], name: "index_analises_on_property_id"
+    t.index ["user_id"], name: "index_analises_on_user_id"
   end
 
   create_table "insumos", force: :cascade do |t|
@@ -118,6 +133,11 @@ ActiveRecord::Schema.define(version: 20201028183948) do
   end
 
   add_foreign_key "amostras", "users"
+  add_foreign_key "analises", "amostras"
+  add_foreign_key "analises", "insumos"
+  add_foreign_key "analises", "ownerships"
+  add_foreign_key "analises", "properties"
+  add_foreign_key "analises", "users"
   add_foreign_key "laudos", "properties"
   add_foreign_key "ownerships", "users"
   add_foreign_key "properties", "ownerships"
