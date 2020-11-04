@@ -8,7 +8,10 @@ class AnalisesController < ApplicationController
 	end
 
 	def new
-      @analise = Analise.new
+	  respond_to do |format|
+		@analise = Analise.new
+		format.js
+	  end
 	end
 
 	def create
