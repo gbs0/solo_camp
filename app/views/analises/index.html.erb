@@ -1,0 +1,37 @@
+<body>
+  <div>
+	  <%= render "shared/topbar" %>
+  </div>
+	<div class="d-flex">
+    <%= render "shared/sidebar" %>  
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column mt-4 col-lg-10">
+	    <section class="jumbotron text-center ml-2">
+        <div class="container">
+          <div>
+            <h1 class="jumbotron-heading">Análises Cadastradas</h1>
+            <p class="lead text-muted">
+              Nesta página, você tem acesso as suas anaálises de solo e recomendações cadastradas.
+            </p>
+            <%= link_to ' Criar nova analise', new_analise_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+          </div>
+      </section>
+      <div class="ml-2">
+        <% if @analises.present? %>
+          <%= render  "analises" %>
+        <% else %>
+          <h5>Nenhuma análise cadastrada ainda.</h5>
+        <% end %>
+      </div>
+    </div>
+      <%#= render "ownerships/index" %>
+    </div>
+  </div>
+  <!-- ModaL div for render new partial-->
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+</body>
+ 

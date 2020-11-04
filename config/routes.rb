@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 	resources :properties
 	resources :insumos, only: [:index, :new, :create, :update]
 	resources :adubos
-  resources :analises, only: [:new, :create]
+  resources :analises, only: [:index, :new, :create]
   resources :ownerships, only: [:index, :new, :create, :update, :destroy]  
   
 end
