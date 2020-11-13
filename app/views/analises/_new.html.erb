@@ -1,7 +1,7 @@
 <%= simple_form_for analise, remote: true do |f| %>
   
   <div class="modal-header">
-    <strong><h5 class="modal-title">Cadastrar nova <strong>análse de solo:</strong></h5></strong>
+    <strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,14 +9,15 @@
 
   <div class="modal-body">
     <div class="form-row">
+      <%= puts "Lista de Owners: " + @ownerships %>
       <div class="col-md-12 mb-3">
-        <%= f.input :ownership_id, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+        <%= f.input :ownership_id, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: @ownerships, include_blank: false %>
       </div>
     </div>
     
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :property_id, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
+        <%= f.input :property_id, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: @properties, include_blank: false %>
       </div>
     </div>
     
