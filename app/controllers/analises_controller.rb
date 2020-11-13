@@ -2,6 +2,8 @@ class AnalisesController < ApplicationController
 	helper_method :property
 	helper_method :ownership
 	helper_method :insumo
+
+	before_action :set_user
 	
 	def index
 	#   @analises = Analises.where(:id)
@@ -10,9 +12,8 @@ class AnalisesController < ApplicationController
 	def new
 	  respond_to do |format|
 		@analise = Analise.new
-		@ownership = ownership
-		@property = property
-		puts @ownership
+		@ownerships = ownership
+		@properties = property
 		format.js
 	  end
 	end
@@ -35,15 +36,22 @@ class AnalisesController < ApplicationController
 	
 	private
 
+	def set_user
+	  @_user = current_user
+	end
+
 	def analise_params
 		params.require(:analise).permit( :name )
 	end
 
 	def property
-	  @_property ||= @_property ? Property.find(params[:id]) : Property.new(params[:property])
+		@_user_properties = Property.where(user_id: set_user.id)
+		p @_user_properties
+		@_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
 	  
 	def ownership
-	  @_ownership ||= Ownerships.where(user_id: id)
+	  @_user_ownerships ||= Ownership.where(user_id: set_user.id)
 	end
+
 end
