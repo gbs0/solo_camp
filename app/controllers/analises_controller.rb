@@ -4,12 +4,15 @@ class AnalisesController < ApplicationController
 	helper_method :insumo
 	
 	def index
-	  # @laudos = Laudos.where(:id)
+	#   @analises = Analises.where(:id)
 	end
 
 	def new
 	  respond_to do |format|
 		@analise = Analise.new
+		@ownership = ownership
+		@property = property
+		puts @ownership
 		format.js
 	  end
 	end
@@ -37,10 +40,10 @@ class AnalisesController < ApplicationController
 	end
 
 	def property
-	  @_property ||= params[:id] ? Property.find(params[:id]) : Property.new(params[:property])
+	  @_property ||= @_property ? Property.find(params[:id]) : Property.new(params[:property])
 	end
 	  
 	def ownership
-	  @_ownership ||= Ownership.new(params[:ownership])
+	  @_ownership ||= Ownerships.where(user_id: id)
 	end
 end

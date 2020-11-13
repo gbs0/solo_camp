@@ -9,7 +9,7 @@
 
   <div class="modal-body">
     <div class="form-row">
-      <%= puts "Lista de Owners: " + @ownerships %>
+      <%#= puts "Lista de Owners: " + @ownerships %>
       <div class="col-md-12 mb-3">
         <%= f.input :ownership_id, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: @ownerships, include_blank: false %>
       </div>
