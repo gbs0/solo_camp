@@ -52,7 +52,7 @@ class AnalisesController < ApplicationController
 	  
 	def ownership
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	  @_ownership ||= @_user_ownerships.nil? ? "Nenhum Proprietário Cadastrado" : @_user_ownerships
+	  @_ownership ||= @_user_ownerships.nil? ?  padastrado" : @_user_ownerships
 	end
 
 end
