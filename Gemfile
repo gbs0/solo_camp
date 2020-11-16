@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'chartkick', '~> 3.3', '>= 3.3.2'
+gem 'chartkick', '~> 3.4'
 
 gem 'simple_form'
 
