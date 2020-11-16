@@ -25,6 +25,10 @@ class PropertiesController < ApplicationController
 		  render :new
 		end
 	end
+
+	def show
+	  @property = Property.find(params[:id])
+	end
 	
 	def update
 	  @property.update(property_params)
