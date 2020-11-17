@@ -45,13 +45,16 @@ class AnalisesController < ApplicationController
 	end
 
 	def property
-		@_user_properties = Property.where(user_id: set_user.id)
-		p @_user_properties
-		@_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
+	  @_user_properties = Property.where(user_id: set_user.id)
+	  p @_user_properties.class
+	  p "-" * 10
+		# @_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
 	  
 	def ownership
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
+	  p @_user_properties.class
+	  p "-" * 10
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 

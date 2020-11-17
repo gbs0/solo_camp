@@ -19,5 +19,5 @@ class Amostra < ApplicationRecord
     :cobre,
     :manganes,
     :zinco,
-    :carbono
+    :carbono  
 end

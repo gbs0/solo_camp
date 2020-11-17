@@ -28,6 +28,10 @@ class OwnershipsController < ApplicationController
 		end
 	end
 	
+	def show 
+	  @ownership = Ownership.find(params[:id])
+	end
+
 	def update
 	
 	end
