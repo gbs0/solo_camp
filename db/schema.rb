@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201113233444) do
+ActiveRecord::Schema.define(version: 20201121180628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 20201113233444) do
     t.decimal "valor"
     t.decimal "ctc"
     t.index ["user_id"], name: "index_amostras_on_user_id"
+  end
+
+  create_table "analise_amostras", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "analise_id"
+    t.bigint "amostra_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amostra_id"], name: "index_analise_amostras_on_amostra_id"
+    t.index ["analise_id"], name: "index_analise_amostras_on_analise_id"
+    t.index ["user_id"], name: "index_analise_amostras_on_user_id"
   end
 
   create_table "analises", force: :cascade do |t|
@@ -134,6 +145,9 @@ ActiveRecord::Schema.define(version: 20201113233444) do
   end
 
   add_foreign_key "amostras", "users"
+  add_foreign_key "analise_amostras", "amostras"
+  add_foreign_key "analise_amostras", "analises"
+  add_foreign_key "analise_amostras", "users"
   add_foreign_key "analises", "amostras"
   add_foreign_key "analises", "insumos"
   add_foreign_key "analises", "ownerships"
