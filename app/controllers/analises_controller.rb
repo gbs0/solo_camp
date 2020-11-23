@@ -11,10 +11,11 @@ class AnalisesController < ApplicationController
 
 	def new
 	  respond_to do |format|
-		@analise = Analise.new
-		@ownerships = ownership
-		@properties = property
-		format.js
+		  @analise = Analise.new
+		  @ownerships = ownership.records
+		  @properties = property.records
+			@amostras = amostra.records
+		  format.js
 	  end
 	end
 
@@ -26,11 +27,11 @@ class AnalisesController < ApplicationController
       @analise.sku_user = current_user.ids.first
       
 	  if @analise.save
-		flash[ :notice ] = "'#{@analise}' salvo."
-		redirect_to laudos_path, notice: "Seu laudo foi adicionado"
+		  flash[ :notice ] = "'#{@analise}' salvo."
+		  redirect_to laudos_path, notice: "Seu laudo foi adicionado"
 	  else
-		flash[:alert] = "Erro, verifque os campos digitados"
-		render :new
+		  flash[:alert] = "Erro, verifque os campos digitados"
+		  render :new
 	  end
 	end
 	
@@ -45,17 +46,24 @@ class AnalisesController < ApplicationController
 	end
 
 	def property
-	  @_user_properties = Property.where(user_id: set_user.id)
-	  p @_user_properties.class
-	  p "-" * 10
+	  @_user_properties = Property.where(user_id: set_user).order(:name).all
+	  # p @_user_properties.class.to_s
+		@_user_properties
 		# @_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
 	  
 	def ownership
-	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	  p @_user_properties.class
-	  p "-" * 10
-	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
+	  @_user_ownerships = Ownership.where(user_id: set_user).order(:name).all
+	  # p @_user_ownerships.class.to_s
+		@_user_ownerships
+		# @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
+	end
+
+	def amostra
+		@_user_amostras = Amostra.where(user_id: set_user).order(:owner_name).all
+		# p @_user_ownerships.class.to_s
+		@_user_amostras
+		# @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 
 end

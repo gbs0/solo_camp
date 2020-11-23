@@ -1,4 +1,4 @@
-<%= simple_form_for analise, remote: true do |f| %>
+<%= simple_form_for [@analise], remote: true do |f| %>
   
   <div class="modal-header">
     <strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
@@ -9,20 +9,20 @@
 
   <div class="modal-body">
     <div class="form-row">
-      <%= puts "Lista de Owners: " + @ownerships %>
       <div class="col-md-12 mb-3">
-        <%= f.input :ownership_id, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: @ownerships, include_blank: false %>
+        <%= f.input :ownership_id, collection: @ownerships, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', include_blank: false %>
       </div>
     </div>
     
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :property_id, label: 'Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: @properties, include_blank: false %>
+        <%= f.input :property_id, collection: @properties, label: 'Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', include_blank: false %>
       </div>
     </div>
     
     <div class="form-row">
-      <div class="d-block col-md-12 p-0"><h6><strong>Argila / Peso da Amostra</strong></h6></div>
+      <div class="d-block col-md-12 p-0"><h6><strong>Selecione a Amostra pertencente ao solo</strong></h6></div>
+      <!-- Adicionar classe com select2 -->
       <div class="col-md-8 mb-3">
         <%= f.input :amostra_id, placeholder: '00.0%', label: 'Qntd. de Argila (%)' %>
       </div>
