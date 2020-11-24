@@ -12,8 +12,8 @@ class AnalisesController < ApplicationController
 	def new
 	  respond_to do |format|
 		@analise = Analise.new
-		@ownerships = set_ownerships
-		@properties = set_properties
+		@ownerships = set_ownerships.records
+		@properties = set_properties.records
 		format.js
 		end
 	end
@@ -53,9 +53,9 @@ class AnalisesController < ApplicationController
 	  
 	def set_ownerships
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	  p @_user_properties.class
-		@_user_properties
+	  p @_user_ownerships.class
+		@_user_ownerships
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
-  
+
 end
