@@ -62,7 +62,8 @@ class AnalisesController < ApplicationController
 
   def set_amostras
 		@_user_amostras = Amostra.where(user_id: set_user.id)
-		@_user_amostras
 		p @_user_amostras.class
+		@_user_amostras
+		
 	end
 end
