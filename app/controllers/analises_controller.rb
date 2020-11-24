@@ -15,8 +15,6 @@ class AnalisesController < ApplicationController
 		@ownerships = set_ownerships
 		@properties = set_properties
 		format.js
-		@amostras = set_amostras
-
 		end
 	end
 
@@ -59,11 +57,5 @@ class AnalisesController < ApplicationController
 		@_user_properties
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
-
-  def set_amostras
-		@_user_amostras = Amostra.where(user_id: set_user.id)
-		p @_user_amostras.class
-		@_user_amostras
-		
-	end
+  
 end
