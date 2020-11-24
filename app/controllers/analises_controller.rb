@@ -12,10 +12,12 @@ class AnalisesController < ApplicationController
 	def new
 	  respond_to do |format|
 		@analise = Analise.new
-		@ownerships = ownership
-		@properties = property
+		@ownerships = set_ownerships
+		@properties = set_properties
 		format.js
-	  end
+		@amostras = set_amostras
+
+		end
 	end
 
 	def create
@@ -41,21 +43,26 @@ class AnalisesController < ApplicationController
 	end
 
 	def analise_params
-		params.require(:analise).permit( :name )
+		params.require(:analise).permit( :name, amostras_id,  )
 	end
 
-	def property
+	def set_properties
 	  @_user_properties = Property.where(user_id: set_user.id)
 	  p @_user_properties.class
-	  p "-" * 10
+		@_user_properties
 		# @_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
 	  
-	def ownership
+	def set_ownerships
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
 	  p @_user_properties.class
-	  p "-" * 10
+		@_user_properties
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 
+  def set_amostras
+		@_user_amostras = Amostra.where(user_id: set_user.id)
+		@_user_amostras
+		p @_user_amostras.class
+	end
 end
