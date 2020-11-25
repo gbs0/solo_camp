@@ -24,6 +24,7 @@ class AnaliseAmostrasController < ApplicationController
   def analise_amostra_params
     params.require(:analise_amostra).permit(:amostras_id, :analise_id)
   end
+
   def set_user
     @user = current_user
   end
