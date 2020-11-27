@@ -2,7 +2,7 @@ class AnaliseAmostrasController < ApplicationController
   before_action :set_user, only: [:new, :create]
 
   def new
-    @amostras = Amostra.where(user_id: :set_user)
+    @amostras = Amostra.where(user_id: :set_user.id)
     @analise_amostra = AnaliseAmostra.new
   end
 
