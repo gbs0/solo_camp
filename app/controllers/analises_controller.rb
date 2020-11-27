@@ -14,6 +14,8 @@ class AnalisesController < ApplicationController
 		@analise = Analise.new
 		@ownerships = set_ownerships.records
 		@properties = set_properties.records
+		@amostras = set_amostras.records
+		@analise_amostra = AnaliseAmostra.new
 		format.js
 		end
 	end
@@ -56,6 +58,11 @@ class AnalisesController < ApplicationController
 	  p @_user_ownerships.class
 		@_user_ownerships
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
+	end
+
+  def set_amostras
+		@_user_amostras = Amostra.where(user_id: set_user.id)
+		@_user_amostras
 	end
 
 end

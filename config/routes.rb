@@ -28,10 +28,17 @@ Rails.application.routes.draw do
 	#   # resources :ownerships, only: [:index, :new, :create, :update]
   # end
   resources :amostras
-	resources :properties
-	resources :insumos, only: [:index, :new, :create, :update]
-	resources :adubos
+
+  resources :properties
+
+  resources :insumos, only: [:index, :new, :create, :update]
+
+  resources :adubos
+
   resources :analises, only: [:index, :new, :create]
+
+	resources :analise_amostras, only: [:new, :create]
+
   resources :ownerships, only: [:index, :new, :create, :show, :update, :destroy]  
   
 end
