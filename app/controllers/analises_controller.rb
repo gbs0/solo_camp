@@ -11,12 +11,12 @@ class AnalisesController < ApplicationController
 
 	def new
 	  respond_to do |format|
-		@analise = Analise.new
-		@ownerships = set_ownerships.records
-		@properties = set_properties.records
-		@amostras = set_amostras.records
-		@analise_amostra = AnaliseAmostra.new
-		format.js
+		  @analise = Analise.new
+		  @ownerships = set_ownerships.records
+		  @properties = set_properties.records
+		  @amostras   = set_amostras.records
+		  @analise_amostra = AnaliseAmostra.new
+		  format.js
 		end
 	end
 
@@ -24,8 +24,8 @@ class AnalisesController < ApplicationController
 	  # @c_user =  User.find params[:id]
 
 	  @analise = Analise.new(analise_params)
-      @analise.solicitante = current_user.name
-      @analise.sku_user = current_user.ids.first
+		@analise.solicitante = current_user.name
+		@analise.sku_user = current_user.ids.first
       
 	  if @analise.save
 		flash[ :notice ] = "'#{@analise}' salvo."
