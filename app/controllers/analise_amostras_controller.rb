@@ -7,8 +7,7 @@ class AnaliseAmostrasController < ApplicationController
   end
 
   def create
-
-    @amostras = Amostra.where(params[:amostras_id])
+    @amostras = Amostra.where(params[:amostra_id])
     @amostras.each do |amostra|
       analise_amostra = AnaliseAmostra.new
       analise_amostra.user = :set_user
