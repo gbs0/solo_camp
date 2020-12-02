@@ -54,11 +54,23 @@ insumos:
     ph-min: 0
     ph-max: 0
   - name: Arroz de Sequeiro
+    ph-min: 0
+    ph-max: 0
   - name: Arroz de Irrigado
+    ph-min: 0
+    ph-max: 0
   - name: Aveia
     ph-min: 5
     ph-max: 7
-  - name: Bananeira
+  - name: Banana
+    ph-min: 0
+    ph-max: 0
+  - name: Banana da Terra
+    ph-min: 0
+    ph-max: 0
+  - name: Banana Nanica
+    ph-min: 0
+    ph-max: 0
   - name: Batata
     ph-min: 4.8
     ph-max: 6.5
@@ -77,8 +89,15 @@ insumos:
   - name: Brócolis
     ph-min: 0
     ph-max: 0
+  - name: Castanha
+    ph-min: 5
+    ph-max: 6.5
   - name: Café
+    ph-min: 0
+    ph-max: 0
   - name: Cana-de-açúcar
+    ph-min: 0
+    ph-max: 0
   - name: Cebola
   - name: Cevada
   - name: Cebolinha
