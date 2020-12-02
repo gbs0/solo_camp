@@ -44,6 +44,8 @@ insumos:
     ph-min: 5.5
     ph-max: 7
   - name: Algodão
+    ph-min: 0
+    ph-max: 0
   - name: Alho
     ph-min: 5.5
     ph-max: 8
@@ -87,8 +89,8 @@ insumos:
     ph-min: 6
     ph-max: 7.5
   - name: Brócolis
-    ph-min: 0
-    ph-max: 0
+    ph-min: 6
+    ph-max: 7.3
   - name: Castanha
     ph-min: 5
     ph-max: 6.5
@@ -99,9 +101,23 @@ insumos:
     ph-min: 0
     ph-max: 0
   - name: Cebola
+    ph-min: 6
+    ph-max: 7
+  - name: Cenoura
+    ph-min: 5.7
+    ph-max: 7
+  - name: Centeio
+    ph-min: 5
+    ph-max: 6.5
   - name: Cevada
+    ph-min: 6.5
+    ph-max: 8
   - name: Cebolinha
-  - name: Citros
+    ph-min: 0
+    ph-max: 0
+  - name: Chicória
+    ph-min: 5
+    ph-max: 6.8
   - name: Couve-Flor
   - name: Couve Folha
   - name: Ervilha
