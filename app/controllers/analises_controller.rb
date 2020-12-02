@@ -12,11 +12,12 @@ class AnalisesController < ApplicationController
 	def new
 	  respond_to do |format|
 		  @analise = Analise.new
-		  @ownerships = set_ownerships.records
-		  @properties = set_properties.records
-		  @amostras   = set_amostras.records
+		  @ownerships = set_ownerships.records.sort
+		  @properties = set_properties.records.sort
+		  @amostras   = set_amostras.records.sort
 		  @analise_amostra = AnaliseAmostra.new
-		  format.js
+			@insumos = set_insumos.sort
+			format.js
 		end
 	end
 
@@ -28,11 +29,11 @@ class AnalisesController < ApplicationController
 		@analise.sku_user = current_user.ids.first
       
 	  if @analise.save
-		flash[ :notice ] = "'#{@analise}' salvo."
-		redirect_to laudos_path, notice: "Seu laudo foi adicionado"
+			flash[ :notice ] = "'#{@analise}' salvo."
+			redirect_to laudos_path, notice: "Seu laudo foi adicionado"
 	  else
-		flash[:alert] = "Erro, verifque os campos digitados"
-		render :new
+			flash[:alert] = "Erro, verifque os campos digitados"
+			render :new
 	  end
 	end
 	
@@ -63,6 +64,11 @@ class AnalisesController < ApplicationController
   def set_amostras
 		@_user_amostras = Amostra.where(user_id: set_user.id)
 		@_user_amostras
+	end
+
+  def set_insumos
+		@_user_insumos = Insumo.all.sort
+		@_user_insumos
 	end
 
 end

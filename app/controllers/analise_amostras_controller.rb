@@ -15,7 +15,6 @@ class AnaliseAmostrasController < ApplicationController
       analise_amostra.amostra = amostra
       analise_amostra.save
     end
-    
   end
 
   private
