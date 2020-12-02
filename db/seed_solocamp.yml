@@ -29,8 +29,11 @@ insumos:
     ph-min: 6
     ph-max: 7.5
   - name: Agrião
-    ph-min:
-    ph-max:
+    ph-min: 6
+    ph-max: 6.8
+  - name: Aipo
+    ph-min: 6.1
+    ph-max: 7-4
   - name: Aipim
   - name: Amendoim
   - name: Alface
