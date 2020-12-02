@@ -119,7 +119,15 @@ insumos:
     ph-min: 5
     ph-max: 6.8
   - name: Couve-Flor
-  - name: Couve Folha
+    ph-min: 6
+    ph-max: 7.3
+  - name: Couve Galega
+    ph-min: 5.5
+    ph-max: 6.8
+  - name: Couve Portuguesa
+    ph-min: 5.5
+    ph-max: 7.5
+  - name: Couve Rábano
   - name: Ervilha
   - name: Espinafre
   - name: Eucalipto
