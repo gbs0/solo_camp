@@ -22,7 +22,15 @@ properties:
     area: 350
 
 insumos:
+  - name: Abóbora
+    ph-min: 5.5
+    ph-max: 7
   - name: Acelga
+    ph-min: 6
+    ph-max: 7.5
+  - name: Agrião
+    ph-min:
+    ph-max:
   - name: Aipim
   - name: Amendoim
   - name: Alface
