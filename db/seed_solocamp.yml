@@ -37,8 +37,15 @@ insumos:
   - name: Aipim
   - name: Amendoim
   - name: Alface
+    ph-min: 5.5
+    ph-max: 7
   - name: Algodão
   - name: Alho
+    ph-min: 5.5
+    ph-max: 8
+  - name: Alho Francês
+    ph-min: 6
+    ph-max: 6.8
   - name: Almeirão
   - name: Arroz de Sequeiro
   - name: Arroz de Irrigado
