@@ -35,7 +35,11 @@ insumos:
     ph-min: 6.1
     ph-max: 7-4
   - name: Aipim
+    ph-min: 0
+    ph-max: 0
   - name: Amendoim
+    ph-min: 6
+    ph-max: 7.5
   - name: Alface
     ph-min: 5.5
     ph-max: 7
@@ -47,16 +51,32 @@ insumos:
     ph-min: 6
     ph-max: 6.8
   - name: Almeirão
+    ph-min: 0
+    ph-max: 0
   - name: Arroz de Sequeiro
   - name: Arroz de Irrigado
   - name: Aveia
+    ph-min: 5
+    ph-max: 7
   - name: Bananeira
   - name: Batata
+    ph-min: 4.8
+    ph-max: 6.5
   - name: Batata Doce
+    ph-min: 5
+    ph-max: 6.8
   - name: Batata Salsa
+    ph-min: 0
+    ph-max: 0
   - name: Berinjela
+    ph-min: 5.4
+    ph-max: 6
   - name: Beterraba
+    ph-min: 6
+    ph-max: 7.5
   - name: Brócolis
+    ph-min: 0
+    ph-max: 0
   - name: Café
   - name: Cana-de-açúcar
   - name: Cebola
