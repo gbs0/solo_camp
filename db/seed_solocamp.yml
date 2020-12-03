@@ -128,26 +128,81 @@ insumos:
     ph-min: 5.5
     ph-max: 7.5
   - name: Couve Rábano
+    ph-min: 5.5
+    ph-max: 6.8
   - name: Ervilha
+    ph-min: 6
+    ph-max: 7.5
   - name: Espinafre
+    ph-min: 6.2
+    ph-max: 7.2
   - name: Eucalipto
+    ph-min: 0
+    ph-max: 0
+  - name: Escarola
+    ph-min: 5.6
+    ph-max: 6.7
   - name: Feijão
+    ph-min: 5.6
+    ph-max: 7
+  - name: Funcho-Doce
+    ph-min: 5
+    ph-max: 6.8
   - name: Fumo
+    ph-min: 0
+    ph-max: 0
   - name: Girassol
+    ph-min: 6
+    ph-max: 7.5
+  - name: Laranjeira
+    ph-min: 6
+    ph-max: 7.5
+  - name: Linho
+    ph-min: 5
+    ph-max: 7
   - name: Macieira
+    ph-min: 5.4
+    ph-max: 7.5
+  - name: Marmeleiro
+    ph-min: 5.7
+    ph-max: 7.2
   - name: Milho
+    ph-min:
+    ph-max:
   - name: Soja
+    ph-min:
+    ph-max:
   - name: Morango
+    ph-min:
+    ph-max:
   - name: Pepino
+    ph-min:
+    ph-max:
   - name: Pimentão
+    ph-min:
+    ph-max:
   - name: Repolho
+    ph-min:
+    ph-max:
   - name: Rúcula
+    ph-min:
+    ph-max:
   - name: Tomate
+    ph-min:
+    ph-max:
   - name: Vagem
+    ph-min:
+    ph-max:
   - name: Cana de Açúcar
+    ph-min:
+    ph-max:
   - name: Forragem Gramínea
+    ph-min:
+    ph-max:
   - name: Forragem Leguminosa
-  
+    ph-max:
+    ph-min:
+
 adubos:
   - comercial_name: 4-20-20
     n: 4
