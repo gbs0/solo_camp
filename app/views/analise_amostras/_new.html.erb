@@ -1,6 +1,6 @@
 <div class="container">
   <%= simple_form_for [@analise_amostra] do |f| %>
-    <%= f.input :amostra_id, label: " ", as: :check_boxes, collection: @amostras.map { |amostra| [amostra, amostra, { class: "" }]} %>
+    <%= f.input :amostra_id, label: " ", as: :check_boxes, collection: @amostras.map { |amostra| [amostra, amostra, { class: "amostra-item-selector" }]} %>
     <%= f.submit "Adicionar Amostra", class: "btn btn-primary"%>
   <% end %>
 </div>
