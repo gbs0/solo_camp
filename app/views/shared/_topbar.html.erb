@@ -1,6 +1,7 @@
 <% if current_user %>
 <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
-          <!-- Sidebar Toggle (Topbar) -->
+  <span class="mr-5">Solocamp™ 🍃</span>
+  <!-- Sidebar Toggle (Topbar) -->
   <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
     <i class="fa fa-bars"></i>
   </button>
@@ -184,8 +185,11 @@
   <% else %>
 
   <nav class="navbar navbar-expand navbar-dark bg-light topbar static-top shadow d-flex justify-content-between">
-    <small>Solocamp™</small>
-    <small>Sobre Nós</small>
+    <span>Solocamp™ 🍃</span>
+    <div>
+      <small>Sobre Nós</small>
+      <small class="ml-4">Contato</small>
+    </div>
   </nav>
 
 <% end %>
