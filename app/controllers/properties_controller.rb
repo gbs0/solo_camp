@@ -13,6 +13,15 @@ class PropertiesController < ApplicationController
 	  end	
 	end
 
+  def edit
+		@property = Property.find(params[:id])
+		if @property.update(property_params)
+			redirect_to properties_path, notice: "Propriedade editada com sucesso."
+		else
+			flash[:alert] = "Propriedade não editada, verifique os erros."
+		end
+	end
+
 	def create
 		@property = Property.new(property_params)
 		p @property.user_id = @user.id

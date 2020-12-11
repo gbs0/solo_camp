@@ -4,7 +4,9 @@
       <% @properties.each do |property| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="https://images.unsplash.com/photo-1592422154529-1d0a03cad207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+            <%# if property.photo.attached? %>
+              <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="https://images.unsplash.com/photo-1592422154529-1d0a03cad207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+            <%# end %>
             <div class="card-body">
               <p class="card-text"><strong><%= property.name %></strong></p>
               <label><%= property.address%></label>
@@ -17,7 +19,7 @@
                   </button>
                   <%= link_to "Ver", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% if current_user %>
-                    <%= link_to "Editar", property_path(property), method: :patch, class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                    <%= link_to "Editar", edit_property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% end %>
                 </div>
               </div>
