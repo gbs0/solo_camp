@@ -14,12 +14,16 @@ class PropertiesController < ApplicationController
 	end
 
   def edit
-		@property = Property.find(params[:id])
-		if @property.update(property_params)
-			redirect_to properties_path, notice: "Propriedade editada com sucesso."
-		else
-			flash[:alert] = "Propriedade não editada, verifique os erros."
-		end
+		# respond_to do |format|
+		# 	format.js
+		# 	@property = Property.find(params[:id])
+		# 	if @property.update(property_params)
+		# 		redirect_to properties_path, notice: "Propriedade editada com sucesso."
+		# 	else
+		# 		flash[:alert] = "Propriedade não editada, verifique os erros."
+		# 	end
+		# end
+
 	end
 
 	def create
@@ -40,7 +44,12 @@ class PropertiesController < ApplicationController
 	end
 	
 	def update
-	  @property.update(property_params)
+		@property = Property.find(params[:id])
+		if @property.update(property_params)
+			redirect_to properties_path, notice: "Propriedade editada com sucesso."
+		else
+			flash[:alert] = "Propriedade não editada, verifique os erros."
+		end
 	end
 
 	private
