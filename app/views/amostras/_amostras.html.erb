@@ -5,7 +5,7 @@
       <div>
         <hr>
         <div class="d-flex flex-row mr-3 badge-light w-100" style="font-size: 0.79rem;">
-          <div class="d-flex flex-column mr-3">
+          <div class="d-flex flex-column mr-3 ml-4">
             <span class="element-name" style="opacity: 0.7; font-size: 0.7rem;"><strong>Argila</strong></span>
             <span><%= amostra.argila %></span>
           </div>
@@ -69,6 +69,9 @@
             <span class="element-name" style="opacity: 0.7; font-size: 0.7rem;"><strong>CTC</strong></span>
             <span><%= amostra.ctc %></span>
           </div>
+          <%= link_to amostra_path(amostra), method: :delete, data: {confirm:"Tem certeza que deseja deletar esta amostra?"}, class: "ml-3 align-self-center amostra-delete-btn" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </div>
       </div>
     </div>
