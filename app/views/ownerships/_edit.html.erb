@@ -1,6 +1,6 @@
 <%= simple_form_for @ownership, remote: true do |f| %>
   <div class="modal-header">
-    <strong><h5 class="modal-title">Novo proprietário:</h5></strong>
+    <strong><h5 class="modal-title">Editar proprietário:</h5></strong>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -14,7 +14,7 @@
     <%= f.input :email, label: 'Email do proprietário (se houver)', placeholder: 'example@email.com'%>
   </div>
   <div class="modal-footer">
-    <%= f.submit "Cadastrar Proprietário",  class: 'btn btn-primary' %>
+    <%= f.submit "Editar Proprietário",  class: 'btn btn-primary' %>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>
 <% end %>

@@ -1,5 +1,6 @@
 class OwnershipsController < ApplicationController
 	before_action :set_user, :set_ownerships
+  before_action :set_ownership, only: :edit
 
 	def index
 		# @onwnerships = Ownership.find(user_id: current_user.id) # Lista proprietários cadastrados do user
@@ -35,7 +36,7 @@ class OwnershipsController < ApplicationController
 
 	def update
 		@ownership = Ownership.find(params[:id])
-		if @ownership.update(property_params)
+		if @ownership.update(ownership_params)
 			redirect_to properties_path, notice: "Proprietário editado com sucesso."
 		else
 			flash[:alert] = "Proprietário não editado, verifique os erros."
@@ -63,6 +64,10 @@ class OwnershipsController < ApplicationController
 
 	def set_ownerships
 	  @ownership = Ownership.all
+	end
+
+  def set_ownership
+		@ownership = Ownership.find(params[:id])
 	end
 
 	def get_name_params

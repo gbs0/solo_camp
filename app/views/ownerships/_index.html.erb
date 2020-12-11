@@ -15,7 +15,7 @@
             <h5 class="card-title"><%= ownership.name %></h5>
             <h5 class="card-title"><%= ownership.telefone %></h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <%= link_to "Editar", edit_ownership_path(ownership), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+            <%= link_to ' Editar', edit_ownership_path(ownership), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
             <%= link_to "Excluir", ownership_path(ownership), data: {confirm:"Tem certeza que deseja exluir?"},  method: :delete, class: "btn btn-md btn-outline-secondary favorite-btn" %>
           </div>
         </div>
