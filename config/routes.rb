@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
 	resources :analise_amostras, only: [:new, :create]
 
-  resources :ownerships, only: [:index, :new, :create, :show, :update, :destroy]  
+  resources :ownerships
   
 end
 
