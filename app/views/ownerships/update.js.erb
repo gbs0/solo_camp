@@ -1,0 +1,5 @@
+<% if @property.errors.any? %>
+$('#userModal .modal-content').html('<%= j render "ownerships/edit", property: @property %>');
+<% else %>
+$('#userModal').modal('hide');
+<% end %>

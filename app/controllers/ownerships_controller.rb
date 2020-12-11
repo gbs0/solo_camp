@@ -7,7 +7,8 @@ class OwnershipsController < ApplicationController
 		# @ownerships = Ownership.all
 		# p @ownerships
 	end
-	
+  def edit; end
+
 	def new
 		respond_to do |format|
 		  @ownership = Ownership.new
@@ -33,7 +34,7 @@ class OwnershipsController < ApplicationController
 	end
 
 	def update
-	
+
 	end
 
 	def destroy

@@ -1,6 +1,6 @@
 <%= simple_form_for property, remote: true do |f| %>
   <div class="modal-header">
-    <strong><h5 class="modal-title">Editar <% property.name %></h5></strong>
+    <strong><h5 class="modal-title">Editar <%= property.name %></h5></strong>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -14,7 +14,7 @@
       <%= f.input :area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
   </div>
   <div class="modal-footer">
-    <%= f.submit "Cadastrar Propriedade",  class: 'btn btn-primary' %>
+    <%= f.submit "Editar Propriedade",  class: 'btn btn-primary' %>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>
 <% end %>

@@ -14,16 +14,7 @@ class PropertiesController < ApplicationController
 	end
 
   def edit
-		# respond_to do |format|
-		# 	format.js
-		# 	@property = Property.find(params[:id])
-		# 	if @property.update(property_params)
-		# 		redirect_to properties_path, notice: "Propriedade editada com sucesso."
-		# 	else
-		# 		flash[:alert] = "Propriedade não editada, verifique os erros."
-		# 	end
-		# end
-
+		@property = Property.find(params[:id])
 	end
 
 	def create
