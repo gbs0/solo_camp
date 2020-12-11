@@ -6,6 +6,24 @@
 
 .amostra-delete-btn {
   font-size: 1rem;
+  opacity: 0.8;
+  color: #d52a1a;
+  &:hover {
+    color: #d52a1a;
+    font-weight: bolder;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.amostra-edit-btn {
+  font-size: 1rem;
+  opacity: 0.8;
+  &:hover {
+    font-weight: bolder;
+    text-decoration: none;
+    opacity: 1;
+  }
 }
 
 .number-input input[type="number"] {
