@@ -90,10 +90,6 @@ ActiveRecord::Schema.define(version: 20201121180628) do
   end
 
   create_table "laudos", force: :cascade do |t|
-    t.bigint "property_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["property_id"], name: "index_laudos_on_property_id"
   end
 
   create_table "ownerships", force: :cascade do |t|
@@ -153,7 +149,6 @@ ActiveRecord::Schema.define(version: 20201121180628) do
   add_foreign_key "analises", "ownerships"
   add_foreign_key "analises", "properties"
   add_foreign_key "analises", "users"
-  add_foreign_key "laudos", "properties"
   add_foreign_key "ownerships", "users"
   add_foreign_key "properties", "ownerships"
   add_foreign_key "properties", "users"
