@@ -3,24 +3,33 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Cadastre-se</h5>
+            <h5 class="card-title text-center"><strong>Cadastre-se</strong></h5>
             
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-signin") do |f| %>
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail">Email address</label>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="form-label-group field">
+                <%= f.label :email  %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "Email address" %>
               </div>
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+              <div class="form-label-group field">
+                <%= f.label :password %><br />
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", id: "inputPassword", class: "form-control" %>
               </div>
 
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              <div class="form-label-group field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "inputPassword", class: "form-control" %>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+
+              <div class="actions">
+                <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+              </div>
+
               <hr class="my-4">
               <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
@@ -33,7 +42,7 @@
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  
 
   <div class="field">
     <%= f.label :email %><br />
