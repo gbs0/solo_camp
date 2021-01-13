@@ -5,7 +5,9 @@
       <%#= f.submit "Adicionar Amostra", class: "btn btn-primary"%>
     <% end %>
   <% else %>
-    <strong><spam>Nenhuma análise de solo cadastrada ainda</spam></strong>
-    <%= link_to "Criar nova amostra de solo", amostra_path %>
-  <% end %>
+  <div class="d-flex flex-column">
+    <div class="mb-5"><strong><spam >Nenhuma análise de solo cadastrada ainda</spam></strong></div>
+      <%= link_to "Criar nova amostra de solo", amostras_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
