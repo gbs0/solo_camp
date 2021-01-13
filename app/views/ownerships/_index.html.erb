@@ -8,10 +8,12 @@
   <div class="">
     <% if @ownerships.present? %>
       <% @ownerships.each do |ownership| %>
-        <div class="card bg-light mb-3" style="">
-          <div class="card-header">CPF: <%= ownership.cpf %></div>
+        <div class="card bg-light mb-3">
+          <div class="card-header d-flex space-around">
+            CPF: <%= ownership.cpf %>
+          </div>
           <div class="card-body">
-            <h5 class="card-title"><%= ownership.cnpj %></h5>
+            <h5 class="card-title">CNPJ: <%= ownership.cnpj %></h5>
             <h5 class="card-title"><%= ownership.name %></h5>
             <h5 class="card-title"><%= ownership.telefone %></h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

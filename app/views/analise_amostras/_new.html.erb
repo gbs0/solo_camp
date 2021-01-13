@@ -1,6 +1,11 @@
 <div class="container">
-  <%= simple_form_for [@analise_amostra] do |f| %>
-    <%= f.input :amostra_id, label: " ", as: :check_boxes, collection: @amostras.map { |amostra| [amostra, amostra, { class: "amostra-item-selector" }]} %>
-    <%= f.submit "Adicionar Amostra", class: "btn btn-primary"%>
+  <% if @amostras.present? %>
+    <%= simple_form_for [@analise_amostra] do |f| %>
+      <%= f.input :amostra_id, label: " ", as: :check_boxes, collection: @amostras.map { |amostra| [amostra, amostra, { class: "amostra-item-selector" }]} %>
+      <%#= f.submit "Adicionar Amostra", class: "btn btn-primary"%>
+    <% end %>
+  <% else %>
+    <strong><spam>Nenhuma análise de solo cadastrada ainda</spam></strong>
+    <%= link_to "Criar nova amostra de solo", amostra_path %>
   <% end %>
 </div>
