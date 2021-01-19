@@ -25,10 +25,12 @@
       <%= render "analise_amostras/new" %>
     </div>
 
+    <% if @amostras.present? %>
     <div class="modal-footer">
-    <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
- </div>
+      <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+    <% end %>
 <% end %>
 
 <%#= REMOVER DA VALIDAÇÃO %>

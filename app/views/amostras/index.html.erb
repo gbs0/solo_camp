@@ -3,7 +3,7 @@
 	  <%= render "shared/sidebar" %>
   </div>
 
-  <div class="col-lg-10">
+  <div class="w-100">
     <!-- ModaL div for render new partial-->
     <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-xlg" role="document">
@@ -24,15 +24,18 @@
           </div>
         </div>
       </section>
-    </div>
+    
 
-    <div class="ml-2">
-      <% if @amostras.present? %>
-        <%= render  "amostras" %>
-      <% else %>
-        <h5>Nenhuma amostra cadastrada ainda.</h5>
-        <% end %>
+      <div class="ml-2">
+        <% if @amostras.present? %>
+          <%= render  "amostras" %>
+        <% else %>
+          <h5>Nenhuma amostra cadastrada ainda.</h5>
+          <% end %>
+      </div>
     </div>
+  
+    
   </div>
 </div>
 
