@@ -26,6 +26,7 @@
               <%= link_to ' Criar nova análise de solo', new_analise_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
             </div>
         </section>
+        
         <div class="ml-2">
           <% if @analises.present? %>
             <%= render  "analises" %>
