@@ -18,3 +18,9 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+
+
+console.log("Hello from asset-pipeline/application.js")
+
+// import { amostraCounterBtn } from '../../javascript/components/amostra_counter';
+
