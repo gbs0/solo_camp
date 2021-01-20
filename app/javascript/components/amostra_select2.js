@@ -11,5 +11,6 @@ const select2ForAnaliseAmostra = () => {
     });
 }
 
+console.log("Hello from /amostra_select2.js");
 export { select2ForAnaliseAmostra };
 
