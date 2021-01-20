@@ -49,11 +49,11 @@
         <div class="row">
           <div class="col-sm-4 col-sm-offset-4">
               <div class="mb-3 d-flex flex-direction-row align-center">
-                  <div class="input-group-prepend" style="">
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
                   </div>
                   <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)', input_html: { id: "qty_input", class: "quantity form-control form-control-sm", min: "0", value: "1", type: "number"}  %>
-                  <div class="input-group-prepend">
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
                   </div>
               </div>
@@ -112,7 +112,7 @@
 <% end %>
 
 <script>
-$('#qty_input').prop('disabled', true);
+// $('#qty_input').prop('disabled', true);
     
     $('#plus-btn').click(function(){
     	$('#qty_input').val(parseInt($('#qty_input').val()) + 1 );
