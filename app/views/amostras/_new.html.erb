@@ -46,9 +46,14 @@
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Enxofre</strong></h6></div>
       <div class="col-md-6 mb-3 def-number-input number-input safari_only">
-        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-        <%= f.input :enxofre20, placeholder: '00.0%', input_html: { class: "quantity", min: "0", value: "1", type: "number"}  %>
-        <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+        <div class="input-group-prepend">
+          <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+        </div>
+        <%= f.input :enxofre20, placeholder: '00.0%', input_html: { id: "qty_input", class: "quantity form-control form-control-sm", min: "0", value: "1", type: "number"}  %>
+        <div class="input-group-prepend">
+            <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+        </div>
+        
         <%#= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20 (%)'  %>
       </div>
       <div class="col-md-6 mb-3">
