@@ -46,25 +46,25 @@
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Enxofre</strong></h6></div>
       <div class="container mt-2">
-        <div class="d-flex space-around">
-          <div class="col-sm-4 col-sm-offset-4">
+        <div class="d-flex justify-content-between">
+          <div class="col-sm-7 col-sm-offset-3">
               <div class="mb-3 d-flex flex-direction-row align-center">
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="minus-btn-left"><i class="fa fa-minus"></i></button>
                   </div>
-                  <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0-20(%)', input_html: { id: "qty_input_twenty", class: "quantity form-control form-control-sm", min: "0", max: "20", value: "1", type: "number"}  %>
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
+                  <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20(%)', input_html: { id: "qty_input_twenty", class: "quantity form-control form-control-sm", min: "0", max: "20", value: "1", type: "number"}  %>
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="plus-btn-left"><i class="fa fa-plus"></i></button>
                   </div>
               </div>
           </div>
-          <div class="col-sm-4 col-sm-offset-4">
+          <div class="col-sm-6 col-sm-offset-3">
               <div class="mb-3 d-flex flex-direction-row align-center">
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="minus-btn-right"><i class="fa fa-minus"></i></button>
                   </div>
-                  <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20-40(%)', input_html: { id: "qty_input_fourty", class: "quantity form-control form-control-sm", min: "20", max: "40", value: "20", type: "number"}  %>
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 3.4rem;">
+                  <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40(%)', input_html: { id: "qty_input_fourty", class: "quantity form-control form-control-sm", min: "20", max: "40", value: "20", type: "number"}  %>
+                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="plus-btn-right"><i class="fa fa-plus"></i></button>
                   </div>
               </div>
@@ -141,8 +141,11 @@
     $('#minus-btn-right').click(function(){
     	$('#qty_input_fourty').val(parseInt($('#qty_input_fourty').val()) - 1 );
     	if ($('#qty_input_fourty').val() == 0) {
-			$('#qty_input_fourty').val(1);
-		}
+			  $('#qty_input_fourty').val(1);
+		  }
+      if ($('#qty_input_fourty').val() < 20) {
+			  $('#qty_input_fourty').val(20);
+		  }
     });
     console.log("Criando nova amostra!")
 </script>
