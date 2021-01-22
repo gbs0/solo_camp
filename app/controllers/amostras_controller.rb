@@ -18,6 +18,10 @@ class AmostrasController < ApplicationController
 		@amostra = Amostra.find(params[:id])
 	end
 
+	def edit
+		@amostra = Amostra.find(params[:id])
+	end
+
 	def create
 		@amostra = Amostra.new(amostra_params)
 		@amostra.user_id = @user.id
