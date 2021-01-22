@@ -14,8 +14,8 @@ class PropertiesController < ApplicationController
 	end
 
   def edit
-		@property = Property.find(params[:id])
-	end
+	@property = Property.find(params[:id])
+  end
 
 	def create
 		@property = Property.new(property_params)
