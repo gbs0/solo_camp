@@ -1,6 +1,6 @@
 class AmostrasController < ApplicationController
 	before_action :set_user
-	before_action :get_ownerships, :get_properties, only: [:new, :create]
+	before_action :get_ownerships, :get_properties, only: [:new, :create, :edit]
 
 	def index
 		# Listar propriedades do current_user
@@ -35,9 +35,13 @@ class AmostrasController < ApplicationController
 		end
 	end
 
-
 	def update
-		@amostra.update(amostra_params)
+		@amostra = Amostra.find(params[:id])
+		if @amostra.update(amostra_params)
+			redirect_to amostras_path, notice: "Amostra editada com sucesso."
+		else
+			flash[:alert] = "Amostra não editada, verifique os erros."
+		end
 	end
 
 	def destroy

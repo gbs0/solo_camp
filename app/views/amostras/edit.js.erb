@@ -1,2 +1,2 @@
-$("#modal-window").find(".modal-content").html("<%= j render 'amostras/edit', amostra: @amostra %>");
+$("#modal-window").find(".modal-content").html("<%= j render 'amostras/edit', amostra: @amostra, ownerships: @ownerships, properties: @properties %>");
 $("#modal-window").modal();
