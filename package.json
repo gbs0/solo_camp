@@ -3,5 +3,17 @@
   "private": true,
   "dependencies": {
     "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^5.0.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.24.0"
   }
 }
