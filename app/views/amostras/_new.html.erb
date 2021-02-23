@@ -10,13 +10,15 @@
   <div class="modal-body">
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :owner_name, label: 'Nome do Proprietário da Amostra', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+        <div class="d-block col-md-12 p-0"><h6><strong>Nome do Proprietário da Amostra</strong></h6></div>
+        <%= f.input :owner_name, label: false, error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
       </div>
     </div>
     
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :property_name, label: 'Nome da Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
+        <div class="d-block col-md-12 p-0"><h6><strong>Nome da Propriedade da Amostra</strong></h6></div>
+        <%= f.input :property_name, label: false, error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
       </div>
     </div>
     
@@ -119,7 +121,7 @@
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
   </div>
 <% end %>
 

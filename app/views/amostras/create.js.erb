@@ -1,1 +1,17 @@
 $("#modal-window").modal("hide");
+<% if @error.present? %>
+  $.toast({
+      bgColor : '#900d3d',
+      text : '<%= @error %>',
+      position: "top-right",
+      hideAfter: 5000,
+      showHideTransition : 'slide'  // It can be plain, fade or slide
+  });
+<% else %>
+$.toast({
+    bgColor : 'green',
+    text : "Amostra cadastrada com sucesso",
+    position: "top-right",
+    showHideTransition : 'slide'  // It can be plain, fade or slide
+});
+<% end %>

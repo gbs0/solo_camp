@@ -26,13 +26,21 @@ class AmostrasController < ApplicationController
 		@amostra = Amostra.new(amostra_params)
 		@amostra.user_id = @user.id
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
-		if @amostra.save
-			flash[ :notice ] = "'#{@amostra}' salvo."
-			redirect_to amostras_path, notice: "A nova amostra foi adicionada"
-		else
-			flash[:alert] = "Erro, verifque os campos digitados"
-			render :new
-		end
+		@amostra.save!
+		# if @amostra.save
+		# 	flash[ :notice ] = "'#{@amostra}' salvo."
+		# 	redirect_to amostras_path, notice: "A nova amostra foi adicionada"
+		# else
+		# 	flash[:alert] = "Erro, verifque os campos digitados"
+		# 	render :new
+		# end
+
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}}
+			end
 	end
 
 	def update
