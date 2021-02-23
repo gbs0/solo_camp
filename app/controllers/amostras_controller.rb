@@ -37,21 +37,15 @@ class AmostrasController < ApplicationController
 
 	def update
 		@amostra = Amostra.find(params[:id])
-		# if @amostra.update(amostra_params)
-		# 	redirect_to amostras_path, notice: "Amostra editada com sucesso."
-		# else
-		# 	flash[:alert] = "Amostra não editada, verifique os erros."
-		# end
-
+		
 		@amostra.update!(amostra_params)
 		
 		rescue => e
 			@error = e.message
 		ensure
 		respond_to do |format|
-		  format.html { redirect_to amostras_path, flash: {success: 'Amostra Editada com Sucesso!'}}	
+			format.html { redirect_to amostras_path, flash: {success: 'Amostra Editada com Sucesso!'}}	
 		end
-		
 	end
 
 	def destroy
