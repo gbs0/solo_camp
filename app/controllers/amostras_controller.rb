@@ -26,6 +26,7 @@ class AmostrasController < ApplicationController
 		@amostra = Amostra.new(amostra_params)
 		@amostra.user_id = @user.id
 		
+		
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		
 		# if @amostra.save
@@ -61,19 +62,29 @@ class AmostrasController < ApplicationController
 
 	def destroy
 		@amostra = Amostra.find(params[:id])
-		if @amostra.destroy
-			redirect_to amostras_path
-			flash[:notice] = "Amostra destruida com sucesso!"
-		else
-			flash[:alert] = "Erro, tente novamente"
-		end
+		@amostra.destroy!
+
+		# if @amostra.destroy
+		# 	redirect_to amostras_path
+		# 	flash[:notice] = "Amostra destruida com sucesso!"
+		# else
+		# 	flash[:alert] = "Erro, tente novamente"
+		# end
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to amostras_path, flash: {success: 'Amostra excluida com Sucesso!'}}
+			end
+
+
 	end
 
 	private
 
 	def amostra_params
 		params.require(:amostra).permit(
-				:owner_name, :property_name, :profundidade, :compactacao, :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
+				:property_id, :profundidade, :compactacao, :peso, :argila, :potassio, :calcario, :magnesio, :enxofre20,
 				:enxofre40, :hidrogenio, :alcalinidade, :boro, :cobre, :manganes,
 				:zinco, :carbono, :materia, :valor, :ctc
 		)
