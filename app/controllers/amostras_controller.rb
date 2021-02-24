@@ -70,14 +70,13 @@ class AmostrasController < ApplicationController
 		# else
 		# 	flash[:alert] = "Erro, tente novamente"
 		# end
+
 		rescue => e
 			@error = e.message
 		ensure
 			respond_to do |format|
 				format.html { redirect_to amostras_path, flash: {success: 'Amostra excluida com Sucesso!'}}
 			end
-
-
 	end
 
 	private

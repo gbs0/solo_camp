@@ -36,11 +36,21 @@ class OwnershipsController < ApplicationController
 
 	def update
 		@ownership = Ownership.find(params[:id])
-		if @ownership.update(ownership_params)
-			redirect_to properties_path, notice: "Proprietário editado com sucesso."
-		else
-			flash[:alert] = "Proprietário não editado, verifique os erros."
-		end
+		
+		@ownership.update!(ownership_params)
+
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) editado com sucesso!"} }
+			end
+
+		# if @ownership.update(ownership_params)
+		# 	redirect_to properties_path, notice: "Proprietário editado com sucesso."
+		# else
+		# 	flash[:alert] = "Proprietário não editado, verifique os erros."
+		# end
 	end
 
 	def destroy
