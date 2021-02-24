@@ -25,22 +25,37 @@ class AmostrasController < ApplicationController
 	def create
 		@amostra = Amostra.new(amostra_params)
 		@amostra.user_id = @user.id
+		
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
-		if @amostra.save
-			flash[ :notice ] = "'#{@amostra}' salvo."
-			redirect_to amostras_path, notice: "A nova amostra foi adicionada"
-		else
-			flash[:alert] = "Erro, verifque os campos digitados"
-			render :new
-		end
+		
+		# if @amostra.save
+		# 	flash[ :notice ] = "'#{@amostra}' salvo."
+		# 	redirect_to amostras_path, notice: "A nova amostra foi adicionada"
+		# else
+		# 	flash[:alert] = "Erro, verifque os campos digitados"
+		# 	render :new
+		# end
+
+		@amostra.save
+
+		rescue => e
+		@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}}
+			end
 	end
 
 	def update
 		@amostra = Amostra.find(params[:id])
-		if @amostra.update(amostra_params)
-			redirect_to amostras_path, notice: "Amostra editada com sucesso."
-		else
-			flash[:alert] = "Amostra não editada, verifique os erros."
+		
+		@amostra.update!(amostra_params)
+		
+		rescue => e
+			@error = e.message
+		ensure
+		respond_to do |format|
+			format.html { redirect_to amostras_path, flash: {success: 'Amostra Editada com Sucesso!'}}	
 		end
 	end
 
@@ -68,8 +83,7 @@ class AmostrasController < ApplicationController
 		@user = current_user
 	end
 
-	def get_name_params
-	end
+	def get_name_params; end
 
 	def get_ownerships
 		@ownerships = Ownership.where(user_id: @user.id)

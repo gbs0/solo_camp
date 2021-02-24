@@ -10,7 +10,7 @@ describe "Ownership" do
     if defined?(User)
       user = User.new(email: "george@abitbol.me", password: "123456")
       user.save
-      ownership = Ownership.new(name: "Le Wagon", url: "http://www.lewagon.com", user: user)
+      ownership = Ownership.new(name: "Valentino Rossi", url: "http://www.lewagon.com", user: user)
       post.save
 
       expect(Post.last.user).to eq(User.last)

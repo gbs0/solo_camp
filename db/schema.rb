@@ -28,14 +28,12 @@ ActiveRecord::Schema.define(version: 20201121180628) do
   end
 
   create_table "amostras", force: :cascade do |t|
-    t.string "owner_name"
-    t.integer "cpf"
-    t.string "telefone"
     t.string "property_name"
     t.integer "profundidade"
     t.integer "compactacao"
     t.integer "peso"
     t.bigint "user_id"
+    t.bigint "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "argila"
@@ -54,6 +52,7 @@ ActiveRecord::Schema.define(version: 20201121180628) do
     t.decimal "materia"
     t.decimal "valor"
     t.decimal "ctc"
+    t.index ["property_id"], name: "index_amostras_on_property_id"
     t.index ["user_id"], name: "index_amostras_on_user_id"
   end
 
@@ -140,6 +139,7 @@ ActiveRecord::Schema.define(version: 20201121180628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amostras", "properties"
   add_foreign_key "amostras", "users"
   add_foreign_key "analise_amostras", "amostras"
   add_foreign_key "analise_amostras", "analises"

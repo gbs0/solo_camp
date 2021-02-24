@@ -18,9 +18,26 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+//= require toastr
 
 
 console.log("Hello from asset-pipeline/application.js")
 
 // import { amostraCounterBtn } from '../../javascript/components/amostra_counter';
 
+$(document).ready(function() {
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "positionClass": "toast-top-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+});

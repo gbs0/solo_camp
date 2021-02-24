@@ -1,13 +1,14 @@
 class Amostra < ApplicationRecord
   belongs_to :user, foreign_key: :user_id
+  belongs_to :property, foreign_key: :property_id
   has_many :analise_amostras
   has_many :analise, through: :analise_amostras
-    # belongs_to :laudo, foreign_key: :property
+
+   
   
-  validate :owner_name,
-    :property_name,
+  validate :user_id,
+    :property_id,
     :profundidade,
-    :compactacao,
     :peso,
     :argila,
     :potassio,
@@ -21,5 +22,5 @@ class Amostra < ApplicationRecord
     :cobre,
     :manganes,
     :zinco,
-    :carbono  
+    :carbono
 end

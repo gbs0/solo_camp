@@ -1,6 +1,6 @@
 require "open-uri"
 require "yaml"
-
+require 'pry'
 # Insumo.destroy_all if Rails.env.development?
 # Adubo.destroy_all if Rails.env.development?
 
@@ -18,16 +18,77 @@ case Rails.env
       sample["insumos"].each do |insumo|
         Insumo.create! insumo
       end
-      puts 'Created Insumos...'
+      puts 'Done Created Insumos!'
 
       puts 'Creating Adubos...'
       sample["adubos"].each do |adubo|
         # ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
         Adubo.create! adubo.slice("comercial_name", "n", "p", "k", "preco_saca")
       end
-      puts 'Created Adubos...'
+      puts 'Done Created Adubos!'
 
+      puts 'Creating users...'
+      admin = User.new(name: "Admin",
+                    email: "test@test.com",
+                    password: "password"
+                    )
+      admin.save!
+      User.create(name: "Gabriel Schiavo",
+            email: "gabriel.schiavo0@gmail.com",
+            password: "password")
     
+      puts "Done Creating Users!"
+      
+      puts "Creating Ownerships..."
+      Ownership.find_or_create_by(cpf: "32599122233",
+                        name: "Barões da Pisadinha",
+                        rg: "59.468.90-34",
+                        cnpj: "3500024567800001",
+                        email: "terradecultivo@terra.com",
+                        telefone: "3333-09032",
+                        user_id: User.first.id
+                      )
+      puts "Done Creating Ownerships"
+      
+      puts "Creating Properties..."
+      Property.find_or_create_by(id: 1,
+                        name: "Sitio Meu Sonho",
+                        ownership_id: Ownership.first.id,
+                        user_id: User.first.id,
+                        address: "BR 116",
+                        city: "Machado",
+                        uf: "MG",
+                        cep: 1212439,
+                        cep_prefix: nil,
+                        area: 10
+                      )
+      puts "Done Creating Properties!"
+
+      puts "Creating Amostras..."
+      Amostra.find_or_create_by(property_id: Property.first.id,
+                        user_id: User.first.id,
+                        profundidade: 20,
+                        compactacao: 300,
+                        peso: 400,
+                        argila: 0.1e2,
+                        potassio: 0.11e2,
+                        calcario: 0.1e2,
+                        magnesio: 0.1e2,
+                        enxofre20: 0.1e1,
+                        enxofre40: 0.2e2,
+                        hidrogenio: 0.1e2,
+                        alcalinidade: 0.1e2,
+                        boro: 0.1e2,
+                        cobre: 0.1e2,
+                        manganes: 0.1e2,
+                        zinco: 0.1e2,
+                        carbono: 0.2e2,
+                        materia: nil,
+                        valor: nil,
+                        ctc: nil        
+                      )
+      puts "Done Creating Amostras..."
+  
     when 'test'
     # test-specific seeds ...
     # (Consider having your tests set up the data they need
