@@ -46,14 +46,15 @@ case Rails.env
                         cnpj: "3500024567800001",
                         email: "terradecultivo@terra.com",
                         telefone: "3333-09032",
+                        user_id: User.first.id
                       )
       puts "Done Creating Ownerships"
       
       puts "Creating Properties..."
       Property.find_or_create_by(id: 1,
                         name: "Sitio Meu Sonho",
-                        ownership_id: 1,
-                        user_id: 1,
+                        ownership_id: Ownership.first.id,
+                        user_id: User.first.id,
                         address: "BR 116",
                         city: "Machado",
                         uf: "MG",
@@ -64,8 +65,8 @@ case Rails.env
       puts "Done Creating Properties!"
 
       puts "Creating Amostras..."
-      Amostra.find_or_create_by(property_id: 1,
-                        user_id: 1,
+      Amostra.find_or_create_by(property_id: Property.first.id,
+                        user_id: User.first.id,
                         profundidade: 20,
                         compactacao: 300,
                         peso: 400,
