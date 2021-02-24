@@ -1,4 +1,3 @@
-$("#modal-window").modal("hide");
 <% if @error.present? %>
   $.toast({
       bgColor : '#900d3d',
@@ -8,6 +7,7 @@ $("#modal-window").modal("hide");
       showHideTransition : 'slide'  // It can be plain, fade or slide
   });
 <% else %>
+$("#modal-window").modal("hide");
 $.toast({
     bgColor : 'green',
     text : "Amostra cadastrada com sucesso",

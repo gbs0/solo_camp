@@ -22,13 +22,19 @@ class OwnershipsController < ApplicationController
 		@ownership.user_id = @user.id
 		
 		@ownership.save
-		if @ownership.save
-			flash[ :notice ] = "'#{@ownership.name}' salvo."
-			redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
-		else
-			flash[:alert] = "Erro, verifque os campos digitados"
-			render :new
-		end
+		# if @ownership.save
+		# 	flash[ :notice ] = "'#{@ownership.name}' salvo."
+		# 	redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
+		# else
+		# 	flash[:alert] = "Erro, verifque os campos digitados"
+		# 	render :new
+		# end
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) adicionado com sucesso!"} }
+			end
 	end
 	
 	def show 
