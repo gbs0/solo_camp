@@ -62,11 +62,10 @@ class OwnershipsController < ApplicationController
 
 	def destroy
 	  @ownership = Ownership.find(params[:id])
-	  if @ownership.destroy
-		redirect_to properties_path 
-	  else
-		flash[:alert] = "Não foi possivel deletar registro."
-	  end
+	  @ownership.destroy!
+	  rescue => 
+	  ensure
+		format.html { redirect_to properties_path, flash: {sucess: "Proprietário(a) excluído com sucesso!"}}
 	end
 
 	private
