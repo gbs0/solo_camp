@@ -1,19 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  owner_name: MyString
-  cpf: 
-  telefone: MyString
-  property_name: MyString
-  profundidade: 
-  compactacao: 
-  peso: 
+# one:
+#   owner_name: MyString
+#   cpf: 
+#   telefone: MyString
+#   property_name: MyString
+#   profundidade: 
+#   compactacao: 
+#   peso: 
 
-two:
-  owner_name: MyString
-  cpf: 
-  telefone: MyString
-  property_name: MyString
-  profundidade: 
-  compactacao: 
-  peso: 
+# two:
+#   owner_name: MyString
+#   cpf: 
+#   telefone: MyString
+#   property_name: MyString
+#   profundidade: 
+#   compactacao: 
+#   peso: 
+
+
+amostra
+  # id: 20,
+  owner_name: "1",
+  cpf: nil,
+  telefone: nil,
+  property_name: "1",
+  profundidade: nil,
+  compactacao: nil,
+  peso: 400,
+  user_id: 1,
+  created_at: Fri, 22 Jan 2021 14:29:27 UTC +00:00,
+  updated_at: Mon, 22 Feb 2021 23:38:14 UTC +00:00,
+  argila: 0.1e2,
+  potassio: 0.11e2,
+  calcario: 0.1e2,
+  magnesio: 0.1e2,
+  enxofre20: 0.1e1,
+  enxofre40: 0.2e2,
+  hidrogenio: 0.1e2,
+  alcalinidade: 0.1e2,
+  boro: 0.1e2,
+  cobre: 0.1e2,
+  manganes: 0.1e2,
+  zinco: 0.1e2,
+  carbono: 0.2e2,
+  materia: nil,
+  valor: nil,
+  ctc: nil>,

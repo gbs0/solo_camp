@@ -35,11 +35,11 @@ class AmostrasController < ApplicationController
 		# 	flash[:alert] = "Erro, verifque os campos digitados"
 		# 	render :new
 		# end
-		
-		@amostra.save!
+
+		@amostra.save
 
 		rescue => e
-			@error = e.message
+		@error = e.message
 		ensure
 			respond_to do |format|
 				format.html { redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}}

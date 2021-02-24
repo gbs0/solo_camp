@@ -3,19 +3,22 @@ class AnaliseAmostrasController < ApplicationController
 
   def new
     @amostras = Amostra.where(user_id: :set_user.id)
+    # pegar as amostras daquele user com a propriedade vinda do backend
     @analise_amostra = AnaliseAmostra.new
   end
 
-  def create
-    @amostras = Amostra.where(params[:amostra_id])
-    @amostras.each do |amostra|
-      analise_amostra = AnaliseAmostra.new
-      analise_amostra.user = :set_user
-      analise_amostra.analise = analise_amostra_params([:analise_id])
-      analise_amostra.amostra = amostra
-      analise_amostra.save
-    end
-  end
+  def
+
+  # def create
+  #   @amostras = Amostra.where(params[:amostra_id])
+  #   @amostras.each do |amostra|
+  #     analise_amostra = AnaliseAmostra.new
+  #     analise_amostra.user = :set_user
+  #     analise_amostra.analise = analise_amostra_params([:analise_id])
+  #     analise_amostra.amostra = amostra
+  #     analise_amostra.save
+  #   end
+  # end
 
   private
 

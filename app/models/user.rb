@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :laudos
-  has_many :properties
-  has_many :ownerships
+  has_many :properties, dependent: :destroy
+  has_many :amostras, dependent: :destroy
+  has_many :ownerships, dependent: :destroy
 end
