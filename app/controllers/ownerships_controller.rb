@@ -21,6 +21,7 @@ class OwnershipsController < ApplicationController
 		@ownership = Ownership.new(ownership_params)
 		@ownership.user_id = @user.id
 		
+		@ownership.save
 		if @ownership.save
 			flash[ :notice ] = "'#{@ownership.name}' salvo."
 			redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
@@ -54,8 +55,8 @@ class OwnershipsController < ApplicationController
 	end
 
 	def destroy
-	  ownership = Ownership.find(params[:id])
-	  if ownership.destroy
+	  @ownership = Ownership.find(params[:id])
+	  if @ownership.destroy
 		redirect_to properties_path 
 	  else
 		flash[:alert] = "Não foi possivel deletar registro."
