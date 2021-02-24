@@ -41,10 +41,10 @@ case Rails.env
       
       puts "Creating Ownerships..."
       Ownership.find_or_create_by(cpf: "32599122233",
-                        name: "Barões da Pisadinha",
+                        name: "Santo Cultivo",
                         rg: "59.468.90-34",
                         cnpj: "3500024567800001",
-                        email: "terradecultivo@terra.com",
+                        email: "santocultivo@terra.com",
                         telefone: "3333-09032",
                         user_id: User.first.id
                       )

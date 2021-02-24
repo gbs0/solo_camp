@@ -62,10 +62,14 @@ class OwnershipsController < ApplicationController
 
 	def destroy
 	  @ownership = Ownership.find(params[:id])
-	  @ownership.destroy!
-	  rescue => 
-	  ensure
-		format.html { redirect_to properties_path, flash: {sucess: "Proprietário(a) excluído com sucesso!"}}
+	  @ownership.destroy
+	  
+	rescue => e
+		@error = e.message 
+	ensure
+		respond_to do |format|
+			format.html { redirect_to properties_path, flash: {sucess: "Proprietário(a) excluído com sucesso!"}}
+		end
 	end
 
 	private

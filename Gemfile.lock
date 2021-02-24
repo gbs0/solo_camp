@@ -79,6 +79,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorize (0.8.1)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     debug_inspector (0.0.3)
@@ -303,6 +304,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chartkick (~> 3.3, >= 3.3.2)
   coffee-rails (~> 4.2)
+  colorize
   devise
   foreman
   high_voltage
