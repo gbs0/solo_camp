@@ -28,14 +28,15 @@ case Rails.env
       puts 'Done Created Adubos!'
 
       puts 'Creating users...'
-      User.find_or_create_by(name: "Gabriel Schiavo",
-                       email: "gabriel.schiavo0@gmail.com",
-                       encrypted_password: "password")
-
-
-      User.find_or_create_by(name: "Admin",
-                        email: "test@test.com",
-                        encrypted_password: "password")
+      admin = User.new(name: "Admin",
+                    email: "test@test.com",
+                    password: "password"
+                    )
+      admin.save!
+      User.create(name: "Gabriel Schiavo",
+            email: "gabriel.schiavo0@gmail.com",
+            password: "password")
+    
       puts "Done Creating Users!"
       
       puts "Creating Ownerships..."
