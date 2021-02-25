@@ -18,15 +18,23 @@ class PropertiesController < ApplicationController
 
 	def create
 		@property = Property.new(property_params)
-		p @property.user_id = @user.id
-		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
-		if @property.save
-		  flash[ :notice ] = "'#{@property.name}' salvo."
-		  redirect_to properties_path, notice: "A nova propriedade foi adicionado"
-		else
-		  flash[:alert] = "Erro, verifque os campos digitados"
-		  render :new
-		end
+		@property.user_id = set_user.id
+
+		@property.save
+		
+		# if @property.save
+		#   flash[ :notice ] = "'#{@property.name}' salvo."
+		#   redirect_to properties_path, notice: "A nova propriedade foi adicionado"
+		# else
+		#   flash[:alert] = "Erro, verifque os campos digitados"
+		#   render :new
+		# end
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) adicionado com sucesso!"} }
+			end
 	end
 
 	def show
@@ -45,7 +53,7 @@ class PropertiesController < ApplicationController
 	private
 	
 	def property_params
-	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :area )
+	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :total_area )
 	end
 
 	def set_user
