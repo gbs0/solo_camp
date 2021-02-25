@@ -33,7 +33,7 @@ class PropertiesController < ApplicationController
 			@error = e.message
 		ensure
 			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) adicionado com sucesso!"} }
+				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionado com sucesso!"} }
 			end
 	end
 
@@ -43,11 +43,18 @@ class PropertiesController < ApplicationController
 	
 	def update
 		@property = Property.find(params[:id])
-		if @property.update(property_params)
-			redirect_to properties_path, notice: "Propriedade editada com sucesso."
-		else
-			flash[:alert] = "Propriedade não editada, verifique os erros."
-		end
+		@property.update!(property_params)
+		# if @property.update(property_params)
+		# 	redirect_to properties_path, notice: "Propriedade editada com sucesso."
+		# else
+		# 	flash[:alert] = "Propriedade não editada, verifique os erros."
+		# end
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
+			end
 	end
 
 	private

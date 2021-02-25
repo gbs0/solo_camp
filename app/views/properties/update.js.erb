@@ -1,5 +1,18 @@
 <% if @property.errors.any? %>
-  $('#userModal .modal-content').html('<%= j render "properties/edit", property: @property %>');
+$('#userModal .modal-content').html('<%= j render "properties/edit", property: @property %>');
+$.toast({
+  bgColor : '#900d3d',
+  text : '<%= @property.errors.message %>',
+  position: "top-right",
+  hideAfter: 5000,
+  showHideTransition : 'slide'  // It can be plain, fade or slide
+});
 <% else %>
-  $('#userModal').modal('hide');
+$('#userModal').modal('hide');
+$.toast({
+  bgColor : 'green',
+  text : "Amostra editada com sucesso",
+  position: "top-right",
+  showHideTransition : 'slide'  // It can be plain, fade or slide
+});
 <% end %>
