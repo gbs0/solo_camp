@@ -3,8 +3,7 @@ class AmostrasController < ApplicationController
 	before_action :get_ownerships, :get_properties, only: [:new, :create, :edit]
 
 	def index
-		# Listar propriedades do current_user
-		@amostras = Amostra.where(user_id: @user.id)
+		@amostras = Amostra.where(user_id: @user.id) # Listar propriedades do current_user
 	end
 
 	def new
