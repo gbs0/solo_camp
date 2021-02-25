@@ -57,6 +57,18 @@ class PropertiesController < ApplicationController
 			end
 	end
 
+	def destroy
+		@property = Property.find(params[:id])
+		@property.destroy!
+		
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Propriedade excluida com sucesso!"} }
+			end
+	end
+
 	private
 	
 	def property_params
