@@ -21,13 +21,20 @@ class OwnershipsController < ApplicationController
 		@ownership = Ownership.new(ownership_params)
 		@ownership.user_id = @user.id
 		
-		if @ownership.save
-			flash[ :notice ] = "'#{@ownership.name}' salvo."
-			redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
-		else
-			flash[:alert] = "Erro, verifque os campos digitados"
-			render :new
-		end
+		@ownership.save
+		# if @ownership.save
+		# 	flash[ :notice ] = "'#{@ownership.name}' salvo."
+		# 	redirect_to properties_path, notice: "Um novo proprietário foi cadastrado"
+		# else
+		# 	flash[:alert] = "Erro, verifque os campos digitados"
+		# 	render :new
+		# end
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) adicionado com sucesso!"} }
+			end
 	end
 	
 	def show 
@@ -36,20 +43,33 @@ class OwnershipsController < ApplicationController
 
 	def update
 		@ownership = Ownership.find(params[:id])
-		if @ownership.update(ownership_params)
-			redirect_to properties_path, notice: "Proprietário editado com sucesso."
-		else
-			flash[:alert] = "Proprietário não editado, verifique os erros."
-		end
+		
+		@ownership.update!(ownership_params)
+
+		rescue => e
+			@error = e.message
+		ensure
+			respond_to do |format|
+				format.html { redirect_to properties_path, flash: {success: "Proprietário(a) editado com sucesso!"} }
+			end
+
+		# if @ownership.update(ownership_params)
+		# 	redirect_to properties_path, notice: "Proprietário editado com sucesso."
+		# else
+		# 	flash[:alert] = "Proprietário não editado, verifique os erros."
+		# end
 	end
 
 	def destroy
-	  ownership = Ownership.find(params[:id])
-	  if ownership.destroy
-		redirect_to properties_path 
-	  else
-		flash[:alert] = "Não foi possivel deletar registro."
-	  end
+	  @ownership = Ownership.find(params[:id])
+	  @ownership.destroy!
+	  
+    rescue => e
+      @error = e.message 
+    ensure
+      respond_to do |format|
+        format.html { redirect_to properties_path, flash: {sucess: "Proprietário(a) excluído com sucesso!"}}
+      end
 	end
 
 	private

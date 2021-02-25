@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201121180628) do
+ActiveRecord::Schema.define(version: 20210224220613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,18 +105,19 @@ ActiveRecord::Schema.define(version: 20201121180628) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "name"
-    t.bigint "ownership_id"
     t.bigint "user_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.decimal "lng", precision: 10, scale: 6
+    t.decimal "lat", precision: 10, scale: 6
     t.string "city"
     t.string "uf"
     t.integer "cep"
     t.integer "cep_prefix"
-    t.integer "area"
-    t.index ["ownership_id"], name: "index_properties_on_ownership_id"
+    t.integer "total_area"
+    t.integer "field_area"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
@@ -150,6 +151,5 @@ ActiveRecord::Schema.define(version: 20201121180628) do
   add_foreign_key "analises", "properties"
   add_foreign_key "analises", "users"
   add_foreign_key "ownerships", "users"
-  add_foreign_key "properties", "ownerships"
   add_foreign_key "properties", "users"
 end

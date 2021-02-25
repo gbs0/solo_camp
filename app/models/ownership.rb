@@ -5,4 +5,8 @@ class Ownership < ApplicationRecord
   def is_present?
     
   end
+
+  def self.total_record_count
+    Ownership.all.count
+  end
 end

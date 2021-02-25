@@ -15,12 +15,13 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <i class= "fa fa-ruler-combined"></i> <%= property.area %> hectares
+                    <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
                   </button>
                   <%= link_to "Ver", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% if current_user %>
                     <%#= link_to "Editar", edit_property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                     <%= link_to ' Editar', edit_property_path(property), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+                    <%= link_to ' Excluir', property_path(property), method: :delete, data: {confirm: "Tem certeza que deseja deletar #{property.name}? Todas analises desta propriedade também serão deletadas. "}, remote: true, class: "btn btn-md btn-outline-secondary favorite-btn" %>
                   <% end %>
                 </div>
               </div>
