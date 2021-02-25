@@ -2,8 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 
 	def index
-		# Listar propriedades do current_user
-		@properties = Property.where(user_id: @user.id)
+		@properties = Property.where(user_id: @user.id) # Listar propriedades do current_user
 	end
 	
 	def new

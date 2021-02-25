@@ -9,9 +9,9 @@
       <%= f.input :name, label: 'Nome da Propriedade:', error: 'Nome da Propriedade obrigatório.' %>
       <%= f.input :address, label: 'Endereço da Propriedade:' %>
       <%= f.input :city, placeholder: 'Digite a cidade', label: 'Cidade'  %>
-      <%= f.input :uf, label: 'Estado', collection: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] %>
+      <%= f.input :uf, label: 'Estado', collection: Property::STATES %>
       <%= f.input :cep, label: "CEP", placeholder: 'Digite o CPF da propriedade' %>
-      <%= f.input :area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
+      <%= f.input :total_area, label: 'Área (ha)', placeholder: 'Digite a área em hectares'%>
   </div>
   <div class="modal-footer">
     <%= f.submit "Cadastrar Propriedade",  class: 'btn btn-primary' %>
