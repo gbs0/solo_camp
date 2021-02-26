@@ -1,0 +1,28 @@
+<% @properties.each do |property| %>
+    <div class="col-md-3">
+        <div class="card mb-4 shadow-sm">
+        <%# if property.photo.attached? %>
+            <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="https://images.unsplash.com/photo-1592422154529-1d0a03cad207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+        <%# end %>
+        <div class="card-body">
+            <p class="card-text"><strong><%= property.name %></strong></p>
+            <label><%= property.address%></label>
+            <label>CEP <%= property.cep %></label>
+            <strong><p><i class="fa fa-map-marker-alt"></i> <%= property.city %> - <%= property.uf %></p></strong>
+            <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
+                </button>
+                <%= link_to "Ver", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                <% if current_user %>
+                <%#= link_to "Editar", edit_property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                <%= link_to ' Editar', edit_property_path(property), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+                <%= link_to ' Excluir', property_path(property), method: :delete, data: {confirm: "Tem certeza que deseja deletar #{property.name}? Todas analises desta propriedade também serão deletadas. "}, remote: true, class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                <% end %>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+<% end %>

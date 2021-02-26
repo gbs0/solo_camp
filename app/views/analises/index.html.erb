@@ -29,10 +29,21 @@
         <div class="ml-2">
           <%= link_to ' Criar nova análise de solo', new_analise_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-lg btn-primary favorite-btn" }  %>
           <hr>
+        </div>
+
+        <div class="ml-2">
           <% if @analises.present? %>
             <%= render  "analises" %>
           <% else %>
             <h5>Nenhuma análise de solo cadastrada ainda.</h5>
+          <% end %>
+        </div>
+
+        <div class="properties ml-2 d-flex flex-direction-column">
+          <% if @properties.present? %>
+            <%= render  "properties/property" %>
+          <% else %>
+            <h5>Nenhuma proprieadade cadastrada ainda.</h5>
           <% end %>
         </div>
       </div>
