@@ -7,6 +7,9 @@ class AnalisesController < ApplicationController
 	
 	def index
 	#   @analises = Analises.where(:id)
+		set_properties
+
+
 	end
 
 	def new
@@ -16,8 +19,8 @@ class AnalisesController < ApplicationController
 		  @properties = set_properties.records.sort
 		  @amostras   = set_amostras.records.sort
 		  @analise_amostra = AnaliseAmostra.new
-			@insumos = set_insumos.sort
-			format.js
+		  @insumos = set_insumos.sort
+		  format.js
 		end
 	end
 
@@ -38,26 +41,25 @@ class AnalisesController < ApplicationController
 	end
 	
 	private
-
-	def set_user
-	  @_user = current_user
+	
+	def analise_params
+		params.require(:analise).permit( :name, :amostras_id, :property_id )
 	end
 
-	def analise_params
-		params.require(:analise).permit( :name, amostras_id,  )
+	def set_user
+	  @user = current_user
 	end
 
 	def set_properties
-	  @_user_properties = Property.where(user_id: set_user.id)
-	  p @_user_properties.class
-		@_user_properties
-		# @_property ||= @_user_properties.nil? ? "Você não tem nenhuma propriedade cadastrada" : @_user_properties
+	  @_user_properties = Property.where(user_id: @user.id)
+	  @properties ||= @_user_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
-	  
+	
+
 	def set_ownerships
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	  p @_user_ownerships.class
-		@_user_ownerships
+	#   p @_user_ownerships.class
+	# 	@_user_ownerships
 	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 

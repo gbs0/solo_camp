@@ -15,7 +15,7 @@ class AnaliseAmostrasController < ApplicationController
   def create # Criar uma análise utilizando Background Job
     @analise_amostra
     @amostras.each do |amostra|
-      @analise_amostra.user = :set_user
+      @analise_amostra.user = set_user.id
       @analise_amostra.analise = @analise_amostra_params([:analise_id])
       @analise_amostra.amostra = amostra
       @analise_amostra.save
