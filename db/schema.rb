@@ -59,10 +59,9 @@ ActiveRecord::Schema.define(version: 20210224220613) do
   create_table "analise_amostras", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "analise_id"
-    t.bigint "amostra_id"
+    t.json "amostras"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["amostra_id"], name: "index_analise_amostras_on_amostra_id"
     t.index ["analise_id"], name: "index_analise_amostras_on_analise_id"
     t.index ["user_id"], name: "index_analise_amostras_on_user_id"
   end
@@ -71,11 +70,13 @@ ActiveRecord::Schema.define(version: 20210224220613) do
     t.string "solicitante"
     t.bigint "user_id"
     t.bigint "property_id"
-    t.bigint "amostra_id"
     t.bigint "ownership_id"
-    t.string "proprietario"
     t.bigint "insumo_id"
-    t.index ["amostra_id"], name: "index_analises_on_amostra_id"
+    t.string "owner_name", default: ""
+    t.string "property_name", default: ""
+    t.json "coordinates"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["insumo_id"], name: "index_analises_on_insumo_id"
     t.index ["ownership_id"], name: "index_analises_on_ownership_id"
     t.index ["property_id"], name: "index_analises_on_property_id"
@@ -142,10 +143,8 @@ ActiveRecord::Schema.define(version: 20210224220613) do
 
   add_foreign_key "amostras", "properties"
   add_foreign_key "amostras", "users"
-  add_foreign_key "analise_amostras", "amostras"
   add_foreign_key "analise_amostras", "analises"
   add_foreign_key "analise_amostras", "users"
-  add_foreign_key "analises", "amostras"
   add_foreign_key "analises", "insumos"
   add_foreign_key "analises", "ownerships"
   add_foreign_key "analises", "properties"
