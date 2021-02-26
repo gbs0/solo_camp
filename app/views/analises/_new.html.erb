@@ -10,13 +10,15 @@
   <div class="modal-body">
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :ownership, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
+        <div class="d-block col-md-12 p-0"><h6><strong>Nome do Proprietário da Análise</strong></h6></div>
+        <%= f.input :ownership, label: false, error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
       </div>
     </div>
     
     <div class="form-row">
       <div class="col-md-12 mb-3">
-        <%= f.input :property, label: 'Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
+        <div class="d-block col-md-12 p-0"><h6><strong>Propriedade que a Amostra foi coletada</strong></h6></div>
+        <%= f.input :property, label: false, error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
       </div>
     </div>
     

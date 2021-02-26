@@ -8,7 +8,7 @@ class AnalisesController < ApplicationController
 	def index
 	#   @analises = Analises.where(:id)
 		set_properties
-
+		set_ownerships
 
 	end
 
@@ -51,26 +51,27 @@ class AnalisesController < ApplicationController
 	end
 
 	def set_properties
-	  @_user_properties = Property.where(user_id: @user.id)
+	  @_user_properties = Property.where(user_id: set_user.id)
 	  @properties ||= @_user_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_user_properties
 	end
 	
 
 	def set_ownerships
 	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	#   p @_user_ownerships.class
-	# 	@_user_ownerships
-	#   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
+	  @ownerships ||= @_user_ownerships.empty? ? "Você não tem nenhum proprietário cadastrado" : @_user_ownerships
+	  #   p @_user_ownerships.class
+	  # 	@_user_ownerships
+	  #   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 
   def set_amostras
-		@_user_amostras = Amostra.where(user_id: set_user.id)
-		@_user_amostras
-	end
+	@_user_amostras = Amostra.where(user_id: set_user.id)
+	@_user_amostras
+  end
 
   def set_insumos
-		@_user_insumos = Insumo.all.sort
-		@_user_insumos
-	end
+	@_user_insumos = Insumo.all.sort
+	@_user_insumos
+  end
 
 end
