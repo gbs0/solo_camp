@@ -10,6 +10,17 @@ case Rails.env
       puts "♻️ Destroyed all Insumos"
       Adubo.destroy_all
       puts "♻️ Destroyed all Adubos"
+      Property.destroy_all
+      puts "♻️ Destroyed all Properties"
+      Ownership.destroy_all
+      puts "♻️ Destroyed all Ownerships"
+      Amostra.destroy_all
+      puts "♻️ Destroyed all Amostras"
+      Analise.destroy_all
+      puts "♻️ Destroyed all Analises"
+      AnaliseAmostra.destroy_all
+      puts "♻️ Destroyed all AnaliseAmostras"
+
 
       file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/ae618c87a8736bc96cb76b6e2b1b591f517e825a/seed_solocamp.yml"
       sample = YAML.load(open(file).read)
@@ -18,14 +29,14 @@ case Rails.env
       sample["insumos"].each do |insumo|
         Insumo.create! insumo
       end
-      puts 'Done Created Insumos!'
+      puts '✅ Done Created Insumos!'
 
       puts 'Creating Adubos...'
       sample["adubos"].each do |adubo|
         # ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
         Adubo.create! adubo.slice("comercial_name", "n", "p", "k", "preco_saca")
       end
-      puts 'Done Created Adubos!'
+      puts '✅ Done Created Adubos!'
 
       puts 'Creating users...'
       admin = User.new(name: "Admin",
@@ -37,7 +48,7 @@ case Rails.env
             email: "gabriel.schiavo0@gmail.com",
             password: "password")
     
-      puts "Done Creating Users!"
+      puts "✅ Done Creating Users!"
       
       puts "Creating Ownerships..."
       Ownership.find_or_create_by(cpf: "32599122233",
@@ -48,7 +59,7 @@ case Rails.env
                         telefone: "3333-09032",
                         user_id: User.first.id
                       )
-      puts "Done Creating Ownerships"
+      puts "✅ Done Creating Ownerships"
       
       puts "Creating Properties..."
       Property.find_or_create_by(id: 1,
@@ -64,7 +75,7 @@ case Rails.env
                         lat: 10,
                         lng: 10
                       )
-      puts "Done Creating Properties!"
+      puts "✅ Done Creating Properties!"
 
       puts "Creating Amostras..."
       Amostra.find_or_create_by(property_id: Property.first.id,
@@ -89,7 +100,7 @@ case Rails.env
                         valor: nil,
                         ctc: nil        
                       )
-      puts "Done Creating Amostras..."
+      puts "✅ Done Creating Amostras..."
   
     when 'test'
     # test-specific seeds ...
