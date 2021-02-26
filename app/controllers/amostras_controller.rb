@@ -23,8 +23,8 @@ class AmostrasController < ApplicationController
 
 	def create
 		@amostra = Amostra.new(amostra_params)
-		@amostra.user_id = @user.id
-		
+		@amostra.user_id = @user.id 
+		@amostra.property_name = get_property_name(amostra_params(:property_id))
 		
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		
@@ -100,6 +100,10 @@ class AmostrasController < ApplicationController
 
 	def get_properties
 		@properties = Property.where(user_id: @user.id)
+	end
+
+	def get_property_name(id)
+		Property.find(id).name
 	end
 
 end

@@ -79,6 +79,7 @@ case Rails.env
 
       puts "Creating Amostras..."
       Amostra.find_or_create_by(property_id: Property.first.id,
+                        property_name: Property.first.name,
                         user_id: User.first.id,
                         profundidade: 20,
                         compactacao: 300,
@@ -101,7 +102,21 @@ case Rails.env
                         ctc: nil        
                       )
       puts "✅ Done Creating Amostras..."
-  
+
+      puts "Creating AnaliseAmostras"
+      @analise_one = AnaliseAmostra.build(
+                        user_id: User.first.id,
+                        analise_id: Analise.first.id,
+                        amostras: AnaliseAmostra.build_row(Amostra.first)
+                      )
+
+      @analise_one.save!
+      puts "✅ Done Creating AnaliseAmostras..."
+      
+      puts "Creating Analises"
+
+
+      puts "✅ Done Creating Analises..."
     when 'test'
     # test-specific seeds ...
     # (Consider having your tests set up the data they need
