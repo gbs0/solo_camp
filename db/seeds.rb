@@ -6,6 +6,8 @@ require 'pry'
 
 case Rails.env
     when 'development'
+      User.destroy_all
+      puts "♻️ Destroyed all Users"
       Insumo.destroy_all
       puts "♻️ Destroyed all Insumos"
       Adubo.destroy_all
@@ -39,19 +41,22 @@ case Rails.env
       puts '✅ Done Created Adubos!'
 
       puts 'Creating users...'
-      admin = User.new(name: "Admin",
+      admin = User.new(id: 1,
+                    name: "Admin",
                     email: "test@test.com",
                     password: "password"
                     )
       admin.save!
-      User.create(name: "Gabriel Schiavo",
+      User.create(id: 2,
+            name: "Gabriel Schiavo",
             email: "gabriel.schiavo0@gmail.com",
-            password: "password")
-    
+            password: "password"
+          )
       puts "✅ Done Creating Users!"
       
       puts "Creating Ownerships..."
-      Ownership.find_or_create_by(cpf: "32599122233",
+      Ownership.find_or_create_by(id: 1,
+                        cpf: "32599122233",
                         name: "Santo Cultivo",
                         rg: "59.468.90-34",
                         cnpj: "3500024567800001",
@@ -78,7 +83,8 @@ case Rails.env
       puts "✅ Done Creating Properties!"
 
       puts "Creating Amostras..."
-      Amostra.find_or_create_by(property_id: Property.first.id,
+      Amostra.find_or_create_by(id: 1,
+                        property_id: Property.first.id,
                         property_name: Property.first.name,
                         user_id: User.first.id,
                         profundidade: 20,
@@ -102,21 +108,27 @@ case Rails.env
                         ctc: nil        
                       )
       puts "✅ Done Creating Amostras..."
-
-      puts "Creating AnaliseAmostras"
-      @analise_one = AnaliseAmostra.build(
-                        user_id: User.first.id,
-                        analise_id: Analise.first.id,
-                        amostras: AnaliseAmostra.build_row(Amostra.first)
-                      )
-
-      @analise_one.save!
-      puts "✅ Done Creating AnaliseAmostras..."
       
       puts "Creating Analises"
-
-
+      Analise.find_or_create_by(user_id: User.first.id,
+                        ownership_id: Ownership.first.id,
+                        property_id: Property.first.id,
+                        insumo_id: Insumo.first.id
+                        # property_name_ owner_name, coordinates :default
+                      )
       puts "✅ Done Creating Analises..."
+      
+      puts "Creating AnaliseAmostras"
+      @analise_amostras = AnaliseAmostra.find_or_create_by(
+                        user_id: User.first.id,
+                        analise_id: Analise.first.id,
+                        amostras: Amostra.serialize_json(Amostra.first)
+                      )
+
+      @analise_amostras.save!
+      puts "✅ Done Creating AnaliseAmostras..."
+      
+      
     when 'test'
     # test-specific seeds ...
     # (Consider having your tests set up the data they need

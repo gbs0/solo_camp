@@ -23,4 +23,15 @@ class Amostra < ApplicationRecord
     :manganes,
     :zinco,
     :carbono
+
+  def self.serialize_json(amostra)
+    @amostra = amostra.serializable_hash
+    case @amostra
+    when Hash, Amostra
+      # ActiveSupport::JSON.encode(@amostra)
+      @amostra.as_json
+    else
+      super
+    end
+  end
 end

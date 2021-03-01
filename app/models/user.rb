@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :laudos
   has_many :properties, dependent: :destroy
+  has_many :analises, dependent: :destroy
   has_many :amostras, dependent: :destroy
   has_many :ownerships, dependent: :destroy
 end

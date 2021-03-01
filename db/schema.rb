@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20210224220613) do
   create_table "analise_amostras", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "analise_id"
-    t.json "amostras"
+    t.jsonb "amostras", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["analise_id"], name: "index_analise_amostras_on_analise_id"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20210224220613) do
     t.bigint "insumo_id"
     t.string "owner_name", default: ""
     t.string "property_name", default: ""
-    t.json "coordinates"
+    t.jsonb "coordinates", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["insumo_id"], name: "index_analises_on_insumo_id"

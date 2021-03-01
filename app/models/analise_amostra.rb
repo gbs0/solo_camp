@@ -1,12 +1,6 @@
 class AnaliseAmostra < ApplicationRecord
   belongs_to :user
-  belongs_to :property
-  belongs_to :ownership
-
+  belongs_to :analise
+  
   has_many :amostras
-
-  def self.build_json(amostra)
-    amostra.attributes
-  end
-
 end
