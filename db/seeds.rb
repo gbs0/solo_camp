@@ -122,7 +122,7 @@ case Rails.env
       @analise_amostras = AnaliseAmostra.find_or_create_by(
                         user_id: User.first.id,
                         analise_id: Analise.first.id,
-                        amostras: Amostra.serialize_json(Amostra.first)
+                        amostras: {"id" => "1", "property_id" => "1", "property_name" => "Sitio Meu Sonho", "peso" => "400", "compactacao" => "300"} 
                       )
 
       @analise_amostras.save!

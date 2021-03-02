@@ -71,7 +71,7 @@ namespace :health_status do
       Rake::Task['health_status:count_amostras'].execute
       Rake::Task['health_status:count_insumos'].execute
       Rake::Task['health_status:count_analises'].execute
-      Rake::Task['health_status:count_analise_amostras'].execute
+    Rake::Task['health_status:count_analise_amostras'].execute
     end
   end
   
