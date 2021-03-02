@@ -21,7 +21,7 @@ namespace :health_status do
     desc "See Properties db Status"
     task count_properties: :environment do  
       if Property.all.limit(5).empty?
-        puts "0 Propertys on Database".yellow 
+        puts "0 Properties on Database".yellow 
       else
         puts Property.all.limit(20000).count.to_s + " Properties on Database" 
       end

@@ -124,7 +124,6 @@ case Rails.env
                         analise_id: Analise.first.id,
                         amostras: {"id" => "1", "property_id" => "1", "property_name" => "Sitio Meu Sonho", "peso" => "400", "compactacao" => "300"} 
                       )
-
       @analise_amostras.save!
       puts "✅ Done Creating AnaliseAmostras..."
       
