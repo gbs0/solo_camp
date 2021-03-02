@@ -59,7 +59,7 @@ namespace :health_status do
       if AnaliseAmostra.all.limit(5).empty?
         puts "0 Analises Amostras on Database".yellow
       else  
-        puts AnaliseAmostra.all.limit(20000).count.to_s + " Analises on Database"
+        puts AnaliseAmostra.all.limit(20000).count.to_s + " Analises Amostras on Database"
       end
     end
 
@@ -71,7 +71,7 @@ namespace :health_status do
       Rake::Task['health_status:count_amostras'].execute
       Rake::Task['health_status:count_insumos'].execute
       Rake::Task['health_status:count_analises'].execute
-    Rake::Task['health_status:count_analise_amostras'].execute
+      Rake::Task['health_status:count_analise_amostras'].execute
     end
   end
   
