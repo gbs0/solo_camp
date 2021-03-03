@@ -23,7 +23,6 @@ class AmostrasController < ApplicationController
 
 	def create
 		@amostra = Amostra.new(amostra_params)
-		binding.pry
 		@amostra.user_id = @user.id 
 		property_id = @amostra.property_id
 		@amostra.property_name = get_property_name(property_id)
