@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
-
+	
 	def index
 		@properties = Property.where(user_id: @user.id) # Listar propriedades do current_user
 	end
@@ -85,5 +85,5 @@ class PropertiesController < ApplicationController
 	def set_ownerships
 	  @ownerships = Ownership.where(user: @user)
 	end
-
+	
 end

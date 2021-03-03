@@ -35,4 +35,6 @@ class Amostra < ApplicationRecord
 
   def get_user_name(id); end
 
+  def get_property_name(id); end
+
 end
