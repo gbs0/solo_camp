@@ -1,4 +1,5 @@
 require 'colorize'
+
 namespace :health_status do
     desc "See Users db Status"
     task count_users: :environment do  
