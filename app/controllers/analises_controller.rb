@@ -26,10 +26,9 @@ class AnalisesController < ApplicationController
 
 	def create
 	  # @c_user =  User.find params[:id]
-
 	  @analise = Analise.new(analise_params)
-		@analise.solicitante = current_user.name
-		@analise.sku_user = current_user.ids.first
+	  @analise.solicitante = current_user.name
+	  @analise.sku_user = current_user.ids.first
       
 	  if @analise.save
 			flash[ :notice ] = "'#{@analise}' salvo."

@@ -23,6 +23,7 @@ class AmostrasController < ApplicationController
 
 	def create
 		@amostra = Amostra.new(amostra_params)
+		binding.pry
 		@amostra.user_id = @user.id 
 		@amostra.property_name = get_property_name(amostra_params(:property_id))
 		
@@ -35,7 +36,7 @@ class AmostrasController < ApplicationController
 		# 	flash[:alert] = "Erro, verifque os campos digitados"
 		# 	render :new
 		# end
-
+		
 		@amostra.save
 
 		rescue => e

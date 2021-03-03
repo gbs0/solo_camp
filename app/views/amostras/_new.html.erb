@@ -8,13 +8,14 @@
   </div>
 
   <div class="modal-body">
-    
     <div class="form-row">
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 ">
         <div class="d-block col-md-12 p-0"><h6><strong>Nome da Propriedade da Amostra</strong></h6></div>
         <%= f.input :property_id, label: false, error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
       </div>
     </div>
+
+    <hr/>
     
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Argila / Peso da Amostra</strong></h6></div>
@@ -25,6 +26,8 @@
         <%= f.input :peso, label: 'Peso (gramas) da amostra:' %>
       </div>
     </div>
+
+    <hr/>
 
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Bases Presentes</strong></h6></div>
@@ -39,40 +42,48 @@
       </div>
     </div>
 
+    <hr/>
+
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Enxofre</strong></h6></div>
       <div class="container mt-2">
         <div class="d-flex justify-content-between">
-          <div class="col-sm-7 col-sm-offset-3">
-              <div class="mb-3 d-flex flex-direction-row align-center">
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
+          <div class="col-sm-7 col-sm-offset-2">
+              <label>Nivel de Enxofre 0 - 20(%)</label>
+              <div class="d-flex flex-direction-row align-center">
+                  <div class="input-group-prepend" style="height: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="minus-btn-left"><i class="fa fa-minus"></i></button>
                   </div>
-                  <%= f.input :enxofre20, placeholder: '00.0%', label: 'Nivel de Enxofre 0 - 20(%)', input_html: { id: "qty_input_twenty", class: "quantity form-control form-control-sm", min: "0", max: "20", value: "1", type: "number"}  %>
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
+                  <div class="flex-direction-column">
+                    <%= f.input :enxofre20, placeholder: '00.0%', label: false, input_html: { id: "qty_input_twenty", class: "quantity form-control form-control-sm", min: "0", max: "20", value: "1", type: "number", style: "width: 100px;"}  %>
+                  </div>
+                  <div class="input-group-prepend" style="height: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="plus-btn-left"><i class="fa fa-plus"></i></button>
                   </div>
               </div>
           </div>
-          <div class="col-sm-6 col-sm-offset-3">
-              <div class="mb-3 d-flex flex-direction-row align-center">
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
+          <div class="col-sm-6 col-sm-offset-2">
+              <label>Nivel de Enxofre 20 - 40(%)</label>
+              <div class="d-flex flex-direction-row align-center">
+                  <div class="input-group-prepend" style="height: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="minus-btn-right"><i class="fa fa-minus"></i></button>
                   </div>
-                  <%= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40(%)', input_html: { id: "qty_input_fourty", class: "quantity form-control form-control-sm", min: "20", max: "40", value: "20", type: "number"}  %>
-                  <div class="input-group-prepend" style="height: 2rem; margin-top: 2rem;">
+                  <div class="flex-direction-row">
+                    
+                    <%= f.input :enxofre40, placeholder: '00.0%', label: false, input_html: { id: "qty_input_fourty", class: "quantity form-control form-control-sm", min: "20", max: "40", value: "20", type: "number", style: "width: 100px;"}  %>
+                  </div>
+                  <div class="input-group-prepend" style="height: 2rem;">
                       <button type="button" class="btn btn-dark btn-sm" id="plus-btn-right"><i class="fa fa-plus"></i></button>
                   </div>
               </div>
           </div>
         </div>
       </div>
-      
-
       <div class="col-md-6 mb-3">
-        <%#= f.input :enxofre40, placeholder: '00.0%', label: 'Nivel de Enxofre 20 - 40 (%)'  %>
       </div>
     </div>
+
+    <hr/>
 
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Acidez</strong></h6></div>
@@ -83,6 +94,8 @@
         <%= f.input :alcalinidade, placeholder: '00.0%', label: 'Nivel de Alcalinidade do Solo (%)' %>
       </div>
     </div>
+
+    <hr/>
     
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Micronutrientes</strong></h6></div>
@@ -104,19 +117,22 @@
       </div>
     </div>
 
+    <hr/>
+
     <div class="form-row">
       <div class="d-block col-md-12 p-0"><h6><strong>Máteria Orgânica</strong></h6></div>
       <div class="col-md-6 mb-3">
         <%= f.input :carbono, placeholder: '00.0%', label: 'Nivel de Carbono (%)'  %>
       </div>
     </div>
-
     <div class="form-group"></div>
   </div>
+
   <div class="modal-footer">
     <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
   </div>
+
 <% end %>
 
 <script>
