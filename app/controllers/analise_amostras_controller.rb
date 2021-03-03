@@ -14,10 +14,13 @@ class AnaliseAmostrasController < ApplicationController
 
   def create # Criar uma análise utilizando Background Job
     @analise_amostra
+    @amostras = Amostra.where(params[:amostras])
+    
     @amostras.each do |amostra|
+      amostra_as_json = Amostra.serialize_json(amostra)
       @analise_amostra.user = set_user.id
       @analise_amostra.analise = @analise_amostra_params([:analise_id])
-      @analise_amostra.amostra = amostra
+      @analise_amostra.amostras = AmostraAnalise.append_json_attrs(amostra_as_json)
       @analise_amostra.save
     end
   end
@@ -48,7 +51,7 @@ class AnaliseAmostrasController < ApplicationController
   private
 
   def analise_amostra_params
-    params.require(:analise_amostra).permit(:amostras_id, :analise_id)
+    params.require(:analise_amostra).permit(:amostras, :analise_id)
   end
 
   def set_user

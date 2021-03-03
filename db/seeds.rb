@@ -83,29 +83,53 @@ case Rails.env
 
       puts "Creating Amostras..."
       Amostra.find_or_create_by(id: 1,
-                        property_id: Property.first.id,
+                        property_id:   Property.first.id,
                         property_name: Property.first.name,
-                        user_id: User.first.id,
-                        profundidade: 20,
-                        compactacao: 300,
-                        peso: 400,
-                        argila: 0.1e2,
-                        potassio: 0.11e2,
-                        calcario: 0.1e2,
-                        magnesio: 0.1e2,
-                        enxofre20: 0.1e1,
-                        enxofre40: 0.2e2,
-                        hidrogenio: 0.1e2,
-                        alcalinidade: 0.1e2,
-                        boro: 0.1e2,
-                        cobre: 0.1e2,
-                        manganes: 0.1e2,
-                        zinco: 0.1e2,
-                        carbono: 0.2e2,
-                        materia: nil,
-                        valor: nil,
-                        ctc: nil        
+                        user_id:       User.first.id,
+                        profundidade:  20,
+                        compactacao:   300,
+                        peso:          400,
+                        argila:        0.1e2,
+                        potassio:      0.11e2,
+                        calcario:      0.1e2,
+                        magnesio:      0.1e2,
+                        enxofre20:     0.1e1,
+                        enxofre40:     0.2e2,
+                        hidrogenio:    0.1e2,
+                        alcalinidade:  0.1e2,
+                        boro:          0.1e2,
+                        cobre:         0.1e2,
+                        manganes:      0.1e2,
+                        zinco:         0.1e2,
+                        carbono:       0.2e2,
+                        materia:       nil,
+                        valor:         nil,
+                        ctc:           nil        
                       )
+      Amostra.find_or_create_by(id: 2,
+                        property_id:   Property.first.id,
+                        property_name: Property.first.name,
+                        user_id:       User.first.id,
+                        profundidade:  40,
+                        compactacao:   600,
+                        peso:          800,
+                        argila:        0.1e2,
+                        potassio:      0.11e2,
+                        calcario:      0.1e2,
+                        magnesio:      0.1e2,
+                        enxofre20:     0.1e1,
+                        enxofre40:     0.2e2,
+                        hidrogenio:    0.1e2,
+                        alcalinidade:  0.1e2,
+                        boro:          0.1e2,
+                        cobre:         0.1e2,
+                        manganes:      0.1e2,
+                        zinco:         0.1e2,
+                        carbono:       0.2e2,
+                        materia:       10,
+                        valor:         10,
+                        ctc:           5        
+                  )
       puts "✅ Done Creating Amostras..."
       
       puts "Creating Analises"
@@ -118,10 +142,16 @@ case Rails.env
       puts "✅ Done Creating Analises..."
       
       puts "Creating AnaliseAmostras"
+      amostra_one = Amostra.first
+      amostra_json_one = Amostra.serialize_json(amostra_one)
+      
+      amostra_two = Amostra.last
+      amostra_json_two = Amostra.serialize_json(amostra_two)
+
       @analise_amostras = AnaliseAmostra.find_or_create_by(
                         user_id: User.first.id,
                         analise_id: Analise.first.id,
-                        amostras: {"id" => "1", "property_id" => "1", "property_name" => "Sitio Meu Sonho", "peso" => "400", "compactacao" => "300"} 
+                        amostras: amostra_json_two
                       )
       @analise_amostras.save!
       puts "✅ Done Creating AnaliseAmostras..."
