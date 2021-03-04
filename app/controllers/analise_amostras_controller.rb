@@ -17,9 +17,10 @@ class AnaliseAmostrasController < ApplicationController
     @analise_amostra
     @amostras = Amostra.where(params[:amostras])
     binding.pry
-    
+    @amostras_as_json = {}
     @amostras.each do |amostra|
       amostra_as_json = Amostra.serialize_json(amostra)
+      @amostras_as_json << amostra_as_json
       @analise_amostra.user = set_user.id
       @analise_amostra.analise = @analise_amostra_params([:analise_id])
       @analise_amostra.amostras = AmostraAnalise.append_json_attrs(amostra_as_json)
