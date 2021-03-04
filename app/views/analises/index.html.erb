@@ -29,6 +29,9 @@
         <div class="ml-2">
           <div class="d-flex flex-row align-items-center justify-content-between ml-2">
           <%= link_to 'Criar nova análise de solo', new_analise_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-lg btn-primary favorite-btn mr-4" }  %>
+          <%#= link_to 'Nova Analise', {:url => {:controller => "analise", :action => "show_analise_form"}, :with => "'model[textfield]=' + $F('textfield_id')"} %>
+
+
             <div class="d-block align-self-flex-end mr-2">
               <% if @analises.present? %>
                 <%= render  "analises" %>
@@ -50,6 +53,8 @@
           <% end %>
         </div>
       </div>
+
+      <%#= render "analises/new" %>
       <%#= render "ownerships/index" %>
     </div>
 

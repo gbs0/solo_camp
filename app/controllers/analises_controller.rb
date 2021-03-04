@@ -9,7 +9,6 @@ class AnalisesController < ApplicationController
 	#   @analises = Analises.where(:id)
 		set_properties
 		set_ownerships
-
 	end
 
 	def new
@@ -37,6 +36,10 @@ class AnalisesController < ApplicationController
 			flash[:alert] = "Erro, verifque os campos digitados"
 			render :new
 	  end
+	end
+
+	def show_analise_form
+	   render partial: 'new'
 	end
 	
 	private

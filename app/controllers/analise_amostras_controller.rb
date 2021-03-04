@@ -1,3 +1,4 @@
+require 'pry'
 class AnaliseAmostrasController < ApplicationController
   before_action :set_user, :get_properties, :get_amostras only: [:new, :create, :edit, :update]
   
@@ -15,6 +16,7 @@ class AnaliseAmostrasController < ApplicationController
   def create # Criar uma análise utilizando Background Job
     @analise_amostra
     @amostras = Amostra.where(params[:amostras])
+    binding.pry
     
     @amostras.each do |amostra|
       amostra_as_json = Amostra.serialize_json(amostra)
@@ -51,7 +53,11 @@ class AnaliseAmostrasController < ApplicationController
   private
 
   def analise_amostra_params
-    params.require(:analise_amostra).permit(:amostras, :analise_id)
+    params.require(:analise_amostra).permit(:analise_id)
+  end
+
+  def amostras_params
+    params.permit(:amostras)
   end
 
   def set_user
