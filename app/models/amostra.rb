@@ -20,15 +20,8 @@ class Amostra < ApplicationRecord
     # :zinco,
     # :carbono
 
-  def self.serialize_json(amostra)
-    @amostra = amostra.serializable_hash
-    case @amostra
-    when Hash, Amostra
-      # ActiveSupport::JSON.encode(@amostra)
-      @amostra.as_json
-    else
-      super
-    end
+  def serialize(amostra)
+    ActiveSupport::JSON.encode(amostra) unless amostra.nil?
   end
 
   def get_owner_name(id); end
@@ -36,5 +29,9 @@ class Amostra < ApplicationRecord
   def get_user_name(id); end
 
   def get_property_name(id); end
+
+  def load(value)
+    ActiveSupport::JSON.decode(value)
+  end
 
 end

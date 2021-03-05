@@ -16,8 +16,7 @@ class AnaliseAmostrasController < ApplicationController
   def create # Criar uma análise utilizando Background Job
     @analise_amostra
     @amostras = Amostra.where(params[:amostras])
-    binding.pry
-    @amostras_as_json = {}
+    
     @amostras.each do |amostra|
       amostra_as_json = Amostra.serialize_json(amostra)
       @amostras_as_json << amostra_as_json
@@ -72,4 +71,5 @@ class AnaliseAmostrasController < ApplicationController
   def get_amostras
     @amostras = Amostra.where(user_id: set_user.id)
   end
+  
 end
