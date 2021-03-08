@@ -53,7 +53,7 @@ class AnalisesController < ApplicationController
 
 	def set_property
 	  @_params_property = Property.find(params[:property])
-	  @property ||= @_params_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_params_property
+	  @property ||= @_params_property.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_params_property
 	end
 	
 	def set_properties
