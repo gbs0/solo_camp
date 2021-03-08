@@ -12,7 +12,7 @@ class AnalisesController < ApplicationController
 	end
 
 	def new
-	  
+		raise
 		  @analise = Analise.new
 		  @ownerships = set_ownerships.records.sort
 		  @properties = set_properties.records.sort
