@@ -12,15 +12,14 @@ class AnalisesController < ApplicationController
 	end
 
 	def new
-	  respond_to do |format|
+	  
 		  @analise = Analise.new
 		  @ownerships = set_ownerships.records.sort
 		  @properties = set_properties.records.sort
 		  @amostras   = set_amostras.records.sort
 		  @analise_amostra = AnaliseAmostra.new
 		  @insumos = set_insumos.sort
-		  format.js
-		end
+		  
 	end
 
 	def create

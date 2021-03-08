@@ -31,7 +31,6 @@
           <%= link_to 'Criar nova análise de solo', new_analise_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-lg btn-primary favorite-btn mr-4" }  %>
           <%#= link_to 'Nova Analise', {:url => {:controller => "analise", :action => "show_analise_form"}, :with => "'model[textfield]=' + $F('textfield_id')"} %>
 
-
             <div class="d-block align-self-flex-end mr-2">
               <% if @analises.present? %>
                 <%= render  "analises" %>
@@ -45,13 +44,21 @@
           <hr>
         </div>
 
-        <div class="properties ml-2 d-flex flex-column">
-          <% if @properties.present? %>
-            <%= render  "properties/property" %>
-          <% else %>
-            <h5>Nenhuma proprieadade cadastrada ainda.</h5>
-          <% end %>
+        <div class="container-analises ml-2 d-flex">
+          <div class="flex-column">
+            <% if @properties.present? %>
+              <%= render  "properties/property" %>
+            <% else %>
+              <h5>Nenhuma proprieadade cadastrada ainda.</h5>
+            <% end %>
+          </div>
+
+          <div class="new-analises">
+            <%= render 'analises/new' %>
+          </div>
         </div>
+
+        
       </div>
 
       <%#= render "analises/new" %>
