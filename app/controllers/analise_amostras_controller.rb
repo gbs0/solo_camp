@@ -16,15 +16,21 @@ class AnaliseAmostrasController < ApplicationController
   def create # Criar uma análise utilizando Background Job
     @analise_amostra
     @amostras = Amostra.where(params[:amostras])
-    
+    @analise_amostra.user = set_user.id
+
     @amostras.each do |amostra|
       amostra_as_json = Amostra.serialize_json(amostra)
-      @amostras_as_json << amostra_as_json
-      @analise_amostra.user = set_user.id
-      @analise_amostra.analise = @analise_amostra_params([:analise_id])
-      @analise_amostra.amostras = AmostraAnalise.append_json_attrs(amostra_as_json)
-      @analise_amostra.save
+      @analise_amostra.amostras = amostra_as_json
     end
+
+    @analise_amostra.save
+
+    rescue => e
+      @error = e.message
+    ensure
+      respond_to do |format|
+        format.html { redirect_to analises_path, flash: {sucess: "Analise de Solo Editada com sucesso!"}}
+      end
   end
 
   def update
