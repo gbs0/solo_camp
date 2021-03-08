@@ -12,10 +12,10 @@ class AnalisesController < ApplicationController
 	end
 
 	def new
-		raise
+
 		  @analise = Analise.new
 		  @ownerships = set_ownerships.records.sort
-		  @property = set_property.records.sort
+		  @property = set_property
 		  @amostras   = set_amostras.records.sort
 		  @analise_amostra = AnaliseAmostra.new
 		  @insumos = set_insumos.sort
@@ -52,7 +52,7 @@ class AnalisesController < ApplicationController
 	end
 
 	def set_property
-	  @_params_property = Property.find(params[:property])
+	  @_params_property = Property.where(id: params[:property])
 	  @property ||= @_params_property.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_params_property
 	end
 	
