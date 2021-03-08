@@ -9,6 +9,7 @@ class AnalisesController < ApplicationController
 	#   @analises = Analises.where(:id)
 		set_properties
 		set_ownerships
+		@analise = Analise.new
 	end
 
 	def new
@@ -16,7 +17,7 @@ class AnalisesController < ApplicationController
 		  @analise = Analise.new
 		  @ownerships = set_ownerships.records.sort
 		  @property = set_property
-		  @amostras   = set_amostras.records.sort
+		  @amostras = set_amostras.records.sort
 		  @analise_amostra = AnaliseAmostra.new
 		  @insumos = set_insumos.sort
 		  

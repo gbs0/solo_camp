@@ -19,10 +19,6 @@
                     <%= link_to ' Editar', edit_property_path(property), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
                     <%= link_to ' Excluir', property_path(property), method: :delete, data: {confirm: "Tem certeza que deseja deletar #{property.name}? Todas analises desta propriedade também serão deletadas. "}, remote: true, class: "btn btn-md btn-outline-secondary favorite-btn" %>
                 <% end %>
-                <% if current_user && current_page?(controller: 'analises', action: 'index') %>
-                    <%= link_to "Nova Analise de Solo", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
-                    
-                <% end %>
             </div>
             </div>
         </div>
