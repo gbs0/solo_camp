@@ -44,20 +44,15 @@
           <hr>
         </div>
 
-        <div class="container-analises ml-2 d-flex">
-          <div class="flex-column">
+        <div class="container-analises ml-2 d-flex flex-column">
+          <div>
             <% if @properties.present? %>
               <%= render  "properties/property" %>
             <% else %>
               <h5>Nenhuma proprieadade cadastrada ainda.</h5>
             <% end %>
           </div>
-
-          <div class="new-analises">
-            <%= render 'analises/new' %>
-          </div>
         </div>
-
         
       </div>
 
