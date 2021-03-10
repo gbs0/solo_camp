@@ -4,14 +4,10 @@ class AnalisesController < ApplicationController
 	helper_method :insumo
 
 	before_action :set_user
-	
+	before_action :set_properties, :set_ownerships, :set_amostras_for_properties, only: [:index]
+
 	def index
-	#   @analises = Analises.where(:id)
-		set_properties
-		set_ownerships
-		set_amostras_for_properties
 		@analise = Analise.new
-		
 	end
 
 	def new
@@ -77,9 +73,11 @@ class AnalisesController < ApplicationController
   end
 
   def set_amostras_for_properties
-	@_properties_amostras =  Amostra.joins(:property).where(property_id: @properties.map(&:id))
-	@amostras ||= @_properties_amostras.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_properties_amostras
+	_properties_amostras =  Amostra.joins(:property).where(property_id: @properties.map(&:id))
+	@amostras ||= _properties_amostras.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _properties_amostras.to_a
   end
+
+
 
   def set_insumos
 	@_user_insumos = Insumo.all.sort

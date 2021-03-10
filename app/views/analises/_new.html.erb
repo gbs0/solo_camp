@@ -28,8 +28,8 @@
         <% unless @amostras.present? %>
           <div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
         <% end %>  
-        <%= simple_fields_for :amostras do |a| %>
-          <%= a.input :amostras, label: false, collection: amostras %>
+        <%= simple_fields_for :amostra do |a| %>
+          <%= a.input :amostras, label: false, collection: amostras.map(&:id) %>
         <% end %>
       </div>
 
