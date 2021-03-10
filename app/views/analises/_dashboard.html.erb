@@ -16,13 +16,13 @@
                         <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
                         </button>    
                         <% if current_user && current_page?(controller: 'analises', action: 'index') %>
-                            <%= link_to "Nova Analise de Solo", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                            <%= link_to "Nova Analise de Solo (Hide and Show)", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                         <% end %>
                     </div>
                     </div>
                 </div>
             </div>
-            <div><%= render partial: "analises/new", locals: { property: property } %></div>  
+            <div><%= render partial: "analises/new", locals: { analise: analise, property: [property], amostras: [amostras] } %></div>  
         </div>
     </div>
 <% end %>

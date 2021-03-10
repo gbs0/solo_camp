@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for @analise do |f| %>
+  <%= simple_form_for analise do |f| %>
     
     <div class="">
       <strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
@@ -19,18 +19,23 @@
       <div class="form-row">
         <div class="col-md-12 mb-3">
           <div class="d-block col-md-12 p-0"><h6><strong>Propriedade que a Amostra foi coletada</strong></h6></div>
-          <%= f.input :property, label: false, error: 'Nome do Proprietário obrigatório.', collection: @property, include_blank: false %>
+          <%= f.input :property, label: false, error: 'Nome do Proprietário obrigatório.', collection: property, include_blank: false %>
         </div>
       </div>
       
       <div class="form-row text-center">
         <h5>Adicione as amostras que fazem parte desta Análise:</h5>
-        <%= render "analise_amostras/new" %>
+        <% unless @amostras.present? %>
+          <div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
+        <% end %>  
+        <%= simple_fields_for :amostras do |a| %>
+          <%= a.input :amostras, label: false, collection: amostras %>
+        <% end %>
       </div>
 
       <% if @amostras.present? %>
       <div class="modal-footer">
-        <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
+        <%= f.submit "Cadastrar Analise",  class: 'btn btn-primary' %>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       <% end %>

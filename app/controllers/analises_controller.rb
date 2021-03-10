@@ -9,18 +9,18 @@ class AnalisesController < ApplicationController
 	#   @analises = Analises.where(:id)
 		set_properties
 		set_ownerships
+		set_amostras_for_properties
 		@analise = Analise.new
+		
 	end
 
 	def new
-
-		  @analise = Analise.new
-		  @ownerships = set_ownerships.records.sort
-		  @property = set_property
-		  @amostras = set_amostras.records.sort
-		  @analise_amostra = AnaliseAmostra.new
-		  @insumos = set_insumos.sort
-		  
+		@analise = Analise.new
+		@ownerships = set_ownerships.records.sort
+		@property = set_property
+		@amostras = set_amostras.records.sort
+		@analise_amostra = AnaliseAmostra.new
+		@insumos = set_insumos.sort
 	end
 
 	def create
@@ -53,27 +53,32 @@ class AnalisesController < ApplicationController
 	end
 
 	def set_property
-	  @_params_property = Property.where(id: params[:property])
-	  @property ||= @_params_property.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_params_property
+	  _params_property = Property.where(id: params[:property])
+	  @property ||= _params_property.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _params_property
 	end
 	
 	def set_properties
-	  @_user_properties = Property.where(user_id: set_user.id)
-	  @properties ||= @_user_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_user_properties
+	  _user_properties = Property.where(user_id: set_user.id)
+	  @properties ||= _user_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _user_properties
 	end
 	
 
 	def set_ownerships
-	  @_user_ownerships = Ownership.where(user_id: set_user.id)
-	  @ownerships ||= @_user_ownerships.empty? ? "Você não tem nenhum proprietário cadastrado" : @_user_ownerships
+	  user_ownerships = Ownership.where(user_id: set_user.id)
+	  @ownerships ||= user_ownerships.empty? ? "Você não tem nenhum proprietário cadastrado" : user_ownerships
 	  #   p @_user_ownerships.class
 	  # 	@_user_ownerships
 	  #   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
 	end
 
-  def set_amostras
-	@_user_amostras = Amostra.where(user_id: set_user.id)
-	@_user_amostras
+  def set_amostras_for_user
+	# @_user_amostras = Amostra.where(user_id: set_user.id)
+	# @_user_amostras
+  end
+
+  def set_amostras_for_properties
+	@_properties_amostras =  Amostra.joins(:property).where(property_id: @properties.map(&:id))
+	@amostras ||= @_properties_amostras.empty? ?  "Você não tem nenhuma propriedade cadastrada" : @_properties_amostras
   end
 
   def set_insumos
