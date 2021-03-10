@@ -29,7 +29,7 @@
           <div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
         <% end %>  
         <%= simple_fields_for :amostra do |a| %>
-          <%= a.input :amostras, label: false, collection: amostras.map(&:id), class: "amostra-item-selector" %>
+          <%= a.input :amostra_id, label: false, as: :check_boxes, collection: amostras.map { |amostra| [amostra, amostra, { class: "amostra-item-selector" }]} %>
         <% end %>
       </div>
 
