@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ml-5" style="">
   <%= simple_form_for analise do |f| %>
     
     <div class="">
@@ -29,7 +29,7 @@
           <div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
         <% end %>  
         <%= simple_fields_for :amostra do |a| %>
-          <%= a.input :amostras, label: false, collection: amostras.map(&:id) %>
+          <%= a.input :amostras, label: false, collection: amostras.map(&:id), class: "amostra-item-selector" %>
         <% end %>
       </div>
 
