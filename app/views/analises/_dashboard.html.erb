@@ -16,7 +16,8 @@
                         <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
                         </button>    
                         <% if current_user && current_page?(controller: 'analises', action: 'index') %>
-                            <%= link_to "Nova Analise de Solo (Hide and Show)", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                            <%#= link_to "Nova Analise de Solo (Hide and Show)", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
+                            <button class="btn-toggle" type="button" data-element="#new_form">Mostrar / Esconder</button>
                         <% end %>
                     </div>
                     </div>
