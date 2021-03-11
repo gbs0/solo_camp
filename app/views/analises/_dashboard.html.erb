@@ -17,7 +17,7 @@
                         </button>    
                         <% if current_user && current_page?(controller: 'analises', action: 'index') %>
                             <%#= link_to "Nova Analise de Solo (Hide and Show)", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
-                            <button class="btn-toggle_<%= property.id %>" type="button" data-element="#new_form">Mostrar / Esconder</button>
+                            <button class="btn-toggle_<%= property.id %>" type="button" data-element="#new_form_<%= property.id%>">Mostrar / Esconder</button>
                         <% end %>
                     </div>
                     </div>
