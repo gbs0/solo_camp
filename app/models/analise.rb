@@ -8,4 +8,10 @@ class Analise < ApplicationRecord
     has_many :analise_amostras, dependent: :destroy
     
     # has_many :amostras, through: :analise_amostras, dependent: :destroy
+
+    before_create :get_insumo_name
+
+    def get_insumo_name
+      self.insumo_name = Insumo.get_name(self.insumo_id)
+    end
   end

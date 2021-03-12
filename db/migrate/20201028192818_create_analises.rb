@@ -8,6 +8,7 @@ class CreateAnalises < ActiveRecord::Migration[5.1]
       t.references :insumo,    foreign_key: true
       t.string :owner_name,    default: ""
       t.string :property_name, default: ""
+      t.string :insumo_name,   default: ""
       t.jsonb :coordinates,    default: {}
       
       t.timestamps

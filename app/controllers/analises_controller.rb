@@ -4,7 +4,7 @@ class AnalisesController < ApplicationController
 	helper_method :insumo
 
 	before_action :set_user
-	before_action :set_properties, :set_ownerships, :set_amostras_for_properties, only: [:index]
+	before_action :set_properties, :set_ownerships, :set_amostras_for_properties, :set_insumos, only: [:index]
 
 	def index
 		@analise = Analise.new
@@ -80,8 +80,8 @@ class AnalisesController < ApplicationController
 
 
   def set_insumos
-	@_user_insumos = Insumo.all.sort
-	@_user_insumos
+	_user_insumos = Insumo.all.sort
+	@insumos ||= _user_insumos.empty? ? ["Você não tem nenhum Insumo cadastrado"] : _user_insumos
   end
 
 end

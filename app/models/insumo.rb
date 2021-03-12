@@ -3,4 +3,8 @@ class Insumo < ApplicationRecord
   # has_many :analises, dependent: :destroy
   
   validates :name, presence: true
+
+  def self.get_name(id)
+    Insumo.find(id).name unless id.blank?
+  end
 end

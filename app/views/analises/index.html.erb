@@ -45,7 +45,7 @@
         <div class="container-analises ml-2 d-flex flex-column">
           <div>
             <% if @properties.present? %>
-              <%= render partial: "analises/dashboard", locals: { analise: @analise, properties: @properties, amostras: @amostras } %>
+              <%= render partial: "analises/dashboard", locals: { analise: @analise, properties: @properties, amostras: @amostras, insumos: @insumos } %>
             <% else %>
               <h5>Nenhuma proprieadade cadastrada ainda.</h5>
             <% end %>
