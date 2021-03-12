@@ -3,9 +3,9 @@
     
     <div class="">
       <strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <%# <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
-      </button>
+      </button> %>
     </div>
 
     <div class="">
@@ -29,14 +29,14 @@
           <div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
         <% end %>  
         <%= simple_fields_for :amostra do |a| %>
-          <%= a.input :amostras, label: false, as: :check_boxes, collection: amostras.select { |amostra| amostra.property.id.eql?(property.first.id) }, input_html: { class: "amostra-item-selector" } %>
+          <%= a.input :amostras, label: false, as: :check_boxes, collection: amostras.select { |amostra| amostra.property.id.eql?(property.first.id)}, input_html: { class: "amostra-item-selector" } %>
         <% end %>
       </div>
 
       <% if @amostras.present? %>
       <div class="modal-footer">
         <%= f.submit "Cadastrar Analise",  class: 'btn btn-primary' %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary btn-toggle_<%= property.first.id %>" data-dismiss="modal" data-element="#new_form_<%= property.first.id %>">Fechar</button>
       </div>
       <% end %>
   <% end %>
