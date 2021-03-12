@@ -1,4 +1,4 @@
-<div class="container ml-5 bg-light" style="display: none;" id="new_form_<%= property.map(&:id).first %>">
+<div class="container ml-3 bg-light col-lg-12" style="display: none;" id="new_form_<%= property.map(&:id).first %>">
   <%= simple_form_for analise do |f| %>
     
     <div class="p-4">
@@ -9,17 +9,21 @@
     </div>
 
     <div class="">
-      <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <div class="d-block col-md-12 p-0"><h6><strong>Nome do Proprietário da Análise</strong></h6></div>
+      <div class="d-flex">
+        <div class="col-md-6 mb-3">
+          <div class="d-block p-0"><h6><strong>Nome do Proprietário da Análise</strong></h6></div>
           <%= f.input :ownership, label: false, error: 'Nome do Proprietário obrigatório.', collection: @ownerships, include_blank: false %>
         </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <div class="d-block col-md-12 p-0"><h6><strong>Propriedade que a Amostra foi coletada</strong></h6></div>
+        <div class="col-md-6 mb-3">
+          <div class="d-block p-0"><h6><strong>Propriedade que a Amostra foi coletada</strong></h6></div>
           <%= f.input :property, label: false, error: 'Nome do Proprietário obrigatório.', collection: property, include_blank: false %>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="col-md-6 mb-3">
+          <div class="d-block p-0"><h6><strong>Insumo/Semente do Cultivo</strong></h6></div>
+          <%= f.input :insumo, label: false, error: 'Nome do Insumo obrigatório.', collection: insumos, include_blank: false %>
         </div>
       </div>
       
