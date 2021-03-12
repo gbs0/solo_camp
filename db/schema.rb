@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20210224220613) do
     t.bigint "insumo_id"
     t.string "owner_name", default: ""
     t.string "property_name", default: ""
+    t.string "insumo_name", default: ""
     t.jsonb "coordinates", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -143,10 +143,10 @@ case Rails.env
       
       puts "Creating AnaliseAmostras"
       amostra_one = Amostra.first
-      amostra_json_one = Amostra.serialize_json(amostra_one)
+      amostra_json_one = Amostra.serialize(amostra_one)
       
       amostra_two = Amostra.last
-      amostra_json_two = Amostra.serialize_json(amostra_two)
+      amostra_json_two = Amostra.serialize(amostra_two)
 
       @analise_amostras = AnaliseAmostra.find_or_create_by(
                         user_id: User.first.id,
