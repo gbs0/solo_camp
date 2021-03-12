@@ -62,13 +62,13 @@
 
 <script>
 <% @properties.each do |property| %>
-$(function(){
-        $(".btn-toggle_<%= property.id %>").click(function(e){
-            e.preventDefault();
-            el = $(this).data('element');
-            $(el).toggle();
-        });
-    });
+  $(function(){
+      $(".btn-toggle_<%= property.id %>").click(function(e){
+          e.preventDefault();
+          el = $(this).data('element');
+          $(el).toggle();
+      });
+  });
  <% end %> 
 </script>
 
