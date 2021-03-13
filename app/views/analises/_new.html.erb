@@ -1,8 +1,8 @@
 <div class="container ml-3 bg-light col-lg-12" style="display: none;" id="new_form_<%= property.map(&:id).first %>">
   <% if amostras.empty? %>
-		<div class="p-5 mt-3 d-flex flex-column">
+		<div class="p-5 mt-3 d-flex flex-column col-lg-5">
       <div class="mb-4"><h5><strong>Insira ao menos uma analise de solo para continuar:</strong></h5></div>
-			<div class="mb-3"><%= link_to "Cadastras nova amostra de solo", amostras_path, class: "btn btn-lg btn-outline-solo" %></div>
+			<div class="mb-3"><%= link_to "Cadastrar nova amostra de solo", amostras_path, class: "btn btn-lg btn-outline-solo" %></div>
 		</div>
   <% else %>
     <%= simple_form_for analise do |f| %>
@@ -38,7 +38,7 @@
 						<div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
 					<% end %>  
 					<%= simple_fields_for :amostra do |a| %>
-						<%= a.input :amostras, label: false, as: :check_boxes, collection: amostras.select { |amostra| amostra.property.id.eql?(property.first.id)}, input_html: { class: "amostra-item-selector" } %>
+						<%= a.input :amostras, label: false, as: :check_boxes, collection: amostras.select { |amostra| amostra.property.id.eql?(property.first.id) }, input_html: { class: "amostra-item-selector" } %>
 					<% end %>
 				</div>
 

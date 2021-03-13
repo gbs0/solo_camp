@@ -33,7 +33,7 @@ class PropertiesController < ApplicationController
 			@error = e.message
 		ensure
 			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionado com sucesso!"} }
+				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"} }
 			end
 	end
 
