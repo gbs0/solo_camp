@@ -50,18 +50,18 @@ class AnalisesController < ApplicationController
 
 	def set_property
 	  _params_property = Property.where(id: params[:property])
-	  @property ||= _params_property.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _params_property
+	  @property ||= _params_property.nil? ?  [] : _params_property
 	end
 	
 	def set_properties
 	  _user_properties = Property.where(user_id: set_user.id)
-	  @properties ||= _user_properties.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _user_properties
+	  @properties ||= _user_properties.nil? ? [] : _user_properties
 	end
 	
 
 	def set_ownerships
 	  user_ownerships = Ownership.where(user_id: set_user.id)
-	  @ownerships ||= user_ownerships.empty? ? "Você não tem nenhum proprietário cadastrado" : user_ownerships
+	  @ownerships ||= user_ownerships.nil? ? "Você não tem nenhum proprietário cadastrado" : user_ownerships
 	  #   p @_user_ownerships.class
 	  # 	@_user_ownerships
 	  #   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
@@ -73,15 +73,15 @@ class AnalisesController < ApplicationController
   end
 
   def set_amostras_for_properties
-	_properties_amostras =  Amostra.joins(:property).where(property_id: @properties.map(&:id))
-	@amostras ||= _properties_amostras.empty? ?  "Você não tem nenhuma propriedade cadastrada" : _properties_amostras.to_a
+	_properties_amostras =  Amostra.joins(:property).where(property_id: @properties.map(&:id)) unless @properties.nil?
+	@amostras ||= _properties_amostras.nil? ?  [] : _properties_amostras.to_a
   end
 
 
 
   def set_insumos
 	_user_insumos = Insumo.all.sort
-	@insumos ||= _user_insumos.empty? ? ["Você não tem nenhum Insumo cadastrado"] : _user_insumos
+	@insumos ||= _user_insumos.nil? ? ["Você não tem nenhum Insumo cadastrado"] : _user_insumos
   end
 
 end
