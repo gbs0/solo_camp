@@ -61,7 +61,7 @@ class AnalisesController < ApplicationController
 
 	def set_ownerships
 	  user_ownerships = Ownership.where(user_id: set_user.id)
-	  @ownerships ||= user_ownerships.nil? ? "Você não tem nenhum proprietário cadastrado" : user_ownerships
+	  @ownerships ||= user_ownerships.nil? ? [] : user_ownerships
 	  #   p @_user_ownerships.class
 	  # 	@_user_ownerships
 	  #   @_ownership ||= @_user_ownerships.nil? ?  "padastrado" : @_user_ownerships
@@ -81,7 +81,7 @@ class AnalisesController < ApplicationController
 
   def set_insumos
 	_user_insumos = Insumo.all.sort
-	@insumos ||= _user_insumos.nil? ? ["Você não tem nenhum Insumo cadastrado"] : _user_insumos
+	@insumos ||= _user_insumos.nil? ? [] : _user_insumos
   end
 
 end
