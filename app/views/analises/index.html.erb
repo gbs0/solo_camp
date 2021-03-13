@@ -33,7 +33,7 @@
               <% if @analises.present? %>
                 <%= render  "analises" %>
               <% else %>
-                <h5 style="margin: 0;">Nenhuma análise de solo cadastrada ainda.</h5>
+                <h5 style="margin: 0; right: 0;">Nenhuma análise de solo cadastrada ainda.</h5>
               <% end %>
             </div>
           </div>
@@ -47,7 +47,13 @@
             <% if @properties.present? %>
               <%= render partial: "analises/dashboard", locals: { analise: @analise, properties: @properties, amostras: @amostras, insumos: @insumos } %>
             <% else %>
-              <h5>Nenhuma proprieadade cadastrada ainda.</h5>
+              <div class="p-5 text-center">
+                <h5>Adicione algumas propriedadas para criar análises 🌽</h5>
+                <div class="d-flex flex-column">
+                  <spam>Nenhuma propriedade cadastrada</spam>
+                  <div class="container mt-3"><%= link_to "Cadastrar Nova propriedade", properties_path, class: "btn btn-md btn-primary" %></div>
+                </div>
+              </div>
             <% end %>
           </div>
         </div>
