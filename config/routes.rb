@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users
  
  #  devise_scope :user do
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
 
 	# root to: "devise/sessions#new"
 	
-
 	devise_scope :user do
 	  authenticated :user do
 	    root 'dashboard#index', as: :authenticated_root

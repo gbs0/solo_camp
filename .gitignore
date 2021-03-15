@@ -83,3 +83,8 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 node_modules
+
+# YML Enviroment file
+/config/local_env.yml
+/config/crendentials.yml
+

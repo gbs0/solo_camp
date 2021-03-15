@@ -90,6 +90,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -306,6 +307,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   colorize
   devise
+  dotenv
   foreman
   high_voltage
   jbuilder (~> 2.5)

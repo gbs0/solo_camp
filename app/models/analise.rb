@@ -14,4 +14,7 @@ class Analise < ApplicationRecord
     def get_insumo_name
       self.insumo_name = Insumo.get_name(self.insumo_id)
     end
+
+    def coordinates_to_place; end
+    
   end
