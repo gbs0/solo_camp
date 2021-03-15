@@ -67,17 +67,16 @@ case Rails.env
       
       puts "Creating Properties..."
       Property.find_or_create_by(id: 1,
-                        name: "Sitio Meu Sonho",
+                        name: "Fazenda Atalaia",
                         user_id: User.first.id,
+                        formatted_address: "Rodovia SP 352 - KM 137,5 - Alferes Rodrigues, Amparo - SP, 13900-000, Brazil",
                         address: "BR 116",
-                        city: "Machado",
-                        uf: "MG",
+                        city: "Campinas",
+                        uf: "SP",
                         cep: 1212439,
                         cep_prefix: nil,
                         total_area: 15,
                         field_area: 5,
-                        lat: 10,
-                        lng: 10
                       )
       puts "✅ Done Creating Properties!"
 

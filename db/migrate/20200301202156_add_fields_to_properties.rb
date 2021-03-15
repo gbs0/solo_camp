@@ -1,6 +1,7 @@
 class AddFieldsToProperties < ActiveRecord::Migration[5.1]
   def change
     add_column :properties, :address, :string
+    add_column :properties, :formatted_address, :string
     add_column :properties, :lng, :decimal, precision: 10, scale: 6
     add_column :properties, :lat, :decimal, precision: 10, scale: 6
     add_column :properties, :city, :string

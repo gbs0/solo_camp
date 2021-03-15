@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20210224220613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.string "formatted_address"
     t.decimal "lng", precision: 10, scale: 6
     t.decimal "lat", precision: 10, scale: 6
     t.string "city"

@@ -6,7 +6,7 @@ class Property < ApplicationRecord
 
   validate :name, :address, :city, :uf, :cep, :total_area
 
-  before_create :address_to_coordinates
+  before_create :location_to_coordinates
   # before_update :address_to_coord
   
   STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
@@ -16,17 +16,22 @@ class Property < ApplicationRecord
     self.lng = _lng
   end
 
-  def address_to_coordinates
+
+  def formatted_address(_address)
+    self.formatted_address = _address
+  end
+
+  def location_to_coordinates
     response = retrieve_places
     unless response['results'].blank?
-      coordinates = response["results"].map{ |coordinates| coordinates['geometry']['location']}
-      self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lgn']) unless coordinates.nil?
-      binding.pry
+      coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}
+      address = response["results"].map {|infos| infos["formatted_address"]}
+      self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lng']) unless coordinates.nil?
+      self.formatted_address(address[0])
     end 
   end
 
-  def formatted_address(_address);   end
-
+  
   def retrieve_places
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
     places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address},#{self.city}-#{self.uf}&key=#{places_key}"
