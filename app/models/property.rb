@@ -1,5 +1,4 @@
 class Property < ApplicationRecord
-  STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
   belongs_to :user, foreign_key: :user_id
   # belongs_to :laudo, foreign_key: :property
   has_many :amostras, dependent: :destroy
@@ -8,7 +7,9 @@ class Property < ApplicationRecord
   validate :name, :address, :city, :uf, :cep, :total_area
 
   before_create :address_to_coordinates
-  # before_update :address_to_coordinates
+  # before_update :address_to_coord
+  
+  STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
   
   def build_coordinates(_lat, _lng)
     self.lat = _lat
@@ -24,7 +25,7 @@ class Property < ApplicationRecord
     end 
   end
 
-  def formatted_address(_address); end
+  def formatted_address(_address);   end
 
   def retrieve_places
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
