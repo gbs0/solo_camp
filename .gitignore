@@ -87,4 +87,5 @@ node_modules
 # YML Enviroment file
 /config/local_env.yml
 /config/crendentials.yml
+/config/secrets.yml
 

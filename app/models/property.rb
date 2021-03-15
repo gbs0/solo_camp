@@ -37,4 +37,16 @@ class Property < ApplicationRecord
     response = Net::HTTP.get(uri)
     JSON.parse(response)
   end
+
+  def convert_coordinates(_coordinate)
+    _coordinate.to_f unless _coordinate.empty?   
+  end
+
+  def self.serialize_weather(attr = {})
+    _lat = attr['lat']
+    _lng = attr['lng']
+
+    # Call class method
+  end
+
 end

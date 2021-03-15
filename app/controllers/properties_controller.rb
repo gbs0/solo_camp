@@ -85,5 +85,9 @@ class PropertiesController < ApplicationController
 	def set_ownerships
 	  @ownerships = Ownership.where(user: @user)
 	end
+
+	def set_weather
+		OpenWeather.call(params[:_lat, :_lng])
+	end
 	
 end
