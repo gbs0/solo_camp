@@ -7,7 +7,7 @@ class Property < ApplicationRecord
   validate :name, :address, :city, :uf, :cep, :total_area
 
   before_create :location_to_coordinates
-  # before_update :address_to_coord
+  before_update :location_to_coordinates
   
   STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
   
@@ -15,7 +15,6 @@ class Property < ApplicationRecord
     self.lat = _lat
     self.lng = _lng
   end
-
 
   def formatted_address(_address)
     self.formatted_address = _address
@@ -30,7 +29,6 @@ class Property < ApplicationRecord
       self.formatted_address(address[0])
     end 
   end
-
   
   def retrieve_places
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
