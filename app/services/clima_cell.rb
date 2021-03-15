@@ -7,8 +7,6 @@ class ClimaCell < ApplicationService
     end
 
 
-    def call
-
-        
-    end
+    def call; end
+    
 end
