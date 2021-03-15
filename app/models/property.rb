@@ -17,16 +17,20 @@ class Property < ApplicationRecord
 
   def address_to_coordinates
     unless self.address.blank?
-      response = get_places_coordinates
+      response = get_infos_from_places
       coordinates = response["results"].map{ |coordinates| coordinates['geometry']['location']}
       self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lgn']) unless coordinates.nil?
       binding.pry
     end 
   end
 
-  def get_places_coordinates
+  def formatted_address
+
+  end
+
+  def get_infos_from_places
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
-    places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address}&key=#{places_key}"
+    places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address},#{self.city}-#{self.state}&key=#{places_key}"
     response = Net::HTTP.get(URI(@places_url))
     JSON.parse(response)
   end
