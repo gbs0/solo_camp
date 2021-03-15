@@ -17,7 +17,6 @@ class Property < ApplicationRecord
 
   def address_to_coordinates
     response = retrieve_places
-    binding.pry
     unless response['results'].blank?
       coordinates = response["results"].map{ |coordinates| coordinates['geometry']['location']}
       self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lgn']) unless coordinates.nil?
