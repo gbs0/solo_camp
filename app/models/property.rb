@@ -8,7 +8,7 @@ class Property < ApplicationRecord
   validate :name, :address, :city, :uf, :cep, :total_area
 
   before_create :address_to_coordinates
-  before_update :address_to_coordinates
+  # before_update :address_to_coordinates
   
   def build_coordinates(_lat, _lng)
     self.lat = _lat
@@ -16,22 +16,22 @@ class Property < ApplicationRecord
   end
 
   def address_to_coordinates
-    unless self.address.blank?
-      response = get_infos_from_places
+    response = retrieve_places
+    binding.pry
+    unless response['results'].blank?
       coordinates = response["results"].map{ |coordinates| coordinates['geometry']['location']}
       self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lgn']) unless coordinates.nil?
       binding.pry
     end 
   end
 
-  def formatted_address
+  def formatted_address(_address); end
 
-  end
-
-  def get_infos_from_places
+  def retrieve_places
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
-    places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address},#{self.city}-#{self.state}&key=#{places_key}"
-    response = Net::HTTP.get(URI(@places_url))
+    places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address},#{self.city}-#{self.uf}&key=#{places_key}"
+    uri = URI(places_url)
+    response = Net::HTTP.get(uri)
     JSON.parse(response)
   end
 end
