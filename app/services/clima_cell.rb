@@ -1,4 +1,4 @@
-class OpenWeather < ApplicationService
+class ClimaCell < ApplicationService
     attr_acessor :_lat, :lng
 
     def initialize(_lat, _lng)
@@ -8,6 +8,7 @@ class OpenWeather < ApplicationService
 
 
     def call
+
         
     end
 end
