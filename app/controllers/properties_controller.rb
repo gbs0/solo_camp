@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
-	before_action :set_properties, :set_weather, only: [:index]
+	before_action :set_properties, only: [:index]
 	
 	def index; end
 	
@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
 		@property.user_id = set_user.id
 
 		@property.save
-		
+
 		# if @property.save
 		#   flash[ :notice ] = "'#{@property.name}' salvo."
 		#   redirect_to properties_path, notice: "A nova propriedade foi adicionado"
