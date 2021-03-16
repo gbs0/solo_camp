@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, :set_weather, only: :show
+	before_action :set_property, only: :show
 
 	def index; end
 	
@@ -110,7 +110,6 @@ class PropertiesController < ApplicationController
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@timestamp = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)
-		binding.pry
 	end
 	
 end

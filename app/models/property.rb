@@ -16,7 +16,7 @@ class Property < ApplicationRecord
     self.lng = _lng
   end
 
-  def formatted_address(_address)
+  def format_address(_address)
     self.formatted_address = _address
   end
 
@@ -26,10 +26,10 @@ class Property < ApplicationRecord
       coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}
       address = response["results"].map {|infos| infos["formatted_address"]}
       self.build_coordinates(coordinates[0]['lat'], coordinates[0]['lng']) unless coordinates.nil?
-      self.formatted_address(address[0])
+      self.format_address(address[0])
     end 
   end
-  
+
   def self.convert_coordinates(_coordinate)
     _coordinate.to_f unless _coordinate.blank?   
   end
