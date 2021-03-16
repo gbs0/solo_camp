@@ -21,7 +21,6 @@ class Property < ApplicationRecord
   end
 
   def location_to_coordinates
-    binding.pry
     response = fetch_place
     unless response['results'].blank?
       coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}

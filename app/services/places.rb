@@ -2,9 +2,9 @@ class Places < ApplicationService
     attr_accessor :_name, :_address, :_city, :_uf
 
     def initialize(_name, _address, _city, _uf)
-        @name = _name
-        @address = _address
-        @city = _city
+        @name = I18n.transliterate(_name)
+        @address = I18n.transliterate(_address)
+        @city = I18n.transliterate(_city)
         @uf = _uf
         @key = Rails.application.secrets['places_key'] if Rails.env.development?
     end

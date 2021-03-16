@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
 	def create
 		@property = Property.new(property_params)
 		@property.user_id = set_user.id
-
+		
 		@property.save
 
 		# if @property.save
