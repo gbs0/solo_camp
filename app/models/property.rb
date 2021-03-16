@@ -21,7 +21,7 @@ class Property < ApplicationRecord
   end
 
   def location_to_coordinates
-    response = retrieve_places
+    response = fetch_place
     unless response['results'].blank?
       coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}
       address = response["results"].map {|infos| infos["formatted_address"]}
@@ -30,7 +30,7 @@ class Property < ApplicationRecord
     end 
   end
   
-  def retrieve_places
+  def fetch_place
     places_key = Rails.application.secrets['places_key'] if Rails.env.development?
     places_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{self.name},#{self.address},#{self.city}-#{self.uf}&key=#{places_key}"
     uri = URI(places_url)

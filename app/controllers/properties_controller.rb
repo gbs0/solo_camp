@@ -93,7 +93,6 @@ class PropertiesController < ApplicationController
 		@properties.each do |property|
 			_lat = Property.convert_coordinates(property.lat)
 			_lng = Property.convert_coordinates(property.lng)
-			binding.pry
 			@response = ClimaCell.call(_lat, _lng)
 		end
 	end

@@ -10,8 +10,7 @@ class ClimaCell < ApplicationService
 
     def call
         fetch = `curl --request GET --url \
-        'https://data.climacell.co/v4/timelines?location=#{@lat},#{lng}&fields=temperature&timesteps=1h&units=metric&apikey=#{@key}'`
+        'https://data.climacell.co/v4/timelines?location=#{@lat},#{lng}&fields=temperature&timesteps=current&units=metric&apikey=#{@key}'`
         JSON.parse(fetch)
     end
-    
 end
