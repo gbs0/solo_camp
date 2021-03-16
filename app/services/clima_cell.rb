@@ -13,4 +13,17 @@ class ClimaCell < ApplicationService
         'https://data.climacell.co/v4/timelines?location=#{@lat},#{lng}&fields=temperature&timesteps=current&units=metric&apikey=#{@key}'`
         JSON.parse(fetch)
     end
+
+    def self.threshold_timestamp(json)
+      json['data']['timelines'][0]['timestep'] unless json.nil?
+    end
+
+    def self.celsius(json)
+        json['data']['timelines'][0]['intervals'][0]['values']['temperature'] unless json.nil?
+    end
+
+    def self.timestamp(json)
+        json['data']['timelines'][0]['endTime'] unless json.nil?
+    end
+    
 end

@@ -6,14 +6,12 @@
         <%# end %>
         <div class="card-body">
             <p class="card-text"><strong><%= property.name %></strong></p>
-            <label><%= property.address%></label>
+            <label><%= property.address.concat(8) %></label>
             <label>CEP <%= property.cep %></label>
             <strong><p><i class="fa fa-map-marker-alt"></i> <%= property.city %> - <%= property.uf %></p></strong>
             <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
-                </button>    
+                <button type="button" class="btn btn-sm btn-outline-secondary"><i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares</button>    
                 <% if current_user && current_page?(controller: 'properties', action: 'index' ) %>
                     <%#= link_to "Editar", edit_property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                     <%= link_to ' Editar', edit_property_path(property), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>

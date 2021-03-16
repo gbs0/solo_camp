@@ -15,6 +15,7 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary">
                         <i class= "fa fa-ruler-combined"></i> <%= property.total_area %> hectares
                         </button>    
+                        <%= link_to "Detalhes", property_path(property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                         <% if current_user && current_page?(controller: 'analises', action: 'index') %>
                             <%#= link_to "Nova Analise de Solo (Hide and Show)", new_analise_path(property: property), class: "btn btn-md btn-outline-secondary favorite-btn" %>
                             <button class="btn-toggle_<%= property.id %> btn btn-md btn-outline-secondary favorite-btn" type="button" data-element="#new_form_<%= property.id%>">Criar Nova Análise</button>

@@ -2,6 +2,8 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
+	before_action :set_property, :set_weather, only: :show
+
 	def index; end
 	
 	def new
@@ -18,7 +20,7 @@ class PropertiesController < ApplicationController
 	def create
 		@property = Property.new(property_params)
 		@property.user_id = set_user.id
-		
+
 		@property.save
 
 		# if @property.save
@@ -74,6 +76,10 @@ class PropertiesController < ApplicationController
 	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :total_area )
 	end
 
+	def set_property
+	  @property = Property.find(params[:id])
+	end
+
 	def set_user
 	  @user = current_user
 	end
@@ -89,12 +95,22 @@ class PropertiesController < ApplicationController
 	  @properties = Property.where(user_id: @user.id)
 	end
 
-	def set_weather
+	def set_weather_in_properties
 		@properties.each do |property|
 			_lat = Property.convert_coordinates(property.lat)
 			_lng = Property.convert_coordinates(property.lng)
 			@response = ClimaCell.call(_lat, _lng)
 		end
+	end
+
+	def set_weather
+		_lat = Property.convert_coordinates(@property.lat)
+		_lng = Property.convert_coordinates(@property.lng)
+		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
+		@timestamp = ClimaCell.timestamp(@response)
+		@celsius = ClimaCell.celsius(@response)
+		binding.pry
 	end
 	
 end
