@@ -21,7 +21,7 @@ class Property < ApplicationRecord
   end
 
   def location_to_coordinates
-    response = fetch_place
+    response = Places.call(self.name, self.address, self.city, self.uf)
     unless response['results'].blank?
       coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}
       address = response["results"].map {|infos| infos["formatted_address"]}
@@ -30,10 +30,6 @@ class Property < ApplicationRecord
     end 
   end
   
-  def fetch_place
-    Places.call(self.name, self.address, self.city, self.uf)
-  end
-
   def self.convert_coordinates(_coordinate)
     _coordinate.to_f unless _coordinate.blank?   
   end
