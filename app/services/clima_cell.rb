@@ -1,5 +1,5 @@
 class ClimaCell < ApplicationService
-    attr_acessor :_lat, :lng
+    attr_accessor :_lat, :lng
 
     def initialize(_lat, _lng)
         @lat = _lat
@@ -8,11 +8,10 @@ class ClimaCell < ApplicationService
     end
 
 
-    def call 
+    def call
         fetch = `curl --request GET --url \
-        'https://data.climacell.co/v4/timelines?location=-73.98529171943665,40.75872069597532&fields=temperature&timesteps=1h&units=metric&apikey=#{@key}'`
-        response = JSON.parse(fetch)
-        binding.pry
+        'https://data.climacell.co/v4/timelines?location=#{@lat},#{lng}&fields=temperature&timesteps=1h&units=metric&apikey=#{@key}'`
+        JSON.parse(fetch)
     end
     
 end

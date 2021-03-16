@@ -38,8 +38,8 @@ class Property < ApplicationRecord
     JSON.parse(response)
   end
 
-  def convert_coordinates(_coordinate)
-    _coordinate.to_f unless _coordinate.empty?   
+  def self.convert_coordinates(_coordinate)
+    _coordinate.to_f unless _coordinate.blank?   
   end
 
   def self.serialize_weather(attr = {})

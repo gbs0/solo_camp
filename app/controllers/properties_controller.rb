@@ -1,9 +1,8 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
+	before_action :set_properties, :set_weather, only: [:index]
 	
-	def index
-		@properties = Property.where(user_id: @user.id) # Listar propriedades do current_user
-	end
+	def index; end
 	
 	def new
 	  respond_to do |format|
@@ -86,8 +85,17 @@ class PropertiesController < ApplicationController
 	  @ownerships = Ownership.where(user: @user)
 	end
 
+	def set_properties
+	  @properties = Property.where(user_id: @user.id)
+	end
+
 	def set_weather
-		OpenWeather.call(params[:_lat, :_lng])
+		@properties.each do |property|
+			_lat = Property.convert_coordinates(property.lat)
+			_lng = Property.convert_coordinates(property.lng)
+			binding.pry
+			@response = ClimaCell.call(_lat, _lng)
+		end
 	end
 	
 end
