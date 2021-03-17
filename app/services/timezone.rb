@@ -22,7 +22,7 @@ class Timezone < TimezoneService
       _date = Time.zone.parse(self.time)
       distance_of_time_in_words(Time.current - _date)
     end
-
+    
     def zone
       @zone
     end
