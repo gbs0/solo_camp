@@ -1,13 +1,20 @@
 class Timezone < ApplicationService
-    attr_reader :zone
+    attr_reader :zone, :time
 
-    def initialize
+    def initialize(timestamp)
+        @time = timestamp
         @zone = "America/Sao_Paulo"
     end
 
-    def self.timestamp(*args)
+    def timestamp
       Time.zone = self.zone
-      Time.zone.parse(args).strftime('%H :%M : %S')
+      Time.zone.parse(args.first).strftime('%H :%M :%S')
+    end
+
+    def datetime
+      binding.pry
+        Time.zone = self.zone
+        Time.zone.parse(@time).strftime('%D/%M/%Y on %H :%M :%S')
     end
 
     def zone

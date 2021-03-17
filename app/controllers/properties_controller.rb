@@ -109,15 +109,16 @@ class PropertiesController < ApplicationController
 		_lng = Property.convert_coordinates(@property.lng)
 		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
-		@timestamp = ClimaCell.timestamp(@response)
+		@end_time = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)
 		binding.pry
 	end
 	
 	def set_timezone
-		@timezone_location = Timezone.zone
-		@edited_in = Timezone.timestamp(@property.updated_at)
-		@created_in = Timezone.timestamp(@property.created_at)
+		@timezone_location = Timezone.zone(@property)
+		# @weather_timezone = Timezone.timestamp(@end_time) 
 		binding.pry
+		@updated_in = Timezone.datetime(@property.updated_at.to_s)
+		@created_in = Timezone.datetime(@property.created_at.to_s)
 	end
 end
