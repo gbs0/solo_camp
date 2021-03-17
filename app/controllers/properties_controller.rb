@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property,  :set_timezone, only: :show
+	before_action :set_property,  :set_weather, :set_timezone, only: :show
 	
 
 	def index; end
@@ -16,6 +16,13 @@ class PropertiesController < ApplicationController
 
   def edit
 	@property = Property.find(params[:id])
+	
+	# rescue => e
+	# 	@error = e.message
+	# ensure
+	# 	respond_to do |format|
+	# 		format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
+	# 	end 
   end
 
 	def create
@@ -111,14 +118,13 @@ class PropertiesController < ApplicationController
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@end_time = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)
-		binding.pry
 	end
 	
 	def set_timezone
 		@timezone_location = Timezone.zone(@property)
-		# @weather_timezone = Timezone.timestamp(@end_time) 
-		binding.pry
+		@weather_timezone = Timezone.timestamp(@end_time) unless @end_time.blank?
 		@updated_in = Timezone.datetime(@property.updated_at.to_s)
 		@created_in = Timezone.datetime(@property.created_at.to_s)
+		@updated_threshold = Timezone.date_threshold(@property.updated_at.to_s)
 	end
 end

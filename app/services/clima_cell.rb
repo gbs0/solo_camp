@@ -26,15 +26,15 @@ class ClimaCell < ApplicationService
     # end
 
     def self.threshold_timestamp(json)
-      json['data']['timelines'][0]['timestep'] unless json.nil?
+      json['data']['timelines'][0]['timestep'] unless json['message'].present?
     end
 
     def self.celsius(json)
-        json['data']['timelines'][0]['intervals'][0]['values']['temperature'] unless json.nil?
+        json['data']['timelines'][0]['intervals'][0]['values']['temperature'] unless json['message'].present?
     end
 
     def self.timestamp(json)
-        json['data']['timelines'][0]['endTime'] unless json.nil?
+        json['data']['timelines'][0]['endTime'] unless json['message'].present?
     end
     
 end

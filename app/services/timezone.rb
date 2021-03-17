@@ -1,5 +1,6 @@
-class Timezone < ApplicationService
+class Timezone < TimezoneService
     attr_reader :zone, :time
+    include ActionView::Helpers::DateHelper
 
     def initialize(timestamp)
         @time = timestamp
@@ -8,13 +9,18 @@ class Timezone < ApplicationService
 
     def timestamp
       Time.zone = self.zone
-      Time.zone.parse(args.first).strftime('%H :%M :%S')
+      Time.zone.parse(self.time).strftime('%H :%M :%S')
     end
 
     def datetime
-      binding.pry
         Time.zone = self.zone
-        Time.zone.parse(@time).strftime('%D/%M/%Y on %H :%M :%S')
+        Time.zone.parse(self.time).strftime('%D as %H:%M')
+    end
+
+    def date_threshold
+      Time.zone = self.zone
+      _date = Time.zone.parse(self.time)
+      distance_of_time_in_words(Time.current - _date)
     end
 
     def zone
