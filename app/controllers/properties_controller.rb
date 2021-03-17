@@ -2,7 +2,8 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, only: :show
+	before_action :set_property,  :set_timezone, only: :show
+	
 
 	def index; end
 	
@@ -110,6 +111,13 @@ class PropertiesController < ApplicationController
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@timestamp = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)
+		binding.pry
 	end
 	
+	def set_timezone
+		@timezone_location = Timezone.zone
+		@edited_in = Timezone.timestamp(@property.updated_at)
+		@created_in = Timezone.timestamp(@property.created_at)
+		binding.pry
+	end
 end
