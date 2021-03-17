@@ -1,4 +1,5 @@
 require 'colorize'
+
 namespace :health_status do
     desc "See Users db Status"
     task count_users: :environment do  
@@ -21,7 +22,7 @@ namespace :health_status do
     desc "See Properties db Status"
     task count_properties: :environment do  
       if Property.all.limit(5).empty?
-        puts "0 Propertys on Database".yellow 
+        puts "0 Properties on Database".yellow 
       else
         puts Property.all.limit(20000).count.to_s + " Properties on Database" 
       end
@@ -45,12 +46,21 @@ namespace :health_status do
       end
     end
 
-    desc "See AnaliseAmostras db Status" 
+    desc "See Analise db Status"
     task count_analises: :environment do
-      if AnaliseAmostra.all.limit(5).empty?
+      if Analise.all.limit(5).empty?
         puts "0 Analises on Database".yellow
+      else
+        puts Analise.all.limit(20000).count.to_s + " Analises on Database"
+      end
+    end
+    
+    desc "See AnaliseAmostras db Status" 
+    task count_analise_amostras: :environment do
+      if AnaliseAmostra.all.limit(5).empty?
+        puts "0 Analises Amostras on Database".yellow
       else  
-        puts AnaliseAmostra.all.limit(20000).count.to_s + " Analises on Database" 
+        puts AnaliseAmostra.all.limit(20000).count.to_s + " Analises Amostras on Database"
       end
     end
 
@@ -62,6 +72,7 @@ namespace :health_status do
       Rake::Task['health_status:count_amostras'].execute
       Rake::Task['health_status:count_insumos'].execute
       Rake::Task['health_status:count_analises'].execute
+      Rake::Task['health_status:count_analise_amostras'].execute
     end
   end
   

@@ -1,9 +1,11 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
+	before_action :set_properties, only: [:index]
+	
+	before_action :set_property,  :set_timezone, only: :show
+	
 
-	def index
-		@properties = Property.where(user_id: @user.id) # Listar propriedades do current_user
-	end
+	def index; end
 	
 	def new
 	  respond_to do |format|
@@ -21,7 +23,7 @@ class PropertiesController < ApplicationController
 		@property.user_id = set_user.id
 
 		@property.save
-		
+
 		# if @property.save
 		#   flash[ :notice ] = "'#{@property.name}' salvo."
 		#   redirect_to properties_path, notice: "A nova propriedade foi adicionado"
@@ -33,7 +35,7 @@ class PropertiesController < ApplicationController
 			@error = e.message
 		ensure
 			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionado com sucesso!"} }
+				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"} }
 			end
 	end
 
@@ -75,6 +77,10 @@ class PropertiesController < ApplicationController
 	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :total_area )
 	end
 
+	def set_property
+	  @property = Property.find(params[:id])
+	end
+
 	def set_user
 	  @user = current_user
 	end
@@ -86,4 +92,32 @@ class PropertiesController < ApplicationController
 	  @ownerships = Ownership.where(user: @user)
 	end
 
+	def set_properties
+	  @properties = Property.where(user_id: @user.id)
+	end
+
+	def set_weather_in_properties
+		@properties.each do |property|
+			_lat = Property.convert_coordinates(property.lat)
+			_lng = Property.convert_coordinates(property.lng)
+			@response = ClimaCell.call(_lat, _lng)
+		end
+	end
+
+	def set_weather
+		_lat = Property.convert_coordinates(@property.lat)
+		_lng = Property.convert_coordinates(@property.lng)
+		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
+		@timestamp = ClimaCell.timestamp(@response)
+		@celsius = ClimaCell.celsius(@response)
+		binding.pry
+	end
+	
+	def set_timezone
+		@timezone_location = Timezone.zone
+		@edited_in = Timezone.timestamp(@property.updated_at)
+		@created_in = Timezone.timestamp(@property.created_at)
+		binding.pry
+	end
 end

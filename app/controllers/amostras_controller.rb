@@ -23,8 +23,9 @@ class AmostrasController < ApplicationController
 
 	def create
 		@amostra = Amostra.new(amostra_params)
-		@amostra.user_id = @user.id
-		
+		@amostra.user_id = @user.id 
+		property_id = @amostra.property_id
+		@amostra.property_name = get_property_name(property_id)
 		
 		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
 		
@@ -35,11 +36,11 @@ class AmostrasController < ApplicationController
 		# 	flash[:alert] = "Erro, verifque os campos digitados"
 		# 	render :new
 		# end
-
+		
 		@amostra.save
 
 		rescue => e
-		@error = e.message
+		  @error = e.message
 		ensure
 			respond_to do |format|
 				format.html { redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}}
@@ -100,6 +101,10 @@ class AmostrasController < ApplicationController
 
 	def get_properties
 		@properties = Property.where(user_id: @user.id)
+	end
+
+	def get_property_name(id)
+	  Property.find(id).name
 	end
 
 end

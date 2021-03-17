@@ -1,38 +1,56 @@
-<%= simple_form_for analise, remote: true do |f| %>
-  
-  <div class="modal-header">
-    <strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+<div class="container ml-3 bg-light col-lg-12" style="display: none;" id="new_form_<%= property.map(&:id).first %>">
+  <% if amostras.empty? %>
+		<div class="p-5 mt-3 d-flex flex-column col-lg-5">
+      <div class="mb-4"><h5><strong>Insira ao menos uma analise de solo para continuar:</strong></h5></div>
+			<div class="mb-3"><%= link_to "Cadastrar nova amostra de solo", amostras_path, class: "btn btn-lg btn-outline-solo" %></div>
+		</div>
+  <% else %>
+    <%= simple_form_for analise do |f| %>
+			<div class="p-4">
+				<strong><h5 class="modal-title"><strong>Cadastrar nova análse de solo:</strong></h5></strong>
+				<%# <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button> %>
+			</div>
 
-  <div class="modal-body">
-    <div class="form-row">
-      <div class="col-md-12 mb-3">
-        <%= f.input :ownership, label: 'Nome do Proprietário da Análise', error: 'Nome do Proprietário obrigatório.', collection: ownerships, include_blank: false %>
-      </div>
-    </div>
-    
-    <div class="form-row">
-      <div class="col-md-12 mb-3">
-        <%= f.input :property, label: 'Propriedade da Amostra', error: 'Nome do Proprietário obrigatório.', collection: properties, include_blank: false %>
-      </div>
-    </div>
-    
-    <div class="form-row text-center">
-      <h5>Adicione as amostras que fazem parte desta Análise:</h5>
-      <%= render "analise_amostras/new" %>
-    </div>
+			<div class="">
+				<div class="d-flex">
+					<div class="col-md-6 mb-3">
+						<div class="d-block p-0"><h6><strong>Nome do Proprietário da Análise</strong></h6></div>
+						<%= f.input :ownership, label: false, error: 'Nome do Proprietário obrigatório.', collection: @ownerships, include_blank: false %>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="d-block p-0"><h6><strong>Propriedade que a Amostra foi coletada</strong></h6></div>
+						<%= f.input :property, label: false, error: 'Nome do Proprietário obrigatório.', collection: property, include_blank: false %>
+					</div>
+				</div>
 
-    <% if @amostras.present? %>
-    <div class="modal-footer">
-      <%= f.submit "Cadastrar Amostra",  class: 'btn btn-primary' %>
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
+				<div class="d-flex">
+					<div class="col-md-12 mb-3">
+						<div class="d-block p-0"><h6><strong>Insumo/Semente do Cultivo</strong></h6></div>
+						<%= f.input :insumo, label: false, error: 'Nome do Insumo obrigatório.', collection: insumos, include_blank: false %>
+					</div>
+				</div>
+				
+				<div class="form-row text-center">
+					<h5>Adicione as amostras que fazem parte desta Análise:</h5>
+					<% unless @amostras.present? %>
+						<div class="mb-4"><strong><spam>Nenhuma análise de solo cadastrada ainda 🚫</spam></strong></div>
+					<% end %>  
+					<%= simple_fields_for :amostra do |a| %>
+						<%= a.input :amostras, label: false, as: :check_boxes, collection: amostras.select { |amostra| amostra.property.id.eql?(property.first.id) }, input_html: { class: "amostra-item-selector" } %>
+					<% end %>
+				</div>
+
+				<% if @amostras.present? %>
+					<div class="modal-footer">
+						<%= f.submit "Cadastrar Analise",  class: 'btn btn-primary' %>
+						<button type="button" class="btn btn-secondary btn-toggle_<%= property.first.id %>" data-dismiss="modal" data-element="#new_form_<%= property.first.id %>">Fechar</button>
+					</div>
+      	<% end %>
     <% end %>
-<% end %>
-
+  <% end %>
+</div>
 <%#= REMOVER DA VALIDAÇÃO %>
 <%#= f.input :materia, placeholder: '00.0%', label: 'Nivel de Materia Orgânica'  %>
 <%#= f.input :valor, placeholder: '00.0%', label: 'Valor de Materia Orgânica'  %>
