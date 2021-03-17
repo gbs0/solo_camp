@@ -115,6 +115,7 @@ class PropertiesController < ApplicationController
 		_lat = Property.convert_coordinates(@property.lat)
 		_lng = Property.convert_coordinates(@property.lng)
 		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		puts @response
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@end_time = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)

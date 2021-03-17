@@ -22,6 +22,7 @@ class Property < ApplicationRecord
 
   def location_to_coordinates
     response = Places.call(self.name, self.address, self.city, self.uf)
+    puts response
     unless response['results'].blank?
       coordinates = response["results"].map{|coordinates| coordinates['geometry']['location']}
       address = response["results"].map {|infos| infos["formatted_address"]}
