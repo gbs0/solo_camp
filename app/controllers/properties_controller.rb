@@ -40,12 +40,16 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
-	  @property = Property.find(params[:id])
-	  _id = @property.id
-	  _amostras = Amostra.by_property(_id)
-	  @amostras_quantity = _amostras.count
-	  _ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
-	  @amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
+		_id = @property.id
+		_amostras = Amostra.by_property(_id)
+		@amostras_quantity = _amostras.count
+		_ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
+		@amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
+
+		_analises = Analise.by_property(_id)
+		@analises_quantity = _analises.count
+		_utlima_analise = _analises.last.updated_at unless _analises.empty?
+		@analise_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
 	end
 	
 	def update

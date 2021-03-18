@@ -30,7 +30,7 @@
   </a>
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><strong>Amostras Coletadas</strong></h5>
+      <h5 class="mb-1"><strong>Amostras de Solo coletadas</strong></h5>
       <small class="text-muted"><i class="fas fa-vial"></i></small>
     </div>
     <% if @amostras_quantity.zero? %>
@@ -45,11 +45,11 @@
       <h5 class="mb-1"><strong>Análises Geradas</strong></h5>
       <small class="text-muted"><i class="fab fa-pagelines"></i></i></small>
     </div>
-    <% if @amostras_quantity.zero? %>
+    <% if @analises_quantity.zero? %>
       <p class="mb-1">Nenhuma análise de solo disponivel nesta propriedade</p>
     <% else %>
-      <p class="mb-1">Total de amostras: <%= @amostras_quantity %></p>
-      <small class="text-muted">Ultima amostra cadastrada em: <%= @amostra_timestamp %></small>
+      <p class="mb-1">Total de amostras: <%= @analises_quantity %></p>
+      <small class="text-muted">Ultima análise gerada: <%= @analise_timestamp %></small>
     <% end %>
   </a>
 </div>
