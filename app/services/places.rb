@@ -10,9 +10,11 @@ class Places < ApplicationService
     end
 
     def call
-        place_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{@name},#{@address},#{@city}-#{@uf}&key=#{@key}"
-        uri = URI(place_url)
-        response = Net::HTTP.get(uri)
-        JSON.parse(response)
+        unless @key.nil      
+            place_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{@name},#{@address},#{@city}-#{@uf}&key=#{@key}"
+            uri = URI(place_url)
+            place_fetch = Net::HTTP.get(uri)
+            JSON.parse(place_fetch)
+        end
     end
 end

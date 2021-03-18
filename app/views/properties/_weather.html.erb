@@ -2,7 +2,7 @@
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><strong>Endereço</strong></h5>
-      <small></small>
+      <small class="text-muted"><i class="fas fa-map-marker-alt"></i></small>
     </div>
     <!--<p class="mb-1"><%#= property.address %> ou</p>-->
     <p class="mb-1"><%= property.formatted_address %></p>
@@ -11,18 +11,26 @@
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h4 class="mb-1"><strong>Clima e Temperatura</strong></h4>
-      <small class="text-muted"></small>
+      <small class="text-muted"><i class="fas fa-cloud"></i></small>
     </div>
     <% if @response.nil? || @response['message'].present? %>
       <p class="mb-1">Informações de meteorologia indisponiveis</p>
     <% else %>
-      <p class="mb-1"><%= celsius %>º Graus Celsius</p>
+      <p class="mb-1"><%= celsius %>º Celsius</p>
       <small class="text-muted">Hora da consulta: <%= @weather_timezone %></small>
     <% end %>
   </a>
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><strong>Ultimas Modificações</strong></h5>
+      <small class="text-muted"><%= @updated_threshold %> ago</small>
+    </div>
+    <p class="mb-1">Ultima modificação em: <%= @updated_in %></p>
+    <small class="text-muted">Criado em: <%= @created_in %></small>
+  </a>
+  <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><strong>Amostras Coletadas</strong></h5>
       <small class="text-muted"><%= @updated_threshold %> ago</small>
     </div>
     <p class="mb-1">Ultima modificação em: <%= @updated_in %></p>

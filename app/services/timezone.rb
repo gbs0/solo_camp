@@ -14,7 +14,7 @@ class Timezone < TimezoneService
 
     def datetime
         Time.zone = self.zone
-        Time.zone.parse(self.time).strftime('%D as %H:%M')
+        Time.zone.parse(self.time).strftime('%D às %H:%M')
     end
 
     def date_threshold
