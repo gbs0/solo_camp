@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property,  :set_weather, :set_timezone, only: :show
+	before_action :set_property, :set_weather, :set_timezone, only: :show
 	
 
 	def index; end
@@ -115,6 +115,7 @@ class PropertiesController < ApplicationController
 		_lat = Property.convert_coordinates(@property.lat)
 		_lng = Property.convert_coordinates(@property.lng)
 		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		binding.pry
 		puts @response
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@end_time = ClimaCell.timestamp(@response)

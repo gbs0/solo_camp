@@ -13,7 +13,7 @@
       <h4 class="mb-1"><strong>Clima e Temperatura</strong></h4>
       <small class="text-muted"></small>
     </div>
-    <% if @response['message'].present? %>
+    <% if @response.nil? || @response['message'].present? %>
       <p class="mb-1">Informações de meteorologia indisponiveis</p>
     <% else %>
       <p class="mb-1"><%= celsius %>º Graus Celsius</p>
