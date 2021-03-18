@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, :set_timezone, only: :show
+	before_action :set_property, :set_timestamps, only: :show
 	
 
 	def index; end
@@ -31,13 +31,6 @@ class PropertiesController < ApplicationController
 
 		@property.save
 
-		# if @property.save
-		#   flash[ :notice ] = "'#{@property.name}' salvo."
-		#   redirect_to properties_path, notice: "A nova propriedade foi adicionado"
-		# else
-		#   flash[:alert] = "Erro, verifque os campos digitados"
-		#   render :new
-		# end
 		rescue => e
 			@error = e.message
 		ensure
@@ -49,17 +42,16 @@ class PropertiesController < ApplicationController
 	def show
 	  @property = Property.find(params[:id])
 	  _id = @property.id
-	  @amostras = Amostra.where(property_id: _id)
+	  _amostras = Amostra.by_property(_id)
+	  @amostras_quantity = _amostras.count
+	  _ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
+	  @amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
 	end
 	
 	def update
 		@property = Property.find(params[:id])
 		@property.update!(property_params)
-		# if @property.update(property_params)
-		# 	redirect_to properties_path, notice: "Propriedade editada com sucesso."
-		# else
-		# 	flash[:alert] = "Propriedade não editada, verifique os erros."
-		# end
+		
 		rescue => e
 			@error = e.message
 		ensure
@@ -123,7 +115,7 @@ class PropertiesController < ApplicationController
 		@celsius = ClimaCell.celsius(@response)
 	end
 	
-	def set_timezone
+	def set_timestamps
 		@timezone_location = Timezone.zone(@property)
 		@weather_timezone = Timezone.timestamp(@end_time) unless @end_time.blank?
 		@updated_in = Timezone.datetime(@property.updated_at.to_s)

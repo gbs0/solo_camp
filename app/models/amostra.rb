@@ -20,6 +20,12 @@ class Amostra < ApplicationRecord
     # :zinco,
     # :carbono
 
+  scope :by_property, -> (_id) { where("property_id = ?", _id) }
+
+  scope :for_all_properties, -> (_property_id) do
+    joins(:amostras).where(property: { property_id: _property_id })
+  end
+
   def serialize(amostra)
     ActiveSupport::JSON.encode(amostra) unless amostra.nil?
   end

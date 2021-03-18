@@ -14,7 +14,7 @@
       <small class="text-muted"><i class="fas fa-cloud"></i></small>
     </div>
     <% if @response.nil? || @response['message'].present? %>
-      <p class="mb-1">Informações de meteorologia indisponiveis</p>
+      <p class="mb-1">Informações meteorológicas indisponiveis no momento <i class="fas fa-ban"></i></p>
     <% else %>
       <p class="mb-1"><%= celsius %>º Celsius</p>
       <small class="text-muted">Hora da consulta: <%= @weather_timezone %></small>
@@ -23,17 +23,33 @@
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><strong>Ultimas Modificações</strong></h5>
-      <small class="text-muted"><%= @updated_threshold %> ago</small>
+      <small class="text-muted"><i class="fas fa-edit"></i></small>
     </div>
-    <p class="mb-1">Ultima modificação em: <%= @updated_in %></p>
-    <small class="text-muted">Criado em: <%= @created_in %></small>
+    <p class="mb-1">Ultima edição: <%= @updated_threshold %> ago</p>
+    <small class="text-muted">Propriedade criada em: <%= @created_in %></small>
   </a>
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><strong>Amostras Coletadas</strong></h5>
-      <small class="text-muted"><%= @updated_threshold %> ago</small>
+      <small class="text-muted"><i class="fas fa-vial"></i></small>
     </div>
-    <p class="mb-1">Ultima modificação em: <%= @updated_in %></p>
-    <small class="text-muted">Criado em: <%= @created_in %></small>
+    <% if @amostras_quantity.zero? %>
+      <p class="mb-1">Nenhuma amostra cadastrada nesta propriedade</p>
+    <% else %>
+      <p class="mb-1">Total de amostras: <%= @amostras_quantity %></p>
+      <small class="text-muted">Ultima amostra cadastrada em: <%= @amostra_timestamp %></small>
+    <% end %>
+  </a>
+  <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><strong>Análises Geradas</strong></h5>
+      <small class="text-muted"><i class="fab fa-pagelines"></i></i></small>
+    </div>
+    <% if @amostras_quantity.zero? %>
+      <p class="mb-1">Nenhuma análise de solo disponivel nesta propriedade</p>
+    <% else %>
+      <p class="mb-1">Total de amostras: <%= @amostras_quantity %></p>
+      <small class="text-muted">Ultima amostra cadastrada em: <%= @amostra_timestamp %></small>
+    <% end %>
   </a>
 </div>

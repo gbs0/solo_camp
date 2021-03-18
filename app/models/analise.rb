@@ -11,6 +11,8 @@ class Analise < ApplicationRecord
 
     before_create :get_insumo_name
 
+    scope :by_property, -> (_id) { where("property_id = ?", _id) }
+
     def get_insumo_name
       self.insumo_name = Insumo.get_name(self.insumo_id)
     end
