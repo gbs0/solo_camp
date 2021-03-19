@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, :set_timestamps, only: :show
+	before_action :set_property, :set_weather, :set_timestamps, only: :show
 	
 
 	def index; end
@@ -44,12 +44,13 @@ class PropertiesController < ApplicationController
 		_amostras = Amostra.by_property(_id)
 		@amostras_quantity = _amostras.count
 		_ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
-		@amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
+		@amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s) unless _ultima_amostra.nil?
 
 		_analises = Analise.by_property(_id)
 		@analises_quantity = _analises.count
 		_utlima_analise = _analises.last.updated_at unless _analises.empty?
-		@analise_timestamp = Timezone.date_threshold(_ultima_amostra.to_s)
+		@analise_timestamp = Timezone.date_threshold(_utlima_analise.to_s) unless _utlima_analise.nil?
+		
 	end
 	
 	def update

@@ -2,8 +2,8 @@ class Timezone < TimezoneService
     attr_reader :zone, :time
     include ActionView::Helpers::DateHelper
 
-    def initialize(timestamp)
-        @time = timestamp
+    def initialize(time)
+        @time = time
         @zone = "America/Sao_Paulo"
     end
 
