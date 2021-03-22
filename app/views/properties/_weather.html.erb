@@ -2,7 +2,7 @@
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><strong>Endereço</strong></h5>
-      <small></small>
+      <small class="text-muted"><i class="fas fa-map-marker-alt"></i></small>
     </div>
     <!--<p class="mb-1"><%#= property.address %> ou</p>-->
     <p class="mb-1"><%= property.formatted_address %></p>
@@ -11,17 +11,45 @@
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h4 class="mb-1"><strong>Clima e Temperatura</strong></h4>
-      <small class="text-muted"></small>
+      <small class="text-muted"><i class="fas fa-cloud"></i></small>
     </div>
-    <p class="mb-1"><%= celsius %>º Graus Celsius</p>
-    <small class="text-muted">Hora da consulta: <%= timestamp %></small>
+    <% if @response.nil? || @response['message'].present? %>
+      <p class="mb-1">Informações meteorológicas indisponiveis no momento <i class="fas fa-ban"></i></p>
+    <% else %>
+      <p class="mb-1"><%= celsius %>º Celsius</p>
+      <small class="text-muted">Hora da consulta: <%= @weather_timezone %></small>
+    <% end %>
   </a>
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
+      <h5 class="mb-1"><strong>Ultimas Modificações</strong></h5>
+      <small class="text-muted"><i class="fas fa-edit"></i></small>
     </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
+    <p class="mb-1">Ultima edição: <%= @updated_threshold %> ago</p>
+    <small class="text-muted">Propriedade criada em: <%= @created_in %></small>
+  </a>
+  <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><strong>Amostras de Solo coletadas</strong></h5>
+      <small class="text-muted"><i class="fas fa-vial"></i></small>
+    </div>
+    <% if @amostras_quantity.zero? %>
+      <p class="mb-1">Nenhuma amostra cadastrada nesta propriedade</p>
+    <% else %>
+      <p class="mb-1">Total de amostras: <%= @amostras_quantity %></p>
+      <small class="text-muted">Ultima amostra cadastrada em: <%= @amostra_timestamp %></small>
+    <% end %>
+  </a>
+  <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><strong>Análises Geradas</strong></h5>
+      <small class="text-muted"><i class="fab fa-pagelines"></i></i></small>
+    </div>
+    <% if @analises_quantity.zero? %>
+      <p class="mb-1">Nenhuma análise de solo disponivel nesta propriedade</p>
+    <% else %>
+      <p class="mb-1">Total de amostras: <%= @analises_quantity %></p>
+      <small class="text-muted">Ultima análise gerada: <%= @analise_timestamp %></small>
+    <% end %>
   </a>
 </div>

@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property,  :set_timezone, only: :show
+	before_action :set_property, :set_weather, :set_timestamps, only: :show
 	
 
 	def index; end
@@ -16,6 +16,13 @@ class PropertiesController < ApplicationController
 
   def edit
 	@property = Property.find(params[:id])
+	
+	# rescue => e
+	# 	@error = e.message
+	# ensure
+	# 	respond_to do |format|
+	# 		format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
+	# 	end 
   end
 
 	def create
@@ -24,13 +31,6 @@ class PropertiesController < ApplicationController
 
 		@property.save
 
-		# if @property.save
-		#   flash[ :notice ] = "'#{@property.name}' salvo."
-		#   redirect_to properties_path, notice: "A nova propriedade foi adicionado"
-		# else
-		#   flash[:alert] = "Erro, verifque os campos digitados"
-		#   render :new
-		# end
 		rescue => e
 			@error = e.message
 		ensure
@@ -40,17 +40,23 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
-	  @property = Property.find(params[:id])
+		_id = @property.id
+		_amostras = Amostra.by_property(_id)
+		@amostras_quantity = _amostras.count
+		_ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
+		@amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s) unless _ultima_amostra.nil?
+
+		_analises = Analise.by_property(_id)
+		@analises_quantity = _analises.count
+		_utlima_analise = _analises.last.updated_at unless _analises.empty?
+		@analise_timestamp = Timezone.date_threshold(_utlima_analise.to_s) unless _utlima_analise.nil?
+		
 	end
 	
 	def update
 		@property = Property.find(params[:id])
 		@property.update!(property_params)
-		# if @property.update(property_params)
-		# 	redirect_to properties_path, notice: "Propriedade editada com sucesso."
-		# else
-		# 	flash[:alert] = "Propriedade não editada, verifique os erros."
-		# end
+		
 		rescue => e
 			@error = e.message
 		ensure
@@ -108,16 +114,17 @@ class PropertiesController < ApplicationController
 		_lat = Property.convert_coordinates(@property.lat)
 		_lng = Property.convert_coordinates(@property.lng)
 		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		puts @response
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
-		@timestamp = ClimaCell.timestamp(@response)
+		@end_time = ClimaCell.timestamp(@response)
 		@celsius = ClimaCell.celsius(@response)
-		binding.pry
 	end
 	
-	def set_timezone
-		@timezone_location = Timezone.zone
-		@edited_in = Timezone.timestamp(@property.updated_at)
-		@created_in = Timezone.timestamp(@property.created_at)
-		binding.pry
+	def set_timestamps
+		@timezone_location = Timezone.zone(@property)
+		@weather_timezone = Timezone.timestamp(@end_time) unless @end_time.blank?
+		@updated_in = Timezone.datetime(@property.updated_at.to_s)
+		@created_in = Timezone.datetime(@property.created_at.to_s)
+		@updated_threshold = Timezone.date_threshold(@property.updated_at.to_s)
 	end
 end
