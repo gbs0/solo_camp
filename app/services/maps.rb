@@ -13,6 +13,4 @@ class Maps < ApplicationService
             &markers=color:green%7Clabel:S%7C#{@lat},#{@lng}&key=#{@key}"
         end
     end
-    
-
 end
