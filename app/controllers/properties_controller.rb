@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, :set_timestamps, :show_map, only: :show
+	before_action :set_property, :set_weather, :set_timestamps, :show_map, only: :show
 	
 
 	def index; end
@@ -130,6 +130,6 @@ class PropertiesController < ApplicationController
 	end
 
 	def show_map
-	  @map = Maps.call(@lat, @lng)
+	  @map = Maps.call(@lat, @lng) unless @lat.blank?
 	end
 end

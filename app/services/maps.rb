@@ -9,10 +9,8 @@ class Maps < ApplicationService
 
     def call
         unless @key.nil?
-            place_url = "https://maps.googleapis.com/maps/api/staticmap?center=Y&zoom=13&size=600x300&maptype=roadmap
+            place_url = "https://maps.googleapis.com/maps/api/staticmap?center=#{@lat},#{@lng}&zoom=15&size=800x500&maptype=roadmap
             &markers=color:green%7Clabel:S%7C#{@lat},#{@lng}&key=#{@key}"
-            uri = URI(place_url)
-            place_fetch = Net::HTTP.get(uri)
         end
     end
     
