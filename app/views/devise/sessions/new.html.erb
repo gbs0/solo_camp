@@ -20,30 +20,7 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row register-form">
                             <div class="col-lg-12">
-                              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                                <div class="field form-label-group mt-3">
-                                  <label for="inputEmail">Endereço de Email</label>
-                                  <br/>
-                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-3", style: "width: 100%" %>
-                                </div>
-                                <div class="field form-label-group mt-3">
-                                  <label for="inputPassword">Senha</label>
-                                  <br/>
-                                  <%= f.password_field :password, autocomplete: "current-password",  class: "form-control mt-3", style: "width: 100%"%>
-                                </div>
-                                <% if devise_mapping.rememberable? %>
-                                  <div class="field custom-control custom-checkbox mb-3">
-                                    <%= f.check_box :remember_me %>
-                                    <%= f.label :remember_me %>
-                                  </div>
-                                <% end %>
-                                  <div class="actions">
-                                    <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
-                                  </div>
-                                <div class="text-center">
-                                    <%= render "devise/shared/links" %>
-                                </div>
-                              <% end %>
+                              <%= render 'form' %>
                             </div>
                         </div>
                     </div>
