@@ -3,3 +3,9 @@
 
     <%= render partial: 'weather', locals: {celsius: @celsius, threshold_timestamp: @threshold_timestamp, timestamp: @timestamp, property: @property }%>
 </div>
+
+<div class="map">
+ <img src="<%= @map %>">
+</div>
+
+<%= @map %>
