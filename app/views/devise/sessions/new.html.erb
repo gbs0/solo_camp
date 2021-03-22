@@ -24,12 +24,12 @@
                                 <div class="field form-label-group mt-3">
                                   <label for="inputEmail">Endereço de Email</label>
                                   <br/>
-                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-3", style: "width: 100%" %>
+                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-3", style: "width: 100%" %>
                                 </div>
                                 <div class="field form-label-group mt-3">
                                   <label for="inputPassword">Senha</label>
                                   <br/>
-                                  <%= f.password_field :password, autocomplete: "current-password",  class: "mt-3", style: "width: 100%"%>
+                                  <%= f.password_field :password, autocomplete: "current-password",  class: "form-control mt-3", style: "width: 100%"%>
                                 </div>
                                 <% if devise_mapping.rememberable? %>
                                   <div class="field custom-control custom-checkbox mb-3">
