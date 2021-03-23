@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
 	
-	before_action :set_property, :set_weather, :set_timestamps, only: :show
+	before_action :set_property, :set_timestamps, only: :show
 	
 
 	def index; end
