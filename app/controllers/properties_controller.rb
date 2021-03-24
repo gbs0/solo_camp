@@ -16,13 +16,6 @@ class PropertiesController < ApplicationController
 
   def edit
 	@property = Property.find(params[:id])
-	
-	# rescue => e
-	# 	@error = e.message
-	# ensure
-	# 	respond_to do |format|
-	# 		format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
-	# 	end 
   end
 
 	def create
@@ -53,14 +46,12 @@ class PropertiesController < ApplicationController
 	
 	def update
 		@property = Property.find(params[:id])
-		@property.update!(property_params)
 		
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
-			end
+		if @property.update(property_params)
+			redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"}
+		else
+			render 'edit', flash: {notice: "Verifique os erros"}
+		end
 	end
 
 	def destroy
