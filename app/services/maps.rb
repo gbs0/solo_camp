@@ -16,5 +16,4 @@ class Maps < ApplicationService
         end
     end
     
-
 end
