@@ -29,14 +29,12 @@ class PropertiesController < ApplicationController
 		@property = Property.new(property_params)
 		@property.user_id = set_user.id
 
-		@property.save
+		if @property.save
+			redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"}
+		else
+			render 'new', flash: {notice: "Verifique os erros"}
+		end
 
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"} }
-			end
 	end
 
 	def show
