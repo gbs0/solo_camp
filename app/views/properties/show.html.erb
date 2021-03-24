@@ -10,9 +10,9 @@
         <div class="d-flex justify-content-between">
             <%= link_to "Menu Propriedades", properties_path, class: "btn blt-md btn-outline-secondary" %>
             <%= link_to "Painel Hídrico", properties_path, class: "btn btn-md btn-outline-secondary" %>
-            <%= link_to property_path(@property), method: :delete, data: {confirm:"Tem certeza que deseja deletar esta propriedade?"}, class: "btn btn-md btn-outline-danger" do %>
+            <%= link_to property_path(@property), method: :delete, data: {confirm: "Tem certeza que deseja deletar esta propriedade?"}, class: "btn btn-md btn-outline-danger" do %>
                 <div class="text-center">
-                    <i class="fas fa-trash"></i><small class="ml-2">Excluir Propriedade?</small>
+                    <i class="fas fa-trash"></i><small class="ml-2">Excluir Propriedade</small>
                 </div>
           <% end %>
         </div>
