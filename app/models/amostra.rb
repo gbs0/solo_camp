@@ -9,20 +9,20 @@ class Amostra < ApplicationRecord
   # validates :peso, :profundidade
 
   # Validação de Acidez
-  validates :hidrogenio, :alcalinidade, presence: true
+  validates :hidrogenio, :alcalinidade, presence: true, numericality: true
 
   # Validação de Bases
-  validates :argila, :potassio, :magnesio, :calcario, presence: true # Greater than 0
+  validates :argila, :potassio, :magnesio, :calcario, presence: true, numericality: {greater_than: 0}
   
   # Validação de Enxofre
   validates :enxofre20, presence: true # min: 0, max: 20
   validates :enxofre40, presence: true # min: 21, max: 40
   
   # Validação de Micromutrientes
-  validates :boro, :cobre, :manganes, :zinco, presence: true
+  validates :boro, :cobre, :manganes, :zinco, presence: true, numericality: true
 
   # Validação de Carbono
-  validates :carbono, presence: true
+  validates :carbono, presence: true, numericality: true
 
   
   scope :by_user, -> (_id) { where("user_id = ?", _id) }
