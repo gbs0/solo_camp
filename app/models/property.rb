@@ -4,7 +4,7 @@ class Property < ApplicationRecord
   has_many :amostras, dependent: :destroy
   has_many :analises, dependent: :destroy
 
-  validate :name, :address, :city, :uf, :cep, :total_area
+  validates :name, :address, :city, :uf, :cep, :total_area, presence: true
 
   before_create :location_to_coordinates
   before_update :location_to_coordinates

@@ -5,7 +5,19 @@
     <p class="mb-4 p-2">Seção com os proprietários cadastrados no sistema.</p>
     <%= link_to ' Criar novo proprietário', new_ownership_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
   </section>
-  <div class="">
+  <div class="ml-2">
+    <div class="d-flex flex-row align-items-center justify-content-between ml-2">
+      <div class="align-self-flex-end mr-2">
+        <% if @ownerships.present? %>
+          <span><strong><%= @ownerships.count %> Proprietários cadastrados no total</strong></span>
+        <% else %>
+          <h5 style="margin: 0;">Nenhuma proprietário cadastrada ainda.</h5>
+        <% end %>
+      </div>
+    </div>
+    <hr/>
+  </div>
+  <div>
     <% if @ownerships.present? %>
       <% @ownerships.each do |ownership| %>
         <div class="card bg-light mb-3">

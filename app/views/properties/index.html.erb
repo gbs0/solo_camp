@@ -11,31 +11,42 @@
       </div>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex flex-row">
       <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column mt-4 col-lg-9">
+      <div id="properties-wrapper" class="mt-4 col-lg-9">
         <section class="jumbotron text-center ml-2">
           <div class="container">
             <div>
               <h1 class="jumbotron-heading">Propriedades Cadastradas</h1>
-              <p class="lead text-muted"></p>
-              <%= link_to ' Criar nova propriedade', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
+              <p class="lead text-muted">Seção com as propriedades cadastradas no sistema.</p>
+              <%#= link_to ' Criar nova propriedade', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-secondary favorite-btn" }  %>
             </div>
           </div>
         </section>
 
         <div class="ml-2">
-          <% if @properties.present? %>
-            <%= render  "properties" %>
-          <% else %>
-            <div class="p-5 text-center"><h5>Nenhuma propriedade cadastrada.</h5></div>
-          <% end %>
+          <div class="ml-2">
+            <div class="d-flex flex-row align-items-center justify-content-between ml-2">
+              <%= link_to ' Criar nova propriedade', new_property_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-md btn-outline-primary favorite-btn" }  %>
+              <div class="align-self-flex-end mr-2">
+                <% if @properties.present? %>
+                  <span><strong><%= @properties.count %> Propriedades cadastras no total</strong></span>
+                <% else %>
+                  <h5 style="margin: 0;">Nenhuma propriedade cadastrada ainda.</h5>
+                <% end %>
+              </div>
+            </div>
+            <hr/>
+            <% if @properties.present? %>
+              <%= render  "properties" %>
+            <% else %>
+              <div class="p-5 text-center"><h5>Nenhuma propriedade cadastrada.</h5></div>
+            <% end %>
+          </div>
         </div>
       </div>
 
       <div class="mt-4">
         <%= render "ownerships/index" %>
       </div>
-    </div>
-
-  </div>
+</div>
