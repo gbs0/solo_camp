@@ -1,51 +1,41 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
-	
+  
 	before_action :set_property, :set_weather, :set_timestamps, :show_map, only: :show
 	
-
 	def index; end
 	
 	def new
-	  respond_to do |format|
-		@property = Property.new
-		format.js
-	  end	
+		respond_to do |format|
+			@property = Property.new
+			format.js
+		end	
 	end
-
-  def edit
-	@property = Property.find(params[:id])
 	
-	# rescue => e
-	# 	@error = e.message
-	# ensure
-	# 	respond_to do |format|
-	# 		format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
-	# 	end 
-  end
-
+	def edit
+		@property = Property.find(params[:id])
+	end
+	
 	def create
 		@property = Property.new(property_params)
 		@property.user_id = set_user.id
-
-		@property.save
-
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"} }
-			end
+		
+		if @property.save
+			redirect_to properties_path, flash: {success: "Propriedade adicionada com sucesso!"}
+		else
+			render 'new', flash: {notice: "Verifique os erros"}
+		end
+		
 	end
-
+	
 	def show
 		_id = @property.id
 		_amostras = Amostra.by_property(_id)
 		@amostras_quantity = _amostras.count
 		_ultima_amostra = _amostras.last.updated_at unless _amostras.empty?
 		@amostra_timestamp = Timezone.date_threshold(_ultima_amostra.to_s) unless _ultima_amostra.nil?
-
+		
 		_analises = Analise.by_property(_id)
 		@analises_quantity = _analises.count
 		_utlima_analise = _analises.last.updated_at unless _analises.empty?
@@ -55,56 +45,51 @@ class PropertiesController < ApplicationController
 	
 	def update
 		@property = Property.find(params[:id])
-		@property.update!(property_params)
 		
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"} }
-			end
+		if @property.update(property_params)
+			redirect_to properties_path, flash: {success: "Propriedade editada com sucesso!"}
+		else
+			render 'edit', flash: {notice: "Verifique os erros"}
+		end
 	end
-
+	
 	def destroy
 		@property = Property.find(params[:id])
-		@property.destroy!
 		
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to properties_path, flash: {success: "Propriedade excluida com sucesso!"} }
-			end
+		if @property.destroy
+			redirect_to properties_path, flash: {success: "Propriedade excluida com sucesso!"}
+		end
+		
 	end
-
+	
 	private
 	
 	def property_params
-	  params.require(:property).permit( :name, :address, :city, :uf, :cep, :total_area )
+		params.require(:property).permit( :name, :address, :city, :uf, :cep, :total_area )
 	end
-
+	
 	def set_property
 	  @property = Property.find(params[:id])
 	  @lat = @property.lat
 	  @lng = @property.lng
 	  @formatted_address = @property.formatted_address
 	end
-
+	
 	def set_user
-	  @user = current_user
+		@user = current_user
 	end
-	 
+	
 	def get_name_params
 	end
-
+	
 	def set_ownerships
-	  @ownerships = Ownership.where(user: @user)
+		@ownerships = Ownership.where(user: @user)
 	end
-
+	
 	def set_properties
-	  @properties = Property.where(user_id: @user.id)
+		@properties = Property.where(user_id: @user.id)
 	end
-
+	
 	def set_weather_in_properties
 		@properties.each do |property|
 			_lat = Property.convert_coordinates(property.lat)
@@ -112,7 +97,7 @@ class PropertiesController < ApplicationController
 			@response = ClimaCell.call(_lat, _lng)
 		end
 	end
-
+	
 	def set_weather
 		@response = ClimaCell.call(@lat, @lng) unless @lat.blank? && @lng.blank?
 		puts @response

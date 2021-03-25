@@ -20,7 +20,6 @@
             <p class="lead text-muted">
               Nesta página, você tem acesso as suas amostras de solo que foram coletadas e cadastradas.
             </p>
-            
           </div>
         </div>
       </section>
@@ -30,7 +29,7 @@
         <%= link_to ' Criar nova amostra de solo', new_amostra_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-lg btn-outline-primary favorite-btn" }  %>
         <div class="align-self-flex-end mr-2">
           <% if @amostras.present? %>
-            <span><strong><%= @amostras.count %> Amostras cadastras no total ✾</strong></span>
+            <span><strong><%= @amostras.count %> Amostras cadastras no total</strong></span>
           <% else %>
             <h5 style="margin: 0;">Nenhuma amostra cadastrada ainda.</h5>
           <% end %>
