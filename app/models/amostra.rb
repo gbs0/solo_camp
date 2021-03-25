@@ -3,14 +3,14 @@ class Amostra < ApplicationRecord
   belongs_to :property, foreign_key: :property_id
 
   # Validação do Banco
-  validates :user_id, :property_id
+  # validates :user_id, :property_id, presence: true 
   
   # Validação de propriedades fisicas
   # validates :peso, :profundidade
 
   # Validação de Acidez
   validates :hidrogenio, :alcalinidade, presence: true
-  
+
   # Validação de Bases
   validates :argila, :potassio, :magnesio, :calcario, presence: true # Greater than 0
   
@@ -22,8 +22,9 @@ class Amostra < ApplicationRecord
   validates :boro, :cobre, :manganes, :zinco, presence: true
 
   # Validação de Carbono
-  validades :carbono, presence: true
+  validates :carbono, presence: true
 
+  
   scope :by_user, -> (_id) { where("user_id = ?", _id) }
   
   scope :by_property, -> (_id) { where("property_id = ?", _id) }
