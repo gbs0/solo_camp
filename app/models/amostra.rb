@@ -2,23 +2,34 @@ class Amostra < ApplicationRecord
   belongs_to :user, foreign_key: :user_id
   belongs_to :property, foreign_key: :property_id
 
-  validate :user_id,
-    :property_id
-    # :profundidade,
-    # :peso,
-    # :argila,
-    # :potassio,
-    # :calcario,
-    # :magnesio,
-    # :enxofre20,
-    # :enxofre40,
-    # :hidrogenio,
-    # :alcalinidade,
-    # :boro,
-    # :cobre,
-    # :manganes,
-    # :zinco,
-    # :carbono
+  # Validação do Banco
+  validates :user_id, :property_id
+  
+  # Validação de propriedades fisicas
+  # validates :peso, :profundidade
+  # validates :argila, :potassio
+  #   :calcario,
+  #   :magnesio,
+
+  #   :hidrogenio,
+  #   :alcalinidade,
+  #   presence: true
+    # :profundidade
+    # :peso
+  
+  # Validação de propriedades fisicas
+  
+  validates :argila, 
+  # Validação de Enxofre
+  validates :enxofre20, presence: true # min: 0, max: 20
+  validates :enxofre40, presence: true # min: 21, max: 40
+  
+  # Validação de Micromutriente
+  validates :boro, :cobre, :manganes, :zinco, presence: true
+
+  # Validação de Carbono
+  validades :carbono, presence: true
+
   scope :by_user, -> (_id) { where("user_id = ?", _id) }
   
   scope :by_property, -> (_id) { where("property_id = ?", _id) }
