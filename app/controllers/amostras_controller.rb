@@ -1,10 +1,9 @@
 class AmostrasController < ApplicationController
 	before_action :set_user
+	before_action :set_user_samples, only: [:index]
 	before_action :get_ownerships, :get_properties, only: [:new, :create, :edit]
 
-	def index
-		@amostras = Amostra.where(user_id: @user.id) # Listar propriedades do current_user
-	end
+	def index; end
 
 	def new
 		respond_to do |format|
@@ -27,56 +26,34 @@ class AmostrasController < ApplicationController
 		property_id = @amostra.property_id
 		@amostra.property_name = get_property_name(property_id)
 		
-		# @property.ownership => Igual ao ownership assimilado no params.require( :name, :last_name)
-		
-		# if @amostra.save
-		# 	flash[ :notice ] = "'#{@amostra}' salvo."
-		# 	redirect_to amostras_path, notice: "A nova amostra foi adicionada"
-		# else
-		# 	flash[:alert] = "Erro, verifque os campos digitados"
-		# 	render :new
-		# end
-		
-		@amostra.save
-
-		rescue => e
-		  @error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}}
-			end
+		if @amostra.save
+			redirect_to amostras_path, flash: {success: 'Amostra cadastrada com Sucesso!'}
+		else
+			flash[:alert] = "Erro, verifque os campos digitados"
+			render :new
+		end
 	end
 
 	def update
 		@amostra = Amostra.find(params[:id])
 		
-		@amostra.update!(amostra_params)
-		
-		rescue => e
-			@error = e.message
-		ensure
-		respond_to do |format|
-			format.html { redirect_to amostras_path, flash: {success: 'Amostra Editada com Sucesso!'}}	
+		if @amostra.update!(amostra_params)
+			redirect_to amostras_path, flash: {success: 'Amostra editada com Sucesso!'}
+		else
+			flash[:alert] = "Erro, verifque os valores digitados"
+			render :new
 		end
 	end
 
 	def destroy
 		@amostra = Amostra.find(params[:id])
-		@amostra.destroy!
+		
 
-		# if @amostra.destroy
-		# 	redirect_to amostras_path
-		# 	flash[:notice] = "Amostra destruida com sucesso!"
-		# else
-		# 	flash[:alert] = "Erro, tente novamente"
-		# end
-
-		rescue => e
-			@error = e.message
-		ensure
-			respond_to do |format|
-				format.html { redirect_to amostras_path, flash: {success: 'Amostra excluida com Sucesso!'}}
-			end
+		if @amostra.destroy
+			redirect_to amostras_path, flash: {success: 'Amostra excluida com Sucesso!'}
+		else
+			flash[:alert] = "Erro, tente novamente"
+		end
 	end
 
 	private
@@ -105,6 +82,10 @@ class AmostrasController < ApplicationController
 
 	def get_property_name(id)
 	  Property.find(id).name
+	end
+
+	def set_user_samples
+		@amostras = Amostra.by_user(@user.id) 
 	end
 
 end

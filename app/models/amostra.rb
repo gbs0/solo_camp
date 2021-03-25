@@ -19,7 +19,8 @@ class Amostra < ApplicationRecord
     # :manganes,
     # :zinco,
     # :carbono
-
+  scope :by_user, -> (_id) { where("user_id = ?", _id) }
+  
   scope :by_property, -> (_id) { where("property_id = ?", _id) }
 
   scope :for_all_properties, -> (_property_id) do
