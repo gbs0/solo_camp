@@ -1,9 +1,8 @@
 class PropertiesController < ApplicationController
 	before_action :set_user, :set_ownerships
 	before_action :set_properties, only: [:index]
-	
-	before_action :set_property, :set_timestamps, only: :show
-	
+  
+	before_action :set_property, :set_weather, :set_timestamps, :show_map, only: :show
 	
 	def index; end
 	
@@ -70,7 +69,10 @@ class PropertiesController < ApplicationController
 	end
 	
 	def set_property
-		@property = Property.find(params[:id])
+	  @property = Property.find(params[:id])
+	  @lat = @property.lat
+	  @lng = @property.lng
+	  @formatted_address = @property.formatted_address
 	end
 	
 	def set_user
@@ -97,9 +99,7 @@ class PropertiesController < ApplicationController
 	end
 	
 	def set_weather
-		_lat = Property.convert_coordinates(@property.lat)
-		_lng = Property.convert_coordinates(@property.lng)
-		@response = ClimaCell.call(_lat, _lng) unless _lat.blank? && _lng.blank?
+		@response = ClimaCell.call(@lat, @lng) unless @lat.blank? && @lng.blank?
 		puts @response
 		@threshold_timestamp = ClimaCell.threshold_timestamp(@response)
 		@end_time = ClimaCell.timestamp(@response)
@@ -112,5 +112,9 @@ class PropertiesController < ApplicationController
 		@updated_in = Timezone.datetime(@property.updated_at.to_s)
 		@created_in = Timezone.datetime(@property.created_at.to_s)
 		@updated_threshold = Timezone.date_threshold(@property.updated_at.to_s)
+	end
+
+	def show_map
+	  @map = Maps.call(@lat, @lng) unless @lat.blank?
 	end
 end
