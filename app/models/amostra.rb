@@ -7,24 +7,18 @@ class Amostra < ApplicationRecord
   
   # Validação de propriedades fisicas
   # validates :peso, :profundidade
-  # validates :argila, :potassio
-  #   :calcario,
-  #   :magnesio,
 
-  #   :hidrogenio,
-  #   :alcalinidade,
-  #   presence: true
-    # :profundidade
-    # :peso
+  # Validação de Acidez
+  validates :hidrogenio, :alcalinidade, presence: true
   
-  # Validação de propriedades fisicas
+  # Validação de Bases
+  validates :argila, :potassio, :magnesio, :calcario, presence: true # Greater than 0
   
-  validates :argila, 
   # Validação de Enxofre
   validates :enxofre20, presence: true # min: 0, max: 20
   validates :enxofre40, presence: true # min: 21, max: 40
   
-  # Validação de Micromutriente
+  # Validação de Micromutrientes
   validates :boro, :cobre, :manganes, :zinco, presence: true
 
   # Validação de Carbono
