@@ -21,13 +21,19 @@ class AnalisesController < ApplicationController
 
 	def create
 	  @analise = Analise.new
+	
+	  @analise.user_id = current_user.id
 	  @analise.solicitante = current_user.name
-	  
+
 	  @analise.property_id = Property.by_id(analise_params[:property]).id
 	  @analise.property_name = Property.by_id(analise_params[:property]).name
 	  
 	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership]).id
-	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership]).name
+	  @analise.owner_name = Ownership.by_id(analise_params[:ownership]).name
+
+	  @analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
+	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
+
 	  _amostras = amostras_params
 	  raise
 	  

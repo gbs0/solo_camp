@@ -4,6 +4,8 @@ class Insumo < ApplicationRecord
   
   validates :name, presence: true
 
+  scope :by_id, -> (_id) { find_by("id = ?", _id) }
+  
   def self.get_name(id)
     Insumo.find(id).name unless id.blank?
   end
