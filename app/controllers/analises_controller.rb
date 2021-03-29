@@ -20,12 +20,12 @@ class AnalisesController < ApplicationController
 	end
 
 	def create
-	  raise
-	  @analise = Analise.new(analise_params)
+	  @analise = Analise.new
 	  @analise.solicitante = current_user.name
-	  @analise.property_id = Property.by_id(analise_params[:property_id])
-	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership_id])
-	  _amostras = analise_params[:amostra]
+	  @analise.property_id = Property.by_id(analise_params[:property])
+	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership])
+	  _amostras = amostras_params
+	  raise
 	  
       
 	  if @analise.save
