@@ -15,15 +15,18 @@ class AnalisesController < ApplicationController
 		@ownerships = set_ownerships.records.sort
 		@property = set_property
 		@amostras = set_amostras.records.sort
-		@analise_amostra = AnaliseAmostra.new
 		@insumos = set_insumos.sort
+		# @analise_amostra = AnaliseAmostra.new
 	end
 
 	def create
-	  # @c_user =  User.find params[:id]
+	  raise
 	  @analise = Analise.new(analise_params)
 	  @analise.solicitante = current_user.name
-	  @analise.sku_user = current_user.ids.first
+	  @analise.property_id = Property.by_id(analise_params[:property_id])
+	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership_id])
+	#   _amostras = analise_params[:amostra]
+	  
       
 	  if @analise.save
 			flash[ :notice ] = "'#{@analise}' salvo."
@@ -41,7 +44,11 @@ class AnalisesController < ApplicationController
 	private
 	
 	def analise_params
-		params.require(:analise).permit( :name, :amostras_id, :property_id )
+		params.require(:analise).permit( :property, :ownership, :insumo )
+	end
+
+	def breadcrumb_params
+		params.permit( :utf8,  :amostras, amostra: [:amostras] )
 	end
 
 	def set_user
