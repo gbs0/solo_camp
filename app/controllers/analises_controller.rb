@@ -25,7 +25,7 @@ class AnalisesController < ApplicationController
 	  @analise.solicitante = current_user.name
 	  @analise.property_id = Property.by_id(analise_params[:property_id])
 	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership_id])
-	#   _amostras = analise_params[:amostra]
+	  _amostras = analise_params[:amostra]
 	  
       
 	  if @analise.save
@@ -47,8 +47,12 @@ class AnalisesController < ApplicationController
 		params.require(:analise).permit( :property, :ownership, :insumo )
 	end
 
+	def amostras_params
+		params[:amostra][:amostras]
+	end
+
 	def breadcrumb_params
-		params.permit( :utf8,  :amostras, amostra: [:amostras] )
+		params.permit( :utf8 )
 	end
 
 	def set_user
