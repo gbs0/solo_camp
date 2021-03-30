@@ -35,8 +35,9 @@ class AnalisesController < ApplicationController
 	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
 
 	  _amostras = amostras_params
-	  raise
+	  @amostras = Amostra.by_id(_amostras)
 	  
+	  raise
       
 	  if @analise.save
 			flash[ :notice ] = "'#{@analise}' salvo."
