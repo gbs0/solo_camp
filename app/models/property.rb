@@ -11,6 +11,8 @@ class Property < ApplicationRecord
   
   STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
   
+  scope :by_id, -> (_id) { find_by("id = ?", _id) }
+  
   def build_coordinates(_lat, _lng)
     self.lat = _lat
     self.lng = _lng
