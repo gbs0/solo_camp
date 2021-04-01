@@ -34,8 +34,8 @@ class AnalisesController < ApplicationController
 	  @analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
 	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
 
-	  _amostras = amostras_params.reject(&:empty?)
-	  @amostras = Amostra.by_ids(_amostras)
+	  _amostras = amostras_params.reject!(&:empty?)
+	  @amostras_reference = Amostra.by_ids(_amostras)
 	  
 	  raise
       
