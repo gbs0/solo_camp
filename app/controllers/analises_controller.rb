@@ -24,7 +24,7 @@ class AnalisesController < ApplicationController
 	
 	  @analise.user_id = current_user.id
 	  @analise.solicitante = current_user.name
-
+	 
 	  @analise.property_id = Property.by_id(analise_params[:property]).id
 	  @analise.property_name = Property.by_id(analise_params[:property]).name
 	  
@@ -34,8 +34,8 @@ class AnalisesController < ApplicationController
 	  @analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
 	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
 
-	  _amostras = amostras_params
-	  @amostras = Amostra.by_id(_amostras)
+	  _amostras = amostras_params.reject(&:empty?)
+	  @amostras = Amostra.by_ids(_amostras)
 	  
 	  raise
       

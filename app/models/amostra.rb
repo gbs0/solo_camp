@@ -33,8 +33,8 @@ class Amostra < ApplicationRecord
     joins(:amostras).where(property: { property_id: _property_id })
   end
 
-  scope :by_id, -> (_ids) do
-    joins(:amostras).where(id: _ids)
+  scope :by_ids, -> (_ids) do
+    find("id = ?", _ids)
   end
 
   def serialize(amostra)
