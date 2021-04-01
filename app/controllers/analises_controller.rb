@@ -22,23 +22,13 @@ class AnalisesController < ApplicationController
 	def create
 	  @analise = Analise.new
 	
-	  @analise.user_id = current_user.id
-	  @analise.solicitante = current_user.name
-	 
-	  @analise.property_id = Property.by_id(analise_params[:property]).id
-	  @analise.property_name = Property.by_id(analise_params[:property]).name
-	  
-	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership]).id
-	  @analise.owner_name = Ownership.by_id(analise_params[:ownership]).name
-
-	  @analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
-	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
+	  build_analise_attrs
 
 	  _amostras = amostras_params.reject!(&:empty?)
 	  @amostras_reference = Amostra.by_ids(_amostras)
-	  
+	
 	  raise
-      
+	  
 	  if @analise.save
 			flash[ :notice ] = "'#{@analise}' salvo."
 			redirect_to laudos_path, notice: "Seu laudo foi adicionado"
@@ -104,6 +94,20 @@ class AnalisesController < ApplicationController
   def set_insumos
 	_user_insumos = Insumo.all.sort
 	@insumos ||= _user_insumos.nil? ? [] : _user_insumos
+  end
+
+  def build_analise_attrs
+	@analise.user_id = current_user.id
+	@analise.solicitante = current_user.name
+	
+	@analise.property_id = Property.by_id(analise_params[:property]).id
+	@analise.property_name = Property.by_id(analise_params[:property]).name
+	
+	@analise.ownership_id = Ownership.by_id(analise_params[:ownership]).id
+	@analise.owner_name = Ownership.by_id(analise_params[:ownership]).name
+
+	@analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
+	@analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
   end
 
 end
