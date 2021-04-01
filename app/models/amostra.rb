@@ -33,9 +33,7 @@ class Amostra < ApplicationRecord
     joins(:amostras).where(property: { property_id: _property_id })
   end
 
-  scope :by_ids, -> (_ids) do
-    find("id = ?", _ids)
-  end
+  scope :by_ids, -> (_ids) { where(id: _ids) }
 
   def serialize(amostra)
     ActiveSupport::JSON.encode(amostra) unless amostra.nil?
