@@ -35,7 +35,7 @@ class Amostra < ApplicationRecord
 
   scope :by_ids, -> (_ids) { where(id: _ids) }
 
-  def serialize(amostra)
+  def self.serialize(amostra)
     ActiveSupport::JSON.encode(amostra) unless amostra.nil?
   end
 
@@ -45,7 +45,7 @@ class Amostra < ApplicationRecord
 
   def get_property_name(id); end
 
-  def load(value)
+  def self.load(value)
     ActiveSupport::JSON.decode(value)
   end
 

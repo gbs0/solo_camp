@@ -141,8 +141,8 @@ case Rails.env
       puts "✅ Done Creating Analises..."
       
       puts "Creating AnaliseAmostras"
-      amostra_one = Amostra.first
-      amostra_json_one = Amostra.serialize(amostra_one)
+      # amostra_one = Amostra.first
+      # amostra_json_one = Amostra.serialize(amostra_one)
       
       amostra_two = Amostra.last
       amostra_json_two = Amostra.serialize(amostra_two)
@@ -150,7 +150,8 @@ case Rails.env
       @analise_amostras = AnaliseAmostra.find_or_create_by(
                         user_id: User.first.id,
                         analise_id: Analise.first.id,
-                        amostras: amostra_json_two
+                        amostras: amostra_json_two,
+                        insumo: Analise.first.insumo_name
                       )
       @analise_amostras.save!
       puts "✅ Done Creating AnaliseAmostras..."

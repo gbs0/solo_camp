@@ -23,4 +23,17 @@ class Analise < ApplicationRecord
 
     def coordinates_to_place; end
     
+    def build(attr = {})
+      self.user_id = attr[:user_id]
+      self.solicitante = attr[:name]
+      
+      self.property_id = Property.by_id(attr[:property]).id
+      self.property_name = Property.by_id(attr[:property]).name
+      
+      self.ownership_id = Ownership.by_id(attr[:ownership]).id
+      self.owner_name = Ownership.by_id(attr[:ownership]).name
+
+      self.insumo_id = Insumo.by_id(attr[:insumo]).id
+      self.insumo_name = Insumo.by_id(attr[:insumo]).name
+    end
   end
