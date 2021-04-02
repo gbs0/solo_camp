@@ -28,14 +28,9 @@ class AnalisesController < ApplicationController
 			ownership: 	analise_params[:ownership],
 			insumo: 	analise_params[:insumo]
 	  })
-	  
-	  @analise.save
-
-	  digest_amostras(@analise)
-
-	  raise
-	  
+	  	  
 	  if @analise.save
+			digest_amostras(@analise)
 			# CreateAnaliseAmostraJob.perform_later(current_user, @analise, @amostras_reference)  # <- The job is queued
 			flash[ :notice ] = "'#{@analise}' salvo."
 			redirect_to laudos_path, notice: "Seu laudo foi adicionado"
