@@ -1,6 +1,6 @@
 require 'colorize'
 
-namespace :health_status do
+namespace :db_status do
     desc "See Users db Status"
     task count_users: :environment do  
       if User.all.limit(5).empty?
@@ -66,13 +66,13 @@ namespace :health_status do
 
     desc "Run All status"
     task all: :environment do
-      Rake::Task['health_status:count_users'].execute
-      Rake::Task['health_status:count_ownerships'].execute 
-      Rake::Task['health_status:count_properties'].execute
-      Rake::Task['health_status:count_amostras'].execute
-      Rake::Task['health_status:count_insumos'].execute
-      Rake::Task['health_status:count_analises'].execute
-      Rake::Task['health_status:count_analise_amostras'].execute
+      Rake::Task['db_status:count_users'].execute
+      Rake::Task['db_status:count_ownerships'].execute 
+      Rake::Task['db_status:count_properties'].execute
+      Rake::Task['db_status:count_amostras'].execute
+      Rake::Task['db_status:count_insumos'].execute
+      Rake::Task['db_status:count_analises'].execute
+      Rake::Task['db_status:count_analise_amostras'].execute
     end
   end
   
