@@ -12,7 +12,7 @@ class AnaliseAmostra < ApplicationRecord
   def build(attr = {})
     self.user_id = attr[:current_user].id
     self.analise_id = attr[:analise].id  
-    self.amostras = Amostra.serialize(attr[:amostras])
+    self.amostra = Amostra.serialize(attr[:amostras])
     self.insumo = attr[:insumo]
   end
 end

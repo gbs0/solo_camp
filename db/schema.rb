@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20210224220613) do
   create_table "analise_amostras", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "analise_id"
-    t.jsonb "amostras", default: {}, null: false
+    t.jsonb "amostra", default: {}, null: false
     t.string "insumo", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
