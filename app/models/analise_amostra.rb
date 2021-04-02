@@ -8,4 +8,11 @@ class AnaliseAmostra < ApplicationRecord
     # listing.vendors[:hd].merge!({ foo: 'bar' })
     listing.save! # throws no exceptions in the log
   end
+
+  def build(attr = {})
+    self.user_id = attr[:current_user].id
+    self.analise_id = attr[:analise].id  
+    self.amostras = Amostra.serialize(attr[:amostras])
+    self.insumo = attr[:insumo]
+  end
 end

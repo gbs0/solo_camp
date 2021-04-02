@@ -16,7 +16,6 @@ class AnalisesController < ApplicationController
 		@property = set_property
 		@amostras = set_amostras.records.sort
 		@insumos = set_insumos.sort
-		# @analise_amostra = AnaliseAmostra.new
 	end
 
 	def create
@@ -29,20 +28,10 @@ class AnalisesController < ApplicationController
 			ownership: 	analise_params[:ownership],
 			insumo: 	analise_params[:insumo]
 	  })
-
-	  _amostras = amostras_params.reject!(&:empty?)
-	  @amostras_reference = Amostra.by_ids(_amostras)
 	  
-	  @analise.save?
+	  @analise.save
 
-	  @amostras_reference.each do |amostra|
-		analise_de_campo = AnaliseAmostra.new
-		analise_de_campo.build({
-			user_id: current_user.id,
-			analise_id: @analise.id, amostras: Amostra.serialize(amostra),
-			insumo: amostra.insumo_name
-		})
-	  end
+	  digest_amostras(@analise)
 
 	  raise
 	  
@@ -110,4 +99,21 @@ class AnalisesController < ApplicationController
 	_user_insumos = Insumo.all.sort
 	@insumos ||= _user_insumos.nil? ? [] : _user_insumos
   end
+
+  def digest_amostras(analise)
+	_amostras = amostras_params.reject!(&:empty?)
+	@amostras_reference = Amostra.by_ids(_amostras)
+
+	@amostras_reference.each do |amostra|
+	  analise_de_campo = AnaliseAmostra.new
+	  analise_de_campo.build({
+		current_user: current_user,
+		analise: analise, 
+		amostras: amostra,
+		insumo: analise.insumo_name
+	  })
+	  analise_de_campo.save
+	end
+  end
+
 end
