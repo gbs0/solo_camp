@@ -24,7 +24,6 @@ class Amostra < ApplicationRecord
   # Validação de Carbono
   validates :carbono, presence: true, numericality: true
 
-  
   scope :by_user, -> (_id) { where("user_id = ?", _id) }
   
   scope :by_property, -> (_id) { where("property_id = ?", _id) }
