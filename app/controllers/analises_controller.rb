@@ -8,6 +8,7 @@ class AnalisesController < ApplicationController
 
 	def index
 		@analise = Analise.new
+		@analises = Analise.by_user(@user.id)
 	end
 
 	def new
@@ -16,32 +17,24 @@ class AnalisesController < ApplicationController
 		@property = set_property
 		@amostras = set_amostras.records.sort
 		@insumos = set_insumos.sort
-		# @analise_amostra = AnaliseAmostra.new
 	end
 
 	def create
-	  @analise = Analise.new
+	  @analise = Analise.new 
 	
-	  @analise.user_id = current_user.id
-	  @analise.solicitante = current_user.name
-
-	  @analise.property_id = Property.by_id(analise_params[:property]).id
-	  @analise.property_name = Property.by_id(analise_params[:property]).name
-	  
-	  @analise.ownership_id = Ownership.by_id(analise_params[:ownership]).id
-	  @analise.owner_name = Ownership.by_id(analise_params[:ownership]).name
-
-	  @analise.insumo_id = Insumo.by_id(analise_params[:insumo]).id
-	  @analise.insumo_name = Insumo.by_id(analise_params[:insumo]).name
-
-	  _amostras = amostras_params
-	  @amostras = Amostra.by_id(_amostras)
-	  
-	  raise
-      
+	  @analise.build({
+		  	user_id: 	current_user.id, 
+			name: 		current_user.name, 
+			property: 	analise_params[:property],
+			ownership: 	analise_params[:ownership],
+			insumo: 	analise_params[:insumo]
+	  })
+	  	  
 	  if @analise.save
+			digest_amostras(@analise)
+			# CreateAnaliseAmostraJob.perform_later(current_user, @analise, @amostras_reference)  # <- The job is queued
 			flash[ :notice ] = "'#{@analise}' salvo."
-			redirect_to laudos_path, notice: "Seu laudo foi adicionado"
+			redirect_to analises_path, notice: "Sua análise foi adicionada"
 	  else
 			flash[:alert] = "Erro, verifque os campos digitados"
 			render :new
@@ -80,7 +73,6 @@ class AnalisesController < ApplicationController
 	  @properties ||= _user_properties.nil? ? [] : _user_properties
 	end
 	
-
 	def set_ownerships
 	  user_ownerships = Ownership.where(user_id: set_user.id)
 	  @ownerships ||= user_ownerships.nil? ? [] : user_ownerships
@@ -99,11 +91,25 @@ class AnalisesController < ApplicationController
 	@amostras ||= _properties_amostras.nil? ?  [] : _properties_amostras.to_a
   end
 
-
-
   def set_insumos
 	_user_insumos = Insumo.all.sort
 	@insumos ||= _user_insumos.nil? ? [] : _user_insumos
+  end
+
+  def digest_amostras(analise)
+	_amostras = amostras_params.reject!(&:empty?)
+	@amostras_reference = Amostra.by_ids(_amostras)
+
+	@amostras_reference.each do |amostra|
+	  analise_de_campo = AnaliseAmostra.new
+	  analise_de_campo.build({
+		current_user: current_user,
+		analise: analise, 
+		amostras: amostra,
+		insumo: analise.insumo_name
+	  })
+	  analise_de_campo.save
+	end
   end
 
 end

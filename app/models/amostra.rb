@@ -24,7 +24,6 @@ class Amostra < ApplicationRecord
   # Validação de Carbono
   validates :carbono, presence: true, numericality: true
 
-  
   scope :by_user, -> (_id) { where("user_id = ?", _id) }
   
   scope :by_property, -> (_id) { where("property_id = ?", _id) }
@@ -33,11 +32,9 @@ class Amostra < ApplicationRecord
     joins(:amostras).where(property: { property_id: _property_id })
   end
 
-  scope :by_id, -> (_ids) do
-    { where("id = ?", _ids) }
-  end
+  scope :by_ids, -> (_ids) { where(id: _ids) }
 
-  def serialize(amostra)
+  def self.serialize(amostra)
     ActiveSupport::JSON.encode(amostra) unless amostra.nil?
   end
 
@@ -47,7 +44,7 @@ class Amostra < ApplicationRecord
 
   def get_property_name(id); end
 
-  def load(value)
+  def self.load(value)
     ActiveSupport::JSON.decode(value)
   end
 

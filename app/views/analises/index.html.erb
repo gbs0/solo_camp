@@ -27,11 +27,11 @@
         </section>
         
         <div class="ml-2">
-          <div class="d-flex flex-row align-items-center justify-content-between ml-2">
+          <div class="d-flex flex-row justify-content-end ml-2">
           <%#= link_to 'Criar nova análise de solo', new_analise_path, class: "btn btn-lg btn-primary favorite-btn mr-4"  %>
-            <div class="d-block align-self-flex-end mr-2">
+            <div class="align-self-flex-end mr-2">
               <% if @analises.present? %>
-                <%= render  "analises" %>
+                <span><%= AnalisesHelper::count(@analises) %> Amostra(s) de solo cadastradas</span>
               <% else %>
                 <h5 style="margin: 0; right: 0;">Nenhuma análise de solo cadastrada ainda.</h5>
               <% end %>
@@ -48,9 +48,8 @@
               <%= render partial: "analises/dashboard", locals: { analise: @analise, properties: @properties, amostras: @amostras, insumos: @insumos } %>
             <% else %>
               <div class="p-5 text-center">
-                <h5>Adicione algumas propriedadas para criar análises 🌽</h5>
+                <h5>Adicione algumas propriedades para criar análises 🌽</h5>
                 <div class="d-flex flex-column">
-                  <spam>Nenhuma propriedade cadastrada</spam>
                   <div class="container mt-3"><%= link_to "Cadastrar Nova propriedade", properties_path, class: "btn btn-md btn-primary" %></div>
                 </div>
               </div>

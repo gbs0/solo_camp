@@ -141,16 +141,14 @@ case Rails.env
       puts "✅ Done Creating Analises..."
       
       puts "Creating AnaliseAmostras"
-      amostra_one = Amostra.first
-      amostra_json_one = Amostra.serialize(amostra_one)
-      
       amostra_two = Amostra.last
       amostra_json_two = Amostra.serialize(amostra_two)
 
       @analise_amostras = AnaliseAmostra.find_or_create_by(
                         user_id: User.first.id,
                         analise_id: Analise.first.id,
-                        amostras: amostra_json_two
+                        amostra: amostra_json_two,
+                        insumo: Analise.first.insumo_name
                       )
       @analise_amostras.save!
       puts "✅ Done Creating AnaliseAmostras..."
@@ -163,5 +161,28 @@ case Rails.env
     
     when 'production'
     # production seeds (if any) ...
+      file = "https://gist.githubusercontent.com/gbs0/ae18f4b60c816a917ac5887a9fb3e23c/raw/ae618c87a8736bc96cb76b6e2b1b591f517e825a/seed_solocamp.yml"
+      sample = YAML.load(open(file).read)
 
+      puts 'Creating Insumos...'
+      sample["insumos"].each do |insumo|
+        Insumo.create! insumo
+      end
+      puts '✅ Done Created Insumos!'
+
+      puts 'Creating Adubos...'
+      sample["adubos"].each do |adubo|
+        # ownerships[ownership["slug"]] = Ownership.create! director.slice("name", "last_name")
+        Adubo.create! adubo.slice("comercial_name", "n", "p", "k", "preco_saca")
+      end
+      puts '✅ Done Created Adubos!'
+
+      puts 'Creating user...'
+      admin = User.new(id: 1,
+                    name: "Gabriel Administrador",
+                    email: "gabrielschiavo0@gmail.com",
+                    password: "p4ssw0rd$"
+                    )
+      admin.save!
+      puts "✅ Done Creating User!"
 end
