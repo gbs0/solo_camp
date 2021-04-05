@@ -1,6 +1,5 @@
-require 'pry'
 class AnaliseAmostrasController < ApplicationController
-  before_action :set_user, :get_properties, :get_amostras only: [:new, :create, :edit, :update]
+  before_action :set_user, :get_properties, :get_amostras, only: [:new, :create, :edit, :update]
   
 
   def index; end
