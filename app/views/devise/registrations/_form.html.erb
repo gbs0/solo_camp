@@ -1,0 +1,37 @@
+<div class="ml-3 text-center">
+    <span><em>Apply for 1-month free SoloCamp demo access!</em></span>
+</div>
+<div class="mt-3">
+    <form action="https://send.pageclip.co/<%= Rails.application.secrets['paperclip_key']%>/contact-form" class="pageclip-form" method="post">
+        <div class="field form-label-group">
+            <span>Nome Completo:*</span>
+            <br/>
+            <input class="form-control mt-3 mb-3" type="text" name="name" value="Seu Nome">
+        </div>
+
+        <div class="field form-label-group">
+            <span>Seu Email:*</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="email" name="email" value="meuemail@example.com" />
+        </div>
+        
+
+        <div class="field form-label-group">
+            <span>Mensagem:*</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="text" name="description" value="Olá, gostaria de me registrar por 1 mês na SoloCamp ;)" />
+        </div>
+        
+        <div class="field form-label-group">
+            <span>Empresa:</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="text" name="empresa" value="Campo Opcional" />
+        </div>
+
+        <hr class="my-4"/>
+
+        <button type="submit" class="pageclip-form__submit btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold">
+            Enviar Pedido
+        </button>
+    </form>
+</div>
