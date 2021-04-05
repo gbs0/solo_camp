@@ -1,6 +1,6 @@
 require "open-uri"
 require "yaml"
-require 'pry'
+
 # Insumo.destroy_all if Rails.env.development?
 # Adubo.destroy_all if Rails.env.development?
 
