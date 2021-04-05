@@ -1,5 +1,3 @@
-require 'colorize'
-
 namespace :db_reset do
   desc "Reset Analise Amostra in database"
     task analise_amostras: :environment do
