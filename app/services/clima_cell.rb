@@ -4,7 +4,7 @@ class ClimaCell < ApplicationService
     def initialize(_lat, _lng)
         @lat = _lat
         @lng = _lng
-        @key = Rails.application.secrets['climacell_key'] if Rails.env.development?
+        @key = Rails.application.secrets['climacell_key']
     end
 
 

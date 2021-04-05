@@ -6,7 +6,7 @@ class Places < ApplicationService
         @address = I18n.transliterate(_address)
         @city = I18n.transliterate(_city)
         @uf = _uf
-        @key = Rails.application.secrets['places_key'] if Rails.env.development?
+        @key = Rails.application.secrets['places_key']
     end
 
     def call

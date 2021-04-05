@@ -4,7 +4,7 @@ class Maps < ApplicationService
     def initialize(_lat, _lng)
       @lat = _lat
       @lng = _lng
-      @key = Rails.application.secrets['map_static_key'] if Rails.env.development?
+      @key = Rails.application.secrets['map_static_key']
     end 
 
     def call
