@@ -15,4 +15,6 @@ class AnaliseAmostra < ApplicationRecord
     self.amostra = Amostra.serialize(attr[:amostras])
     self.insumo = attr[:insumo]
   end
+
+  scope :by_analise, -> (id) { where("analise_id = ?", id) }
 end

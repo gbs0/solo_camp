@@ -8,6 +8,7 @@ class AnalisesController < ApplicationController
 
 	def index
 		@analise = Analise.new
+		@analises = Analise.by_user(@user.id)
 	end
 
 	def new
@@ -33,7 +34,7 @@ class AnalisesController < ApplicationController
 			digest_amostras(@analise)
 			# CreateAnaliseAmostraJob.perform_later(current_user, @analise, @amostras_reference)  # <- The job is queued
 			flash[ :notice ] = "'#{@analise}' salvo."
-			redirect_to laudos_path, notice: "Seu laudo foi adicionado"
+			redirect_to analises_path, notice: "Sua análise foi adicionada"
 	  else
 			flash[:alert] = "Erro, verifque os campos digitados"
 			render :new

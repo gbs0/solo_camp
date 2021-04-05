@@ -13,6 +13,8 @@ class Analise < ApplicationRecord
 
     scope :by_property, -> (_id) { where("property_id = ?", _id) }
 
+    scope :by_user, -> (_id) { where("user_id = ?", _id) }
+
     scope :for_all_properties, -> (_property_id) do
       joins(:amostras).where(property: { property_id: _property_id })
     end
