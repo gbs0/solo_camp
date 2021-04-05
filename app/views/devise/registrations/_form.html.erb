@@ -1,34 +1,37 @@
-
-<div class="field form-label-group">
-    <%#= f.label :email  %>
-    <label for="inputEmail">Endereço de Email</label>
-    <br/>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-3", id: "inputEmail", placeholder: "Email address" %>
+<div class="ml-3 text-center">
+    <span><em>Apply for 1-month free SoloCamp demo access!</em></span>
 </div>
+<div class="mt-3">
+    <form action="https://send.pageclip.co/<%= Rails.application.secrets['paperclip_key']%>/contact-form" class="pageclip-form" method="post">
+        <div class="field form-label-group">
+            <span>Nome Completo:*</span>
+            <br/>
+            <input class="form-control mt-3 mb-3" type="text" name="name" value="Seu Nome">
+        </div>
 
-<div class="field form-label-group">
-    <%#= f.label :password %>
-    <label for="inputPassword">Senha</label>
-    <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
-    <br/>
-    <%= f.password_field :password, autocomplete: "new-password", id: "inputPassword", class: "form-control mt-3" %>
+        <div class="field form-label-group">
+            <span>Seu Email:*</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="email" name="email" value="meuemail@example.com" />
+        </div>
+        
+
+        <div class="field form-label-group">
+            <span>Mensagem:*</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="text" name="description" value="Olá, gostaria de me registrar por 1 mês na SoloCamp ;)" />
+        </div>
+        
+        <div class="field form-label-group">
+            <span>Empresa:</span>
+            <br/>
+            <input class="form-control mb-3 mt-2" type="text" name="empresa" value="Campo Opcional" />
+        </div>
+
+        <hr class="my-4"/>
+
+        <button type="submit" class="pageclip-form__submit">
+            <span>Enviar Pedido</span>
+        </button>
+    </form>
 </div>
-
-<div class="field form-label-group mb-5">
-    <%#= f.label :password_confirmation %>
-    <label for="inputPassword">Confirmação de Senha</label>
-    <br/>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "inputPassword", class: "form-control mt-3" %>
-</div>
-
-<div class="actions mt-3">
-    <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold" %>
-</div>
-
-<hr class="my-4">
-<%# <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button> %>
-<%# <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> %>
-
-<%#= render "devise/shared/links" %>
