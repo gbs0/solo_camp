@@ -6,8 +6,8 @@ class Property < ApplicationRecord
 
   validates :name, :address, :city, :uf, :cep, :total_area, presence: true
 
-  before_create :location_to_coordinates
-  before_update :location_to_coordinates
+  after_create :location_to_coordinates
+  after_update :location_to_coordinates
   
   STATES = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
   
